@@ -6,21 +6,20 @@ import Header from "../Header/Header";
 import "./App.module.css";
 
 function App() {
-  let id: number = 5;
   return (
-    <div>
-      <Router>
+    <Router>
+      <div>
         <Header />
         <Switch>
-          <Route path="/">
+          <Route path="/" exact>
             <HomePage />
           </Route>
           <Route path="/occurences/:id">
-            <SingleOccurencePage id={id} />
+            <SingleOccurencePage />
           </Route>
         </Switch>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
 
