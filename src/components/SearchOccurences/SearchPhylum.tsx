@@ -12,35 +12,45 @@ const SearchPhylum = ({
   selectedPhylum,
   setSelectedPhylum,
 }: SearchPhylumProps) => {
-  const [userInput, setUserInput] = useState<string>("");
   const [phylumList, setPhylumList] = useState<any>([]);
   const baseUrlApi: string = "https://api.gbif.org/v1";
 
   useEffect(() => {
     let offset = 0;
-    axios
-      .get(`${baseUrlApi}/species/${selectedKingdom[0]}/children`, {
-        params: {
-          limit: 20,
-          offset: offset,
-        },
-      })
-      .then((response) => {
-        let tempArray = response.data.results;
-        setPhylumList(tempArray);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [userInput]);
+    let tempArray: any = [];
+    const fetchPhylum = () => {
+      axios
+        .get(`${baseUrlApi}/species/${selectedKingdom[0]}/children`, {
+          params: {
+            limit: 20,
+            offset: offset,
+          },
+        })
+        .then((response) => {
+          tempArray.push(...response.data.results);
+          if (tempArray[tempArray.length - 1].phylum !== undefined) {
+            offset += 20;
+            fetchPhylum();
+          } else {
+            setPhylumList(tempArray);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+
+    fetchPhylum();
+  }, [selectedKingdom]);
+  let filteredPhylum = phylumList.filter((item: any) => item.phylum !== undefined);
 
   return (
     <article>
       <label htmlFor="phylum">Phylum</label>
       <select name="phylum" id="phylum">
-        {phylumList.map((record: any) =>
-          record.phylum != undefined ? <option>{record.phylum}</option> : null
-        )}
+        {filteredPhylum.map((record: any) => (
+          <option key={record.phylumKey}>{record.phylum}</option>
+        ))}
       </select>
     </article>
   );
