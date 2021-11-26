@@ -3,7 +3,7 @@ import styles from "./Header.module.css";
 
 const Header = () => {
   return (
-    <header>
+    <header className={styles.header}>
       <p className={styles.logo}>Logo</p>
       <nav className={styles.navigation}>
         <ul>
@@ -12,8 +12,16 @@ const Header = () => {
               Home
             </NavLink>
           </li>
-          <li>Search</li>
-          <li>Map</li>
+          <li>
+            <NavLink exact to="/occurences">
+              Search
+            </NavLink>
+          </li>
+          <li>
+            <NavLink exact to="/map">
+              Map
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </header>
