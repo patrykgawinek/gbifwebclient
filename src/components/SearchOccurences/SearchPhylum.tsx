@@ -28,7 +28,7 @@ const SearchPhylum = ({
         })
         .then((response) => {
           tempArray.push(...response.data.results);
-          if (tempArray[tempArray.length - 1].phylum !== undefined) {
+          if (!response.data.endOfRecords && tempArray[tempArray.length - 1].phylum !== undefined) {
             offset += 20;
             fetchPhylum();
           } else {
