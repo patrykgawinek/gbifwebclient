@@ -1,64 +1,24 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import SearchKingdom from "components/SearchOccurences/SearchKingdom";
+import SearchPhylum from "components/SearchOccurences/SearchPhylum";
+import { useState } from "react";
 import styles from "./SearchOccurencesPage.module.css";
 
 const SearchOccurencesPage = () => {
-  const baseUrlApi: string = "https://api.gbif.org/v1";
-  const [kingdomList, setKingdomList] = useState<[number, string][]>([]);
-  const [selectedKingdom, setSelectedKingdom] = useState<number>();
-
-  useEffect(() => {
-    axios
-      .get(`${baseUrlApi}/species/suggest`, {
-        params: {
-          rank: "kingdom",
-        },
-      })
-      .then((response) => {
-        console.log("fetched");
-        let tempList = response.data.map((record: any) => [record.kingdomKey, record.kingdom]);
-        setKingdomList(tempList);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [selectedKingdom]);
+  const [selectedKingdom, setSelectedKingdom] = useState<[number, string]>([1, "Animalia"]);
+  const [selectedPhylum, setSelectedPhylum] = useState<string>("");
 
   return (
     <main>
-      <h1>Search Occurences</h1>
+      <h1 className={styles.h1}>Search Occurences</h1>
       <section>
-        <article className={styles.kingdoms}>
-          {kingdomList.map((kingdom) => (
-            <button
-              value={kingdom[0]}
-              key={kingdom[0]}
-              onClick={() => setSelectedKingdom(kingdom[0])}
-            >
-              {kingdom[1]}
-            </button>
-          ))}
-        </article>
+        <SearchKingdom selectedKingdom={selectedKingdom} setSelectedKingdom={setSelectedKingdom} />
+        <SearchPhylum
+          selectedKingdom={selectedKingdom}
+          selectedPhylum={selectedPhylum}
+          setSelectedPhylum={setSelectedPhylum}
+        />
       </section>
-      <section>
-        <form action="get">
-          <div>
-            <label htmlFor="kingdom">Kingdom</label>
-            <select
-              name="kingdom"
-              id="kingdom"
-              value={selectedKingdom}
-              onChange={(e) => setSelectedKingdom(parseInt(e.target.value))}
-            >
-              {kingdomList.map((kingdom) => (
-                <option value={kingdom[0]} key={kingdom[0]}>
-                  {kingdom[1]}
-                </option>
-              ))}
-            </select>
-          </div>
-        </form>
-      </section>
+      <section></section>
     </main>
   );
 };
