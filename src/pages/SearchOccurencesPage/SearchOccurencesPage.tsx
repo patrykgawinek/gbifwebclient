@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import styles from "./SearchOccurencesPage.module.css";
 
 const SearchOccurencesPage = () => {
   const baseUrlApi: string = "https://api.gbif.org/v1";
@@ -26,6 +27,19 @@ const SearchOccurencesPage = () => {
   return (
     <main>
       <h1>Search Occurences</h1>
+      <section>
+        <article className={styles.kingdoms}>
+          {kingdomList.map((kingdom) => (
+            <button
+              value={kingdom[0]}
+              key={kingdom[0]}
+              onClick={() => setSelectedKingdom(kingdom[0])}
+            >
+              {kingdom[1]}
+            </button>
+          ))}
+        </article>
+      </section>
       <section>
         <form action="get">
           <div>
