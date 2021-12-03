@@ -78,6 +78,9 @@ const SearchClassification = ({
         value={selectedCurrentClassification}
         onChange={handleOnChange}
       >
+        <option key={-1} value={-1} hidden>
+          -- Pick one of the options below --
+        </option>
         {filteredTaxon.map((record: any) => (
           <option key={record.key} value={record.key}>
             {record.scientificName}
