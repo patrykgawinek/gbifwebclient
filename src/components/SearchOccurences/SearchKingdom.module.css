@@ -7,4 +7,12 @@
 .kingdoms button {
   min-width: 5%;
   margin: 0.5rem;
+  padding: 0.5rem;
+  background-color: #00000025;
+  border: none;
+  border-radius: 0.25rem;
+}
+
+.kingdoms button:hover {
+  background-color: #00000050;
 }

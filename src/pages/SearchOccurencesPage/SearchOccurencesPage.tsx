@@ -43,22 +43,24 @@ const SearchOccurencesPage = () => {
             setShowItems={setShowItems}
           />
         )}
-        {classificationArray.slice(1).map((classification, index) => {
-          return (
-            showItems[index + 1] && (
-              <SearchClassification
-                key={index + 1}
-                classificationLevel={index + 1}
-                showItems={showItems}
-                setShowItems={setShowItems}
-                currentClassification={classification[0]}
-                selectedHigherClassification={classificationArray[index][1]}
-                selectedCurrentClassification={classification[1]}
-                setSelectedCurrentClassification={classification[2]}
-              />
-            )
-          );
-        })}
+        <div className={styles.container}>
+          {classificationArray.slice(1).map((classification, index) => {
+            return (
+              showItems[index + 1] && (
+                <SearchClassification
+                  key={index + 1}
+                  classificationLevel={index + 1}
+                  showItems={showItems}
+                  setShowItems={setShowItems}
+                  currentClassification={classification[0]}
+                  selectedHigherClassification={classificationArray[index][1]}
+                  selectedCurrentClassification={classification[1]}
+                  setSelectedCurrentClassification={classification[2]}
+                />
+              )
+            );
+          })}
+        </div>
       </section>
       <section></section>
     </main>

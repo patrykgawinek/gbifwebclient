@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import styles from "./SearchClassification.module.css";
 
 interface SearchClassProps {
   showItems: boolean[];
@@ -71,11 +72,13 @@ const SearchClassification = ({
 
   if (filteredTaxon.length <= 0) {
     return (
-      <article>{`No ${currentClassification.toLowerCase()} found in this classification.`}</article>
+      <article
+        className={styles.classification}
+      >{`No ${currentClassification.toLowerCase()} found in this classification.`}</article>
     );
   }
   return (
-    <article>
+    <article className={styles.classification}>
       <label htmlFor={currentClassification}>{currentClassification}</label>
       <select
         name={currentClassification}
