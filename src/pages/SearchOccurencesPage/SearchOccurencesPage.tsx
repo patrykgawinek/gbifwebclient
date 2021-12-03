@@ -16,9 +16,9 @@ const SearchOccurencesPage = () => {
     ["Phylum", selectedPhylum, setSelectedPhylum],
     ["Class", selectedClass, setSelectedClass],
     ["Order", selectedOrder, setSelectedOrder],
-    ["Class", selectedFamily, setSelectedFamily],
-    ["Family", selectedGenus, setSelectedGenus],
-    ["Genus", selectedSpecies, setSelectedSpecies],
+    ["Family", selectedFamily, setSelectedFamily],
+    ["Genus", selectedGenus, setSelectedGenus],
+    ["Species", selectedSpecies, setSelectedSpecies],
   ];
 
   const [showItems, setShowItems] = useState<boolean[]>([
@@ -46,6 +46,7 @@ const SearchOccurencesPage = () => {
         {classificationArray.slice(1).map((classification, index) => {
           return showItems[index + 1] ? (
             <SearchClassification
+              key={index + 1}
               classificationLevel={index + 1}
               showItems={showItems}
               setShowItems={setShowItems}
