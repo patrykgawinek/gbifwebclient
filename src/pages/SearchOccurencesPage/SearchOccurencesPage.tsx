@@ -11,6 +11,16 @@ const SearchOccurencesPage = () => {
   const [selectedFamily, setSelectedFamily] = useState<number>(-1);
   const [selectedGenus, setSelectedGenus] = useState<number>(-1);
   const [selectedSpecies, setSelectedSpecies] = useState<number>(-1);
+  const classificationArray: [string, number, React.Dispatch<React.SetStateAction<number>>][] = [
+    ["Kingdom", selectedKingdom, setSelectedKingdom],
+    ["Phylum", selectedPhylum, setSelectedPhylum],
+    ["Class", selectedClass, setSelectedClass],
+    ["Order", selectedOrder, setSelectedOrder],
+    ["Class", selectedFamily, setSelectedFamily],
+    ["Family", selectedGenus, setSelectedGenus],
+    ["Genus", selectedSpecies, setSelectedSpecies],
+  ];
+
   const [showItems, setShowItems] = useState<boolean[]>([
     true,
     false,
@@ -33,72 +43,19 @@ const SearchOccurencesPage = () => {
             setShowItems={setShowItems}
           />
         ) : null}
-        {showItems[1] ? (
-          <SearchClassification
-            classificationLevel={1}
-            showItems={showItems}
-            setShowItems={setShowItems}
-            currentClassification={"Phylum"}
-            selectedHigherClassification={selectedKingdom}
-            selectedCurrentClassification={selectedPhylum}
-            setSelectedCurrentClassification={setSelectedPhylum}
-          />
-        ) : null}
-        {showItems[2] ? (
-          <SearchClassification
-            classificationLevel={2}
-            showItems={showItems}
-            setShowItems={setShowItems}
-            currentClassification={"Class"}
-            selectedHigherClassification={selectedPhylum}
-            selectedCurrentClassification={selectedClass}
-            setSelectedCurrentClassification={setSelectedClass}
-          />
-        ) : null}
-        {showItems[3] ? (
-          <SearchClassification
-            classificationLevel={3}
-            showItems={showItems}
-            setShowItems={setShowItems}
-            currentClassification={"Order"}
-            selectedHigherClassification={selectedClass}
-            selectedCurrentClassification={selectedOrder}
-            setSelectedCurrentClassification={setSelectedOrder}
-          />
-        ) : null}
-        {showItems[4] ? (
-          <SearchClassification
-            classificationLevel={4}
-            showItems={showItems}
-            setShowItems={setShowItems}
-            currentClassification={"Family"}
-            selectedHigherClassification={selectedOrder}
-            selectedCurrentClassification={selectedFamily}
-            setSelectedCurrentClassification={setSelectedFamily}
-          />
-        ) : null}
-        {showItems[5] ? (
-          <SearchClassification
-            classificationLevel={5}
-            showItems={showItems}
-            setShowItems={setShowItems}
-            currentClassification={"Genus"}
-            selectedHigherClassification={selectedFamily}
-            selectedCurrentClassification={selectedGenus}
-            setSelectedCurrentClassification={setSelectedGenus}
-          />
-        ) : null}
-        {showItems[6] ? (
-          <SearchClassification
-            classificationLevel={6}
-            showItems={showItems}
-            setShowItems={setShowItems}
-            currentClassification={"Species"}
-            selectedHigherClassification={selectedGenus}
-            selectedCurrentClassification={selectedSpecies}
-            setSelectedCurrentClassification={setSelectedSpecies}
-          />
-        ) : null}
+        {classificationArray.slice(1).map((classification, index) => {
+          return showItems[index + 1] ? (
+            <SearchClassification
+              classificationLevel={index + 1}
+              showItems={showItems}
+              setShowItems={setShowItems}
+              currentClassification={classification[0]}
+              selectedHigherClassification={classificationArray[index][1]}
+              selectedCurrentClassification={classification[1]}
+              setSelectedCurrentClassification={classification[2]}
+            />
+          ) : null;
+        })}
       </section>
       <section></section>
     </main>
