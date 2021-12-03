@@ -5,9 +5,16 @@ import styles from "./SearchKingdom.module.css";
 interface SearchKingdomProps {
   selectedKingdom: number;
   setSelectedKingdom: Dispatch<SetStateAction<number>>;
+  showItems: boolean[];
+  setShowItems: Dispatch<SetStateAction<boolean[]>>;
 }
 
-const SearchKingdom = ({ selectedKingdom, setSelectedKingdom }: SearchKingdomProps) => {
+const SearchKingdom = ({
+  selectedKingdom,
+  setSelectedKingdom,
+  showItems,
+  setShowItems,
+}: SearchKingdomProps) => {
   const [kingdomList, setKingdomList] = useState<any>([]);
   const baseUrlApi: string = "https://api.gbif.org/v1";
 
@@ -33,7 +40,10 @@ const SearchKingdom = ({ selectedKingdom, setSelectedKingdom }: SearchKingdomPro
         <button
           value={kingdom.kingdomKey}
           key={kingdom.kingdomKey}
-          onClick={() => setSelectedKingdom(kingdom.kingdomKey)}
+          onClick={() => {
+            setSelectedKingdom(kingdom.kingdomKey);
+            setShowItems([true, true, false, false, false, false, false]);
+          }}
         >
           {kingdom.scientificName}
         </button>
