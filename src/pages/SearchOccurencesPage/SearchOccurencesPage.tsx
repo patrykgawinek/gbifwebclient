@@ -35,6 +35,9 @@ const SearchOccurencesPage = () => {
         ) : null}
         {showItems[1] ? (
           <SearchClassification
+            classificationLevel={1}
+            showItems={showItems}
+            setShowItems={setShowItems}
             currentClassification={"Phylum"}
             selectedHigherClassification={selectedKingdom}
             selectedCurrentClassification={selectedPhylum}
@@ -43,6 +46,9 @@ const SearchOccurencesPage = () => {
         ) : null}
         {showItems[2] ? (
           <SearchClassification
+            classificationLevel={2}
+            showItems={showItems}
+            setShowItems={setShowItems}
             currentClassification={"Class"}
             selectedHigherClassification={selectedPhylum}
             selectedCurrentClassification={selectedClass}
@@ -51,6 +57,9 @@ const SearchOccurencesPage = () => {
         ) : null}
         {showItems[3] ? (
           <SearchClassification
+            classificationLevel={3}
+            showItems={showItems}
+            setShowItems={setShowItems}
             currentClassification={"Order"}
             selectedHigherClassification={selectedClass}
             selectedCurrentClassification={selectedOrder}
@@ -59,6 +68,9 @@ const SearchOccurencesPage = () => {
         ) : null}
         {showItems[4] ? (
           <SearchClassification
+            classificationLevel={4}
+            showItems={showItems}
+            setShowItems={setShowItems}
             currentClassification={"Family"}
             selectedHigherClassification={selectedOrder}
             selectedCurrentClassification={selectedFamily}
@@ -67,6 +79,9 @@ const SearchOccurencesPage = () => {
         ) : null}
         {showItems[5] ? (
           <SearchClassification
+            classificationLevel={5}
+            showItems={showItems}
+            setShowItems={setShowItems}
             currentClassification={"Genus"}
             selectedHigherClassification={selectedFamily}
             selectedCurrentClassification={selectedGenus}
@@ -75,6 +90,9 @@ const SearchOccurencesPage = () => {
         ) : null}
         {showItems[6] ? (
           <SearchClassification
+            classificationLevel={6}
+            showItems={showItems}
+            setShowItems={setShowItems}
             currentClassification={"Species"}
             selectedHigherClassification={selectedGenus}
             selectedCurrentClassification={selectedSpecies}

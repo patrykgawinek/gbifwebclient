@@ -2,6 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 interface SearchClassProps {
+  showItems: boolean[];
+  setShowItems: React.Dispatch<React.SetStateAction<boolean[]>>;
+  classificationLevel: number;
   currentClassification: string;
   selectedHigherClassification: number;
   selectedCurrentClassification: number;
@@ -9,6 +12,9 @@ interface SearchClassProps {
 }
 
 const SearchClassification = ({
+  showItems,
+  setShowItems,
+  classificationLevel,
   currentClassification,
   selectedHigherClassification,
   selectedCurrentClassification,
@@ -53,6 +59,14 @@ const SearchClassification = ({
 
   const handleOnChange: React.ChangeEventHandler<HTMLSelectElement> | undefined = (event) => {
     setSelectedCurrentClassification(parseInt(event.target.value));
+    let tempShowArray: boolean[] = [];
+    for (let i = 0; i < classificationLevel + 2; i++) {
+      tempShowArray.push(true);
+    }
+    for (let i = classificationLevel; i < showItems.length; i++) {
+      tempShowArray.push(false);
+    }
+    setShowItems(tempShowArray);
   };
 
   return (
