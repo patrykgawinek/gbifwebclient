@@ -53,7 +53,7 @@ const SearchClassification = ({
 
     fetchTaxon();
   }, [selectedHigherClassification]);
-  let filteredTaxon = currentList.filter(
+  let filteredTaxon: any[] = currentList.filter(
     (item: any) => item.rank === currentClassification.toUpperCase()
   );
 
@@ -69,6 +69,11 @@ const SearchClassification = ({
     setShowItems(tempShowArray);
   };
 
+  if (filteredTaxon.length <= 0) {
+    return (
+      <article>{`No ${currentClassification.toLowerCase()} found in this classification.`}</article>
+    );
+  }
   return (
     <article>
       <label htmlFor={currentClassification}>{currentClassification}</label>
