@@ -35,27 +35,29 @@ const SearchOccurencesPage = () => {
     <main>
       <h1 className={styles.h1}>Search Occurences</h1>
       <section>
-        {showItems[0] ? (
+        {showItems[0] && (
           <SearchKingdom
             selectedKingdom={selectedKingdom}
             setSelectedKingdom={setSelectedKingdom}
             showItems={showItems}
             setShowItems={setShowItems}
           />
-        ) : null}
+        )}
         {classificationArray.slice(1).map((classification, index) => {
-          return showItems[index + 1] ? (
-            <SearchClassification
-              key={index + 1}
-              classificationLevel={index + 1}
-              showItems={showItems}
-              setShowItems={setShowItems}
-              currentClassification={classification[0]}
-              selectedHigherClassification={classificationArray[index][1]}
-              selectedCurrentClassification={classification[1]}
-              setSelectedCurrentClassification={classification[2]}
-            />
-          ) : null;
+          return (
+            showItems[index + 1] && (
+              <SearchClassification
+                key={index + 1}
+                classificationLevel={index + 1}
+                showItems={showItems}
+                setShowItems={setShowItems}
+                currentClassification={classification[0]}
+                selectedHigherClassification={classificationArray[index][1]}
+                selectedCurrentClassification={classification[1]}
+                setSelectedCurrentClassification={classification[2]}
+              />
+            )
+          );
         })}
       </section>
       <section></section>
