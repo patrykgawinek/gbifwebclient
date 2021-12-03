@@ -1,6 +1,7 @@
 import SearchClassification from "components/SearchOccurences/SearchClassification";
 import SearchKingdom from "components/SearchOccurences/SearchKingdom";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./SearchOccurencesPage.module.css";
 
 const SearchOccurencesPage = () => {
@@ -62,7 +63,9 @@ const SearchOccurencesPage = () => {
           })}
         </div>
       </section>
-      <section></section>
+      <section>
+        <Link to={`/occurences/${selectedSpecies}`}>This is a link</Link>
+      </section>
     </main>
   );
 };

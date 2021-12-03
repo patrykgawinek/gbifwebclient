@@ -18,13 +18,13 @@ function App() {
             <Route path="/" exact>
               <HomePage />
             </Route>
-            <Route path="/occurences/">
+            <Route path="/occurences/" exact>
               <SearchOccurencesPage />
             </Route>
             <Route path="/occurences/:id">
               <SingleOccurencePage />
             </Route>
-            <Route path="/map">
+            <Route path="/map" exact>
               <MapPage />
             </Route>
           </Switch>
