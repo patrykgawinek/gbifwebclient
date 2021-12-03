@@ -2,9 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 interface SearchPhylumProps {
-  selectedKingdom: [number, string];
-  selectedPhylum: string;
-  setSelectedPhylum: React.Dispatch<React.SetStateAction<string>>;
+  selectedKingdom: number;
+  selectedPhylum: number;
+  setSelectedPhylum: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const SearchPhylum = ({
@@ -20,7 +20,7 @@ const SearchPhylum = ({
     let tempArray: any = [];
     const fetchPhylum = () => {
       axios
-        .get(`${baseUrlApi}/species/${selectedKingdom[0]}/children`, {
+        .get(`${baseUrlApi}/species/${selectedKingdom}/children`, {
           params: {
             limit: 20,
             offset: offset,
@@ -44,12 +44,18 @@ const SearchPhylum = ({
   }, [selectedKingdom]);
   let filteredPhylum = phylumList.filter((item: any) => item.phylum !== undefined);
 
+  const handleOnChange: React.ChangeEventHandler<HTMLSelectElement> | undefined = (event) => {
+    setSelectedPhylum(parseInt(event.target.value));
+  };
+
   return (
     <article>
       <label htmlFor="phylum">Phylum</label>
-      <select name="phylum" id="phylum">
+      <select name="phylum" id="phylum" onChange={handleOnChange}>
         {filteredPhylum.map((record: any) => (
-          <option key={record.phylumKey}>{record.phylum}</option>
+          <option key={record.phylumKey} value={record.phylumKey}>
+            {record.phylum}
+          </option>
         ))}
       </select>
     </article>

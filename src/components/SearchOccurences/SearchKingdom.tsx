@@ -3,12 +3,12 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "./SearchKingdom.module.css";
 
 interface SearchKingdomProps {
-  selectedKingdom: [number, string];
-  setSelectedKingdom: Dispatch<SetStateAction<[number, string]>>;
+  selectedKingdom: number;
+  setSelectedKingdom: Dispatch<SetStateAction<number>>;
 }
 
 const SearchKingdom = ({ selectedKingdom, setSelectedKingdom }: SearchKingdomProps) => {
-  const [kingdomList, setKingdomList] = useState<[number, string][]>([]);
+  const [kingdomList, setKingdomList] = useState<any>([]);
   const baseUrlApi: string = "https://api.gbif.org/v1";
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const SearchKingdom = ({ selectedKingdom, setSelectedKingdom }: SearchKingdomPro
         },
       })
       .then((response) => {
-        let tempList = response.data.map((record: any) => [record.kingdomKey, record.kingdom]);
+        let tempList = response.data;
         setKingdomList(tempList);
       })
       .catch((error) => {
@@ -29,13 +29,13 @@ const SearchKingdom = ({ selectedKingdom, setSelectedKingdom }: SearchKingdomPro
 
   return (
     <article className={styles.kingdoms}>
-      {kingdomList.map((kingdom) => (
+      {kingdomList.map((kingdom: any) => (
         <button
-          value={kingdom[0]}
-          key={kingdom[0]}
-          onClick={() => setSelectedKingdom([kingdom[0], kingdom[1]])}
+          value={kingdom.kingdomKey}
+          key={kingdom.kingdomKey}
+          onClick={() => setSelectedKingdom(kingdom.kingdomKey)}
         >
-          {kingdom[1]}
+          {kingdom.scientificName}
         </button>
       ))}
     </article>

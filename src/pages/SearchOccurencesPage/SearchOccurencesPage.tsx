@@ -4,8 +4,8 @@ import { useState } from "react";
 import styles from "./SearchOccurencesPage.module.css";
 
 const SearchOccurencesPage = () => {
-  const [selectedKingdom, setSelectedKingdom] = useState<[number, string]>([1, "Animalia"]);
-  const [selectedPhylum, setSelectedPhylum] = useState<string>("");
+  const [selectedKingdom, setSelectedKingdom] = useState<number>(-1);
+  const [selectedPhylum, setSelectedPhylum] = useState<number>(-1);
 
   return (
     <main>
