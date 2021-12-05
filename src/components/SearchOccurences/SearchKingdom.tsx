@@ -7,6 +7,7 @@ interface SearchKingdomProps {
   setSelectedKingdom: Dispatch<SetStateAction<number>>;
   showItems: boolean[];
   setShowItems: Dispatch<SetStateAction<boolean[]>>;
+  setLastSelection: Dispatch<SetStateAction<number>>;
 }
 
 const SearchKingdom = ({
@@ -14,6 +15,7 @@ const SearchKingdom = ({
   setSelectedKingdom,
   showItems,
   setShowItems,
+  setLastSelection,
 }: SearchKingdomProps) => {
   const [kingdomList, setKingdomList] = useState<any>([]);
   const baseUrlApi: string = "https://api.gbif.org/v1";
@@ -42,6 +44,7 @@ const SearchKingdom = ({
           key={kingdom.kingdomKey}
           onClick={() => {
             setSelectedKingdom(kingdom.kingdomKey);
+            setLastSelection(kingdom.kingdomKey);
             setShowItems([true, true, false, false, false, false, false]);
           }}
         >

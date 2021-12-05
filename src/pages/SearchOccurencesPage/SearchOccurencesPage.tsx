@@ -24,6 +24,9 @@ const SearchOccurencesPage = () => {
     ["Species", selectedSpecies, setSelectedSpecies],
   ];
 
+  //Usestate for search query on occurences based on last classification level/choice
+  const [lastSelection, setLastSelection] = useState<number>(-1);
+
   //Usestates for short circuit evaluation to hide elements on page depending on classification level the user picked
   const [showItems, setShowItems] = useState<boolean[]>([
     true,
@@ -45,6 +48,7 @@ const SearchOccurencesPage = () => {
             setSelectedKingdom={setSelectedKingdom}
             showItems={showItems}
             setShowItems={setShowItems}
+            setLastSelection={setLastSelection}
           />
         )}
         <div className={styles.container}>
@@ -60,6 +64,7 @@ const SearchOccurencesPage = () => {
                   selectedHigherClassification={classificationArray[index][1]}
                   selectedCurrentClassification={classification[1]}
                   setSelectedCurrentClassification={classification[2]}
+                  setLastSelection={setLastSelection}
                 />
               )
             );
@@ -67,9 +72,7 @@ const SearchOccurencesPage = () => {
         </div>
       </section>
       <section>
-        <h2>Found results</h2>
-        <SearchOccurencesResult showItems={showItems} classificationArray={classificationArray} />
-        {/*<Link to={`/occurences/${selectedSpecies}`}>This is a link</Link>*/}
+        <SearchOccurencesResult lastSelection={lastSelection} />
       </section>
     </main>
   );

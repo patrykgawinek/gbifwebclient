@@ -1,22 +1,37 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import styles from "./SearchOccurencesResult.module.css";
 
 interface SearchOccurencesResultProps {
-  showItems: boolean[];
-  classificationArray: [string, number, React.Dispatch<React.SetStateAction<number>>][];
+  lastSelection: number;
 }
 
-const SearchOccurencesResult = ({
-  showItems,
-  classificationArray,
-}: SearchOccurencesResultProps) => {
+const SearchOccurencesResult = ({ lastSelection }: SearchOccurencesResultProps) => {
+  const [foundResults, setFoundResults] = useState<any>();
+
+  const baseUrlApi: string = "https://api.gbif.org/v1";
+  useEffect(() => {
+    axios
+      .get(`${baseUrlApi}/occurrence/search`, {
+        params: {
+          taxonKey: lastSelection,
+        },
+      })
+      .then((response) => {
+        setFoundResults(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [lastSelection]);
+
   return (
-    <>
-      {classificationArray.map((classification, index) => (
-        <div key={index}>
-          <div>{classification[1]}</div>
-        </div>
-      ))}
-    </>
+    <div>
+      <h2>Found results</h2>
+      {foundResults !== undefined
+        ? foundResults.results.map((result: any) => <div key={result.key}>{result.key}</div>)
+        : null}
+    </div>
   );
 };
 
