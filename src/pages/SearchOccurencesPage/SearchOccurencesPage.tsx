@@ -1,10 +1,12 @@
 import SearchClassification from "components/SearchOccurences/SearchClassification";
 import SearchKingdom from "components/SearchOccurences/SearchKingdom";
-import { useState } from "react";
+import SearchOccurencesResult from "components/SearchOccurencesResult/SearchOccurencesResult";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./SearchOccurencesPage.module.css";
 
 const SearchOccurencesPage = () => {
+  //Usestates to keep tracked of made choices by the user
   const [selectedKingdom, setSelectedKingdom] = useState<number>(-1);
   const [selectedPhylum, setSelectedPhylum] = useState<number>(-1);
   const [selectedClass, setSelectedClass] = useState<number>(-1);
@@ -22,6 +24,7 @@ const SearchOccurencesPage = () => {
     ["Species", selectedSpecies, setSelectedSpecies],
   ];
 
+  //Usestates for short circuit evaluation to hide elements on page depending on classification level the user picked
   const [showItems, setShowItems] = useState<boolean[]>([
     true,
     false,
@@ -64,7 +67,9 @@ const SearchOccurencesPage = () => {
         </div>
       </section>
       <section>
-        <Link to={`/occurences/${selectedSpecies}`}>This is a link</Link>
+        <h2>Found results</h2>
+        <SearchOccurencesResult showItems={showItems} classificationArray={classificationArray} />
+        {/*<Link to={`/occurences/${selectedSpecies}`}>This is a link</Link>*/}
       </section>
     </main>
   );
