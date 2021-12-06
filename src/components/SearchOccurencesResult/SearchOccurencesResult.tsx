@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./SearchOccurencesResult.module.css";
 
 interface SearchOccurencesResultProps {
@@ -29,7 +30,11 @@ const SearchOccurencesResult = ({ lastSelection }: SearchOccurencesResultProps) 
     <div>
       <h2>Found results</h2>
       {foundResults !== undefined
-        ? foundResults.results.map((result: any) => <div key={result.key}>{result.key}</div>)
+        ? foundResults.results.map((result: any) => (
+            <Link to={`/occurences/${result.key}`}>
+              <div key={result.key}>{result.key}</div>
+            </Link>
+          ))
         : null}
     </div>
   );

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import styles from "./SearchOccurencesPage.module.css";
 
 const SearchOccurencesPage = () => {
-  //Usestates to keep tracked of made choices by the user
+  //Usestates to keep track of made choices by the user
   const [selectedKingdom, setSelectedKingdom] = useState<number>(-1);
   const [selectedPhylum, setSelectedPhylum] = useState<number>(-1);
   const [selectedClass, setSelectedClass] = useState<number>(-1);
