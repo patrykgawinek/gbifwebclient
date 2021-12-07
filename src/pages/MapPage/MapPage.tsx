@@ -1,12 +1,25 @@
-import { url } from "inspector";
 import { Icon } from "leaflet";
 import { MapContainer as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
+import { useParams } from "react-router";
 import "./leaflet.css";
 import styles from "./MapPage.module.css";
 
+interface ParamTypes {
+  id: string;
+}
+
 const MapPage = () => {
-  let taxonKey: number = 2984535;
-  let url: string = `https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?style=purpleYellow.point&taxonKey=${taxonKey}`;
+  let taxonKey = useParams<ParamTypes>();
+
+  let url: string;
+  if (taxonKey.id === undefined) {
+    url =
+      "https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?style=purpleYellow.point";
+  } else {
+    url = `https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?style=purpleYellow.point&taxonKey=${taxonKey.id}`;
+  }
+
+  console.log(url);
   return (
     <div className={styles.container}>
       <LeafletMap center={[51.2213, 4.4051]} zoom={3} scrollWheelZoom={true}>

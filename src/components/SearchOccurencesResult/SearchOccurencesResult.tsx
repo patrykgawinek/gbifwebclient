@@ -28,14 +28,19 @@ const SearchOccurencesResult = ({ lastSelection }: SearchOccurencesResultProps) 
 
   return (
     <div>
-      <h2>Found results</h2>
-      {foundResults !== undefined
-        ? foundResults.results.map((result: any) => (
-            <Link to={`/occurences/${result.key}`}>
-              <div key={result.key}>{result.key}</div>
-            </Link>
-          ))
-        : null}
+      <div>
+        <h2>Found results</h2>
+        {foundResults !== undefined
+          ? foundResults.results.map((result: any) => (
+              <Link to={`/occurences/${result.key}`}>
+                <div key={result.key}>{result.key}</div>
+              </Link>
+            ))
+          : null}
+      </div>
+      <div>
+        <Link to={`/map/${lastSelection}`}>Show occurences on heatmap</Link>
+      </div>
     </div>
   );
 };
