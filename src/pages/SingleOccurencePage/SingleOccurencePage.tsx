@@ -1,6 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Icon } from "leaflet";
+import { MapContainer as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
+import "./leaflet.css";
+import styles from "./SingleOccurencePage.module.css";
 
 interface ParamTypes {
   id: string;
@@ -8,7 +12,7 @@ interface ParamTypes {
 
 const SingleOccurencePage = () => {
   let { id } = useParams<ParamTypes>();
-  const [occurence, setOccurence] = useState<any>("");
+  const [occurence, setOccurence] = useState<any>({ decimalLongitude: 25, decimalLatitude: 0 });
 
   const baseUrlApi: string = "https://api.gbif.org/v1";
   useEffect(() => {
@@ -24,6 +28,20 @@ const SingleOccurencePage = () => {
 
   return (
     <div>
+      <div className={styles.leaflet}>
+        <LeafletMap
+          center={[occurence.decimalLatitude, occurence.decimalLongitude]}
+          zoom={2}
+          scrollWheelZoom={true}
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          />
+          <Marker position={[occurence.decimalLatitude, occurence.decimalLongitude]}></Marker>
+        </LeafletMap>
+      </div>
+
       {occurence.species !== undefined ? (
         <p>Species: {occurence.species}</p>
       ) : occurence.genus !== undefined ? (
