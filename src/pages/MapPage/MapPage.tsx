@@ -1,5 +1,26 @@
+import { url } from "inspector";
+import { Icon } from "leaflet";
+import { MapContainer as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
+import "./leaflet.css";
+import styles from "./MapPage.module.css";
+
 const MapPage = () => {
-  return <div>mappage content</div>;
+  let taxonKey: number = 2984535;
+  let url: string = `https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?style=purpleYellow.point&taxonKey=${taxonKey}`;
+  return (
+    <div className={styles.container}>
+      <LeafletMap center={[51.2213, 4.4051]} zoom={3} scrollWheelZoom={true}>
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        />
+        <TileLayer
+          url={url}
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        />
+      </LeafletMap>
+    </div>
+  );
 };
 
 export default MapPage;

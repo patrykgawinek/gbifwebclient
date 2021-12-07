@@ -24,7 +24,7 @@ function App() {
             <Route path="/occurences/:id">
               <SingleOccurencePage />
             </Route>
-            <Route path="/map" exact>
+            <Route path="/map/" exact>
               <MapPage />
             </Route>
           </Switch>
