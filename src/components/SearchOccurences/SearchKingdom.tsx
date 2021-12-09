@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import styles from "./SearchKingdom.module.css";
 
 interface SearchKingdomProps {
@@ -38,22 +38,26 @@ const SearchKingdom = ({
   }, [selectedKingdom]);
 
   return (
-    <article className={styles.kingdoms}>
-      {kingdomList.map((kingdom: any) => (
-        <Button
-          variant="outline-primary"
-          value={kingdom.kingdomKey}
-          key={kingdom.kingdomKey}
-          onClick={() => {
-            setSelectedKingdom(kingdom.kingdomKey);
-            setLastSelection(kingdom.kingdomKey);
-            setShowItems([true, true, false, false, false, false, false]);
-          }}
-        >
-          {kingdom.scientificName}
-        </Button>
-      ))}
-    </article>
+    <Container>
+      <Row>
+        {kingdomList.map((kingdom: any) => (
+          <Col md="auto">
+            <Button
+              variant="outline-primary"
+              value={kingdom.kingdomKey}
+              key={kingdom.kingdomKey}
+              onClick={() => {
+                setSelectedKingdom(kingdom.kingdomKey);
+                setLastSelection(kingdom.kingdomKey);
+                setShowItems([true, true, false, false, false, false, false]);
+              }}
+            >
+              {kingdom.scientificName}
+            </Button>
+          </Col>
+        ))}
+      </Row>
+    </Container>
   );
 };
 
