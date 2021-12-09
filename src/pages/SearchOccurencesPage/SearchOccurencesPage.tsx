@@ -2,6 +2,7 @@ import SearchClassification from "components/SearchOccurences/SearchClassificati
 import SearchKingdom from "components/SearchOccurences/SearchKingdom";
 import SearchOccurencesResult from "components/SearchOccurencesResult/SearchOccurencesResult";
 import { useEffect, useState } from "react";
+import { Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styles from "./SearchOccurencesPage.module.css";
 
@@ -40,40 +41,42 @@ const SearchOccurencesPage = () => {
 
   return (
     <main>
-      <h1 className={styles.h1}>Search Occurences</h1>
-      <section>
-        {showItems[0] && (
-          <SearchKingdom
-            selectedKingdom={selectedKingdom}
-            setSelectedKingdom={setSelectedKingdom}
-            showItems={showItems}
-            setShowItems={setShowItems}
-            setLastSelection={setLastSelection}
-          />
-        )}
-        <div className={styles.container}>
-          {classificationArray.slice(1).map((classification, index) => {
-            return (
-              showItems[index + 1] && (
-                <SearchClassification
-                  key={index + 1}
-                  classificationLevel={index + 1}
-                  showItems={showItems}
-                  setShowItems={setShowItems}
-                  currentClassification={classification[0]}
-                  selectedHigherClassification={classificationArray[index][1]}
-                  selectedCurrentClassification={classification[1]}
-                  setSelectedCurrentClassification={classification[2]}
-                  setLastSelection={setLastSelection}
-                />
-              )
-            );
-          })}
-        </div>
-      </section>
-      <section>
-        <SearchOccurencesResult lastSelection={lastSelection} />
-      </section>
+      <Container>
+        <Row className={styles.row}>
+          <h1>Search Occurences</h1>
+          {showItems[0] && (
+            <SearchKingdom
+              selectedKingdom={selectedKingdom}
+              setSelectedKingdom={setSelectedKingdom}
+              showItems={showItems}
+              setShowItems={setShowItems}
+              setLastSelection={setLastSelection}
+            />
+          )}
+          <div>
+            {classificationArray.slice(1).map((classification, index) => {
+              return (
+                showItems[index + 1] && (
+                  <SearchClassification
+                    key={index + 1}
+                    classificationLevel={index + 1}
+                    showItems={showItems}
+                    setShowItems={setShowItems}
+                    currentClassification={classification[0]}
+                    selectedHigherClassification={classificationArray[index][1]}
+                    selectedCurrentClassification={classification[1]}
+                    setSelectedCurrentClassification={classification[2]}
+                    setLastSelection={setLastSelection}
+                  />
+                )
+              );
+            })}
+          </div>
+        </Row>
+        <Row>
+          <SearchOccurencesResult lastSelection={lastSelection} />
+        </Row>
+      </Container>
     </main>
   );
 };

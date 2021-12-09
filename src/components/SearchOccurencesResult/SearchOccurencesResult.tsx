@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styles from "./SearchOccurencesResult.module.css";
 
@@ -27,9 +28,18 @@ const SearchOccurencesResult = ({ lastSelection }: SearchOccurencesResultProps) 
   }, [lastSelection]);
 
   return (
-    <div>
-      <div>
-        <h2>Found results</h2>
+    <Container>
+      <Row>
+        <Col>
+          <h2>Found results</h2>
+        </Col>
+        <Col>
+          <Button onClick={() => (window.location.href = `/map/${lastSelection}`)}>
+            Show occurences on heatmap
+          </Button>
+        </Col>
+      </Row>
+      <Row>
         {foundResults !== undefined
           ? foundResults.results.map((result: any) => (
               <Link to={`/occurences/${result.key}`}>
@@ -37,11 +47,8 @@ const SearchOccurencesResult = ({ lastSelection }: SearchOccurencesResultProps) 
               </Link>
             ))
           : null}
-      </div>
-      <div>
-        <Link to={`/map/${lastSelection}`}>Show occurences on heatmap</Link>
-      </div>
-    </div>
+      </Row>
+    </Container>
   );
 };
 
