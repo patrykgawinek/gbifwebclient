@@ -16,13 +16,19 @@ function App() {
           <Header />
           <Switch>
             <Route path="/" exact>
-              <HomePage />
+              <div className={styles.mainContent}>
+                <HomePage />
+              </div>
             </Route>
             <Route path="/occurences/" exact>
-              <SearchOccurencesPage />
+              <div className={styles.mainContent}>
+                <SearchOccurencesPage />
+              </div>
             </Route>
             <Route path="/occurences/:id">
-              <SingleOccurencePage />
+              <div className={styles.mainContent}>
+                <SingleOccurencePage />
+              </div>
             </Route>
             <Route path="/map/:id?">
               <MapPage />
