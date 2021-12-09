@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styles from "./SearchOccurencesResult.module.css";
 
@@ -20,6 +20,7 @@ const SearchOccurencesResult = ({ lastSelection }: SearchOccurencesResultProps) 
         },
       })
       .then((response) => {
+        console.log(response.data);
         setFoundResults(response.data);
       })
       .catch((error) => {
@@ -42,9 +43,37 @@ const SearchOccurencesResult = ({ lastSelection }: SearchOccurencesResultProps) 
       <Row>
         {foundResults !== undefined
           ? foundResults.results.map((result: any) => (
-              <Link to={`/occurences/${result.key}`}>
-                <div key={result.key}>{result.key}</div>
-              </Link>
+              <Col className={styles.colMargin}>
+                <Link to={`/occurences/${result.key}`} className={styles.cardLink}>
+                  <Card>
+                    {result.media[0]?.identifier !== undefined && (
+                      <Card.Img
+                        className={styles.cardImage}
+                        variant="top"
+                        src={result.media[0]?.identifier}
+                      />
+                    )}
+                    <Card.Body>
+                      <Card.Title>
+                        {result.species !== undefined
+                          ? `${result.species}`
+                          : result.genus !== undefined
+                          ? `${result.genus}`
+                          : result.family !== undefined
+                          ? `${result.family}`
+                          : result.order !== undefined
+                          ? `${result.order}`
+                          : result.phylum !== undefined
+                          ? `${result.phylum}`
+                          : result.kingdom !== undefined
+                          ? `${result.kingdom}`
+                          : `Unidentified`}
+                      </Card.Title>
+                      <Card.Text></Card.Text>
+                    </Card.Body>
+                  </Card>
+                </Link>
+              </Col>
             ))
           : null}
       </Row>

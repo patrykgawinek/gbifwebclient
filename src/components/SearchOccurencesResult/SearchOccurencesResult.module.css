@@ -1,0 +1,11 @@
+.colMargin {
+  margin-bottom: 1rem;
+}
+.cardLink {
+  text-decoration: none;
+  color: black;
+}
+.cardImage {
+  max-height: 100px;
+  object-fit: cover;
+}
