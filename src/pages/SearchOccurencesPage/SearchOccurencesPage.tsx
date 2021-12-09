@@ -2,7 +2,7 @@ import SearchClassification from "components/SearchOccurences/SearchClassificati
 import SearchKingdom from "components/SearchOccurences/SearchKingdom";
 import SearchOccurencesResult from "components/SearchOccurencesResult/SearchOccurencesResult";
 import { useEffect, useState } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styles from "./SearchOccurencesPage.module.css";
 
@@ -53,25 +53,48 @@ const SearchOccurencesPage = () => {
               setLastSelection={setLastSelection}
             />
           )}
-          <div>
-            {classificationArray.slice(1).map((classification, index) => {
+          <Row>
+            {classificationArray.slice(1, 4).map((classification, index) => {
               return (
                 showItems[index + 1] && (
-                  <SearchClassification
-                    key={index + 1}
-                    classificationLevel={index + 1}
-                    showItems={showItems}
-                    setShowItems={setShowItems}
-                    currentClassification={classification[0]}
-                    selectedHigherClassification={classificationArray[index][1]}
-                    selectedCurrentClassification={classification[1]}
-                    setSelectedCurrentClassification={classification[2]}
-                    setLastSelection={setLastSelection}
-                  />
+                  <Col>
+                    <SearchClassification
+                      key={index + 1}
+                      classificationLevel={index + 1}
+                      showItems={showItems}
+                      setShowItems={setShowItems}
+                      currentClassification={classification[0]}
+                      selectedHigherClassification={classificationArray[index][1]}
+                      selectedCurrentClassification={classification[1]}
+                      setSelectedCurrentClassification={classification[2]}
+                      setLastSelection={setLastSelection}
+                    />
+                  </Col>
                 )
               );
             })}
-          </div>
+          </Row>
+          <Row>
+            {classificationArray.slice(4).map((classification, index) => {
+              return (
+                showItems[index + 4] && (
+                  <Col>
+                    <SearchClassification
+                      key={index + 4}
+                      classificationLevel={index + 4}
+                      showItems={showItems}
+                      setShowItems={setShowItems}
+                      currentClassification={classification[0]}
+                      selectedHigherClassification={classificationArray[index + 3][1]}
+                      selectedCurrentClassification={classification[1]}
+                      setSelectedCurrentClassification={classification[2]}
+                      setLastSelection={setLastSelection}
+                    />
+                  </Col>
+                )
+              );
+            })}
+          </Row>
         </Row>
         <Row>
           <SearchOccurencesResult lastSelection={lastSelection} />

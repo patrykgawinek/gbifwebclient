@@ -1,0 +1,9 @@
+.noTaxonFoundContainer {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.noTaxonFound {
+  margin: 0;
+}

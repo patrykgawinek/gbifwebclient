@@ -77,9 +77,11 @@ const SearchClassification = ({
 
   if (filteredTaxon.length <= 0) {
     return (
-      <article
-        className={styles.classification}
-      >{`No ${currentClassification.toLowerCase()} found in this classification.`}</article>
+      <div className={styles.noTaxonFoundContainer}>
+        <p
+          className={styles.noTaxonFound}
+        >{`No ${currentClassification.toLowerCase()} found in this classification.`}</p>
+      </div>
     );
   }
   return (
