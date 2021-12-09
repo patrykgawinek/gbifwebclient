@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
 import styles from "./SearchKingdom.module.css";
 
 interface SearchKingdomProps {
@@ -39,7 +40,8 @@ const SearchKingdom = ({
   return (
     <article className={styles.kingdoms}>
       {kingdomList.map((kingdom: any) => (
-        <button
+        <Button
+          variant="outline-primary"
           value={kingdom.kingdomKey}
           key={kingdom.kingdomKey}
           onClick={() => {
@@ -49,7 +51,7 @@ const SearchKingdom = ({
           }}
         >
           {kingdom.scientificName}
-        </button>
+        </Button>
       ))}
     </article>
   );

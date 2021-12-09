@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Form } from "react-bootstrap";
 import styles from "./SearchClassification.module.css";
 
 interface SearchClassProps {
@@ -84,7 +85,7 @@ const SearchClassification = ({
   return (
     <article className={styles.classification}>
       <label htmlFor={currentClassification}>{currentClassification}</label>
-      <select
+      <Form.Select
         name={currentClassification}
         id={currentClassification}
         value={selectedCurrentClassification}
@@ -98,7 +99,7 @@ const SearchClassification = ({
             {record.scientificName}
           </option>
         ))}
-      </select>
+      </Form.Select>
     </article>
   );
 };

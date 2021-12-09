@@ -1,29 +1,20 @@
+import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
 
 const Header = () => {
   return (
-    <header className={styles.header}>
-      <p className={styles.logo}>Logo</p>
-      <nav className={styles.navigation}>
-        <ul>
-          <li>
-            <NavLink exact to="/">
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink exact to="/occurences">
-              Search
-            </NavLink>
-          </li>
-          <li>
-            <NavLink exact to="/map">
-              Map
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
+    <header>
+      <Navbar bg="primary" variant="dark">
+        <Container>
+          <Navbar.Brand href="/">GBIF Client</Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/occurences">Search</Nav.Link>
+            <Nav.Link href="/map">Map</Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
     </header>
   );
 };

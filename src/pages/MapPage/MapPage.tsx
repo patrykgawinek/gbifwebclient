@@ -13,10 +13,9 @@ const MapPage = () => {
 
   let url: string;
   if (taxonKey.id === undefined) {
-    url =
-      "https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?style=purpleYellow.point";
+    url = "https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?style=glacier.point";
   } else {
-    url = `https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?style=purpleYellow.point&taxonKey=${taxonKey.id}`;
+    url = `https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?style=glacier.point&taxonKey=${taxonKey.id}`;
   }
 
   console.log(url);
