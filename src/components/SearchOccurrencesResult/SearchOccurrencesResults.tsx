@@ -47,7 +47,7 @@ const SearchOccurrencesResults = ({
       <Row className="mb-2">
         <Col>
           <h2 className={darkMode ? styles.lightText : undefined}>
-            Found results ({foundResults?.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")})
+            Found {foundResults?.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} results
           </h2>
         </Col>
         <Col className="d-flex justify-content-end">
@@ -93,7 +93,8 @@ const SearchOccurrencesResults = ({
             darkMode ? styles.lightText : undefined
           }`}
         >
-          {offset + 1} - {foundResults?.endOfRecords ? foundResults?.count : offset + 12}
+          {foundResults?.count > 0 ? offset + 1 : 0} -{" "}
+          {foundResults?.endOfRecords ? foundResults?.count : offset + 12}
         </Col>
         <Col>
           <Button
