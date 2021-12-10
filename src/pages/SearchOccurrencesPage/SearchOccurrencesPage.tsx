@@ -1,13 +1,13 @@
-import SearchClassification from "components/SearchOccurences/SearchClassification";
-import SearchKingdom from "components/SearchOccurences/SearchKingdom";
-import SearchOccurencesResult from "components/SearchOccurencesResult/SearchOccurencesResults";
+import SearchClassification from "components/SearchOccurrences/SearchClassification";
+import SearchKingdom from "components/SearchOccurrences/SearchKingdom";
+import SearchOccurrencesResult from "components/SearchOccurrencesResult/SearchOccurrencesResults";
 import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Theme } from "components/App/App";
 import { useContext } from "react";
-import styles from "./SearchOccurencesPage.module.css";
+import styles from "./SearchOccurrencesPage.module.css";
 
-const SearchOccurencesPage = () => {
+const SearchOccurrencesPage = () => {
   //Usestates to keep track of made choices by the user
   const [selectedKingdom, setSelectedKingdom] = useState<number>(-1);
   const [selectedPhylum, setSelectedPhylum] = useState<number>(-1);
@@ -26,7 +26,7 @@ const SearchOccurencesPage = () => {
     ["Species", selectedSpecies, setSelectedSpecies],
   ];
 
-  //Usestate for search query on occurences based on last classification level/choice
+  //Usestate for search query on occurrences based on last classification level/choice
   const [lastSelection, setLastSelection] = useState<number>(-1);
 
   //Usestates for short circuit evaluation to hide elements on page depending on classification level the user picked
@@ -40,7 +40,7 @@ const SearchOccurencesPage = () => {
     false,
   ]);
 
-  //Usestate to track offset on occurence results -- raised to page level so that it can be passed to search criteria to set the offset to 0
+  //Usestate to track offset on occurrence results -- raised to page level so that it can be passed to search criteria to set the offset to 0
   const [offset, setOffset] = useState<number>(0);
 
   //Usestate to change web app theme
@@ -50,7 +50,7 @@ const SearchOccurencesPage = () => {
     <main>
       <Container>
         <Row className="mb-5">
-          <h1 className={darkMode ? styles.lightText : undefined}>Search Occurences</h1>
+          <h1 className={darkMode ? styles.lightText : undefined}>Search Occurrences</h1>
           {showItems[0] && (
             <SearchKingdom
               selectedKingdom={selectedKingdom}
@@ -84,7 +84,7 @@ const SearchOccurencesPage = () => {
           </Row>
         </Row>
         <Row className="mb-3">
-          <SearchOccurencesResult
+          <SearchOccurrencesResult
             lastSelection={lastSelection}
             offset={offset}
             setOffset={setOffset}
@@ -95,4 +95,4 @@ const SearchOccurencesPage = () => {
   );
 };
 
-export default SearchOccurencesPage;
+export default SearchOccurrencesPage;

@@ -17,7 +17,7 @@ const Header = () => {
             <NavLink to="/" exact className="nav-link">
               How-to
             </NavLink>
-            <NavLink to="/occurences" className="nav-link">
+            <NavLink to="/occurrences" className="nav-link">
               Search
             </NavLink>
             <NavLink to="/map" className="nav-link">

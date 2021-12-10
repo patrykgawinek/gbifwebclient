@@ -1,8 +1,8 @@
 import Footer from "components/Footer/Footer";
 import HomePage from "pages/HomePage/HomePage";
 import MapPage from "pages/MapPage/MapPage";
-import SearchOccurencesPage from "pages/SearchOccurencesPage/SearchOccurencesPage";
-import SingleOccurencePage from "pages/SingleOccurencePage/SingleOccurencePage";
+import SearchOccurrencesPage from "pages/SearchOccurrencesPage/SearchOccurrencesPage";
+import SingleOccurrencePage from "pages/SingleOccurrencePage/SingleOccurrencePage";
 import { createContext, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "../Header/Header";
@@ -29,14 +29,14 @@ function App() {
                   <HomePage />
                 </div>
               </Route>
-              <Route path="/occurences/" exact>
+              <Route path="/occurrences/" exact>
                 <div className={styles.mainContent}>
-                  <SearchOccurencesPage />
+                  <SearchOccurrencesPage />
                 </div>
               </Route>
-              <Route path="/occurences/:id">
+              <Route path="/occurrences/:id">
                 <div className={styles.mainContent}>
-                  <SingleOccurencePage />
+                  <SingleOccurrencePage />
                 </div>
               </Route>
               <Route path="/map/:id?">

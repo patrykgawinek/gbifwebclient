@@ -1,25 +1,25 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import SingleOccurenceResult from "./SingleOccurenceResult";
+import SingleOccurrenceResult from "./SingleOccurrenceResult";
 import SelectCountry from "./SelectCountry";
 import { Theme } from "components/App/App";
 import { useContext } from "react";
-import styles from "./SearchOccurencesResults.module.css";
+import styles from "./SearchOccurrencesResults.module.css";
 import { Link } from "react-router-dom";
 import { count } from "console";
 
-interface SearchOccurencesResultProps {
+interface SearchOccurrencesResultProps {
   lastSelection: number;
   offset: number;
   setOffset: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const SearchOccurencesResults = ({
+const SearchOccurrencesResults = ({
   lastSelection,
   offset,
   setOffset,
-}: SearchOccurencesResultProps) => {
+}: SearchOccurrencesResultProps) => {
   const { darkMode } = useContext(Theme);
 
   const [country, setCountry] = useState<string>("");
@@ -56,7 +56,7 @@ const SearchOccurencesResults = ({
                 darkMode ? "btn-dark" : "btn-primary"
               }`}
             >
-              Show occurences on heatmap
+              Show occurrences on heatmap
             </Button>
           </Link>
         </Col>
@@ -66,7 +66,7 @@ const SearchOccurencesResults = ({
         {foundResults !== undefined
           ? foundResults.results.map((result: any, index: number) => (
               <Col className="mb-3" key={index}>
-                <SingleOccurenceResult result={result} />
+                <SingleOccurrenceResult result={result} />
               </Col>
             ))
           : null}
@@ -107,4 +107,4 @@ const SearchOccurencesResults = ({
   );
 };
 
-export default SearchOccurencesResults;
+export default SearchOccurrencesResults;

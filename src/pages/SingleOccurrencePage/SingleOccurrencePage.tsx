@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MapContainer as LeafletMap, TileLayer, Marker } from "react-leaflet";
 import "./leaflet.css";
-import styles from "./SingleOccurencePage.module.css";
+import styles from "./SingleOccurrencePage.module.css";
 import { Col, Container, Row, Image, Carousel, Table } from "react-bootstrap";
 import { Theme } from "components/App/App";
 
@@ -11,10 +11,10 @@ interface ParamTypes {
   id: string;
 }
 
-const SingleOccurencePage = () => {
+const SingleOccurrencePage = () => {
   let { id } = useParams<ParamTypes>();
   const { darkMode } = useContext(Theme);
-  const [occurence, setOccurence] = useState<any>();
+  const [occurrence, setOccurrence] = useState<any>();
 
   const [carouselIndex, setCarouselIndex] = useState(0);
   const handleSelect = (selectedIndex: number, e: any) => {
@@ -24,9 +24,9 @@ const SingleOccurencePage = () => {
   const baseUrlApi: string = "https://api.gbif.org/v1";
   useEffect(() => {
     axios
-      .get(`${baseUrlApi}/occurrence/${id}`)
+      .get(`${baseUrlApi}/occurrrence/${id}`)
       .then((response) => {
-        setOccurence(response.data);
+        setOccurrence(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -36,31 +36,33 @@ const SingleOccurencePage = () => {
   return (
     <main className={darkMode ? styles.light : undefined}>
       <Container className={styles.tableBorderOverwrite}>
-        <h1 className="mt-3">Occurence #{occurence?.key}</h1>
+        <h1 className="mt-3">Occurrence #{occurrence?.key}</h1>
         <Table className={`mt-3 ${darkMode ? "table-dark" : undefined}`} striped hover size="sm">
           <tbody>
             <tr>
-              <td className="col-6">Date of occurence</td>
-              <td className="col-6">{new Date(occurence?.eventDate).toUTCString()}</td>
+              <td className="col-6">Date of occurrence</td>
+              <td className="col-6">{new Date(occurrence?.eventDate).toUTCString()}</td>
             </tr>
             <tr>
               <td>Identified by</td>
-              <td>{occurence?.identifiedBy !== undefined ? occurence?.identifiedBy : "Unknown"}</td>
+              <td>
+                {occurrence?.identifiedBy !== undefined ? occurrence?.identifiedBy : "Unknown"}
+              </td>
             </tr>
             <tr>
-              <td>Occurence remarks</td>
-              <td>{occurence?.occurrenceRemarks}</td>
+              <td>Occurrence remarks</td>
+              <td>{occurrence?.occurrrenceRemarks}</td>
             </tr>
           </tbody>
         </Table>
         <Row>
-          {occurence?.decimalLatitude !== undefined ? (
+          {occurrence?.decimalLatitude !== undefined ? (
             <Col
-              className={occurence?.media.length > 0 ? "col-12 col-sm-12 col-md-6" : "col-sm-12"}
+              className={occurrence?.media.length > 0 ? "col-12 col-sm-12 col-md-6" : "col-sm-12"}
             >
               <div className={styles.leaflet}>
                 <LeafletMap
-                  center={[occurence.decimalLatitude, occurence.decimalLongitude]}
+                  center={[occurrence.decimalLatitude, occurrence.decimalLongitude]}
                   zoom={4}
                   scrollWheelZoom={true}
                 >
@@ -69,25 +71,25 @@ const SingleOccurencePage = () => {
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                   />
                   <Marker
-                    position={[occurence.decimalLatitude, occurence.decimalLongitude]}
+                    position={[occurrence.decimalLatitude, occurrence.decimalLongitude]}
                   ></Marker>
                 </LeafletMap>
               </div>
             </Col>
           ) : null}
-          {occurence?.media.length > 1 ? (
+          {occurrence?.media.length > 1 ? (
             <Col className="col-12 col-sm-12 col-md-6">
               <Carousel fade activeIndex={carouselIndex} onSelect={handleSelect}>
-                {occurence.media.map((e: any, index: number) => (
+                {occurrence.media.map((e: any, index: number) => (
                   <Carousel.Item key={index}>
                     <Image src={e.identifier} className={styles.resizeImage} rounded />
                   </Carousel.Item>
                 ))}
               </Carousel>
             </Col>
-          ) : occurence?.media.length > 0 ? (
+          ) : occurrence?.media.length > 0 ? (
             <Col className="col-12 col-sm-12 col-md-6">
-              <Image src={occurence.media[0].identifier} className={styles.resizeImage} rounded />
+              <Image src={occurrence.media[0].identifier} className={styles.resizeImage} rounded />
             </Col>
           ) : null}
         </Row>
@@ -101,27 +103,27 @@ const SingleOccurencePage = () => {
           <tbody>
             <tr>
               <td>Kingdom</td>
-              <td>{occurence?.kingdom}</td>
+              <td>{occurrence?.kingdom}</td>
             </tr>
             <tr>
               <td>Phylum</td>
-              <td>{occurence?.phylum}</td>
+              <td>{occurrence?.phylum}</td>
             </tr>
             <tr>
               <td>Order</td>
-              <td>{occurence?.order}</td>
+              <td>{occurrence?.order}</td>
             </tr>
             <tr>
               <td>Family</td>
-              <td>{occurence?.family}</td>
+              <td>{occurrence?.family}</td>
             </tr>
             <tr>
               <td>Genus</td>
-              <td>{occurence?.genus}</td>
+              <td>{occurrence?.genus}</td>
             </tr>
             <tr>
               <td>Species</td>
-              <td>{occurence?.species}</td>
+              <td>{occurrence?.species}</td>
             </tr>
           </tbody>
         </Table>
@@ -135,11 +137,11 @@ const SingleOccurencePage = () => {
           <tbody>
             <tr>
               <td>Scientific name</td>
-              <td>{occurence?.scientificName}</td>
+              <td>{occurrence?.scientificName}</td>
             </tr>
             <tr>
               <td>Generic name</td>
-              <td>{occurence?.genericName}</td>
+              <td>{occurrence?.genericName}</td>
             </tr>
           </tbody>
         </Table>
@@ -153,15 +155,15 @@ const SingleOccurencePage = () => {
           <tbody>
             <tr>
               <td>GADM 0</td>
-              <td>{occurence?.gadm.level0 !== undefined && occurence?.gadm.level0.name}</td>
+              <td>{occurrence?.gadm.level0 !== undefined && occurrence?.gadm.level0.name}</td>
             </tr>
             <tr>
               <td>GADM 1</td>
-              <td>{occurence?.gadm.level1 !== undefined && occurence?.gadm.level1.name}</td>
+              <td>{occurrence?.gadm.level1 !== undefined && occurrence?.gadm.level1.name}</td>
             </tr>
             <tr>
               <td>GADM 2</td>
-              <td>{occurence?.gadm.level2 !== undefined && occurence?.gadm.level2.name}</td>
+              <td>{occurrence?.gadm.level2 !== undefined && occurrence?.gadm.level2.name}</td>
             </tr>
           </tbody>
         </Table>
@@ -175,9 +177,9 @@ const SingleOccurencePage = () => {
           </thead>
           <tbody>
             <tr>
-              <td>{occurence?.decimalLatitude}</td>
-              <td>{occurence?.decimalLongitude}</td>
-              <td>{occurence?.elevation}</td>
+              <td>{occurrence?.decimalLatitude}</td>
+              <td>{occurrence?.decimalLongitude}</td>
+              <td>{occurrence?.elevation}</td>
             </tr>
           </tbody>
         </Table>
@@ -186,4 +188,4 @@ const SingleOccurencePage = () => {
   );
 };
 
-export default SingleOccurencePage;
+export default SingleOccurrencePage;
