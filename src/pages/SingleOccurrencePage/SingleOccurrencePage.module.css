@@ -15,7 +15,8 @@
   object-fit: cover;
 }
 
-.leaflet {
+.leaflet,
+.onlyLeaflet {
   height: 300px;
   margin-bottom: 1rem;
 }
@@ -23,6 +24,10 @@
 @media screen and (min-width: 768px) {
   .leaflet {
     height: 100%;
+    margin-bottom: 0;
+  }
+  .onlyLeaflet {
+    height: 400px;
     margin-bottom: 0;
   }
 }

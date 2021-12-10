@@ -24,7 +24,7 @@ const SingleOccurrencePage = () => {
   const baseUrlApi: string = "https://api.gbif.org/v1";
   useEffect(() => {
     axios
-      .get(`${baseUrlApi}/occurrrence/${id}`)
+      .get(`${baseUrlApi}/occurrence/${id}`)
       .then((response) => {
         setOccurrence(response.data);
       })
@@ -60,7 +60,7 @@ const SingleOccurrencePage = () => {
             <Col
               className={occurrence?.media.length > 0 ? "col-12 col-sm-12 col-md-6" : "col-sm-12"}
             >
-              <div className={styles.leaflet}>
+              <div className={occurrence?.media.length > 0 ? styles.leaflet : styles.onlyLeaflet}>
                 <LeafletMap
                   center={[occurrence.decimalLatitude, occurrence.decimalLongitude]}
                   zoom={4}
