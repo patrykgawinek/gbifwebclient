@@ -19,7 +19,6 @@ const MapPage = () => {
     url = `https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?style=${mapStyle}.point&taxonKey=${taxonKey.id}`;
   }
 
-  console.log(url);
   return (
     <div className={styles.container}>
       <LeafletMap center={[51.2213, 4.4051]} zoom={3} scrollWheelZoom={true}>
