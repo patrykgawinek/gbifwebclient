@@ -14,7 +14,7 @@ const MapPage = () => {
   let url: string;
   //let mapStyle = "glacier";
   let mapStyle = "purpleHeat";
-  if (taxonKey.id === undefined || taxonKey.id === "-1") {
+  if (taxonKey.id === undefined) {
     url = `https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?style=${mapStyle}.point`;
   } else {
     url = `https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?style=${mapStyle}.point&taxonKey=${taxonKey.id}`;

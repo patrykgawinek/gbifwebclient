@@ -37,7 +37,10 @@ const SearchOccurencesResults = ({ lastSelection }: SearchOccurencesResultProps)
           <h2>Found results</h2>
         </Col>
         <Col>
-          <Button onClick={() => (window.location.href = `/map/${lastSelection}`)}>
+          <Button
+            className={lastSelection === -1 ? "disabled" : ""}
+            onClick={() => (window.location.href = `/map/${lastSelection}`)}
+          >
             Show occurences on heatmap
           </Button>
         </Col>
@@ -53,10 +56,32 @@ const SearchOccurencesResults = ({ lastSelection }: SearchOccurencesResultProps)
       </Row>
       <Row>
         <Col className="d-flex justify-content-end">
-          <Button>Previous</Button>
+          <Button
+            className={offset === 0 ? `disabled` : ``}
+            onClick={() => {
+              if (offset > 0) {
+                setOffset(offset - 20);
+              }
+            }}
+          >
+            Previous
+          </Button>
         </Col>
         <Col>
-          <Button>Next</Button>
+          <Button
+            className={
+              foundResults?.endOfRecords !== undefined && foundResults.endOfRecords
+                ? `disabled`
+                : ``
+            }
+            onClick={() => {
+              if (!foundResults.endOfRecords) {
+                setOffset(offset + 20);
+              }
+            }}
+          >
+            Next
+          </Button>
         </Col>
       </Row>
     </Container>
