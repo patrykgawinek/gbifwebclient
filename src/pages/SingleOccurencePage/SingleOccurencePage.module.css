@@ -1,3 +1,15 @@
+.light,
+.light tr:nth-child(odd) > td,
+.light tr:nth-child(odd) > th,
+.light tr:nth-child(even) > td,
+.light tr:nth-child(even) > th {
+  color: #fff !important;
+}
+
+.tableBorderOverwrite table > :not(:first-child) {
+  border-top: none !important;
+}
+
 .leaflet {
   height: 300px;
 }
@@ -15,14 +27,4 @@
   .leaflet {
     height: 400px;
   }
-}
-
-.stripeColour > tbody > tr:nth-child(odd) > td,
-.stripeColour > tbody > tr:nth-child(odd) > th {
-  background-color: #0275d825;
-}
-
-.stripeColour tbody tr:hover td,
-.table-hover tbody tr:hover th {
-  background-color: #0275d850;
 }

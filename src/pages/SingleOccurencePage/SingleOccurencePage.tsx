@@ -1,10 +1,11 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MapContainer as LeafletMap, TileLayer, Marker } from "react-leaflet";
 import "./leaflet.css";
 import styles from "./SingleOccurencePage.module.css";
 import { Col, Container, Row, Image, Carousel, Table } from "react-bootstrap";
+import { Theme } from "components/App/App";
 
 interface ParamTypes {
   id: string;
@@ -12,6 +13,7 @@ interface ParamTypes {
 
 const SingleOccurencePage = () => {
   let { id } = useParams<ParamTypes>();
+  const { darkMode } = useContext(Theme);
   const [occurence, setOccurence] = useState<any>();
 
   const [carouselIndex, setCarouselIndex] = useState(0);
@@ -32,14 +34,14 @@ const SingleOccurencePage = () => {
   }, [id]);
 
   return (
-    <main>
-      <Container>
+    <main className={darkMode ? styles.light : undefined}>
+      <Container className={styles.tableBorderOverwrite}>
         <h1>Occurence #{occurence?.key}</h1>
-        <Table className={`mt-3 ${styles.stripeColour}`} striped bordered size="sm">
+        <Table className={`mt-3 ${darkMode ? "table-dark" : undefined}`} striped hover size="sm">
           <tbody>
             <tr>
-              <td>Date of occurence</td>
-              <td>{new Date(occurence?.eventDate).toUTCString()}</td>
+              <td className="col-6">Date of occurence</td>
+              <td className="col-6">{new Date(occurence?.eventDate).toUTCString()}</td>
             </tr>
             <tr>
               <td>Identified by</td>
@@ -89,12 +91,11 @@ const SingleOccurencePage = () => {
             </Col>
           ) : null}
         </Row>
-
-        <Table className={`mt-3 ${styles.stripeColour}`} striped bordered hover size="sm">
+        <Table className={`mt-3 ${darkMode ? "table-dark" : undefined}`} striped hover size="sm">
           <thead>
             <tr>
-              <th>Taxon</th>
-              <th>Name</th>
+              <th className="col-6">Taxon</th>
+              <th className="col-6">Name</th>
             </tr>
           </thead>
           <tbody>
@@ -124,11 +125,11 @@ const SingleOccurencePage = () => {
             </tr>
           </tbody>
         </Table>
-        <Table className={styles.stripeColour} striped bordered hover size="sm">
+        <Table className={`${darkMode ? "table-dark" : undefined}`} striped hover size="sm">
           <thead>
             <tr>
-              <td>Naming</td>
-              <td>Name</td>
+              <td className="col-6">Naming</td>
+              <td className="col-6">Name</td>
             </tr>
           </thead>
           <tbody>
@@ -142,11 +143,11 @@ const SingleOccurencePage = () => {
             </tr>
           </tbody>
         </Table>
-        <Table className={styles.stripeColour} striped bordered hover size="sm">
+        <Table className={`${darkMode ? "table-dark" : undefined}`} striped hover size="sm">
           <thead>
             <tr>
-              <td>GADM Level</td>
-              <td>Location</td>
+              <td className="col-6">GADM Level</td>
+              <td className="col-6">Location</td>
             </tr>
           </thead>
           <tbody>
@@ -164,12 +165,12 @@ const SingleOccurencePage = () => {
             </tr>
           </tbody>
         </Table>
-        <Table className={styles.stripeColour} striped bordered size="sm">
+        <Table className={`${darkMode ? "table-dark" : undefined}`} striped size="sm">
           <thead>
             <tr>
-              <td>Latitide</td>
-              <td>Longitude</td>
-              <td>Elevation</td>
+              <td className="col-4">Latitide</td>
+              <td className="col-4">Longitude</td>
+              <td className="col-4">Elevation</td>
             </tr>
           </thead>
           <tbody>
