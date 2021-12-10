@@ -35,6 +35,7 @@ const SingleOccurencePage = () => {
   return (
     <Container>
       <h1>Occurence #{occurence?.key}</h1>
+      <p>{new Date(occurence?.eventDate).toUTCString()}</p>
       <Row>
         {occurence?.decimalLatitude !== undefined ? (
           <Col>
@@ -138,12 +139,28 @@ const SingleOccurencePage = () => {
           </tr>
         </tbody>
       </Table>
-      <p>
-        Location: {occurence?.continent}, {occurence?.stateProvince}
-      </p>
-      <p>
-        Date of occurence: {occurence?.year}-{occurence?.month}-{occurence?.day}
-      </p>
+      <Table>
+        <thead>
+          <tr>
+            <td>GADM Level</td>
+            <td>Location</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GADM 0</td>
+            <td>{occurence?.gadm.level0.name}</td>
+          </tr>
+          <tr>
+            <td>GADM 1</td>
+            <td>{occurence?.gadm.level1.name}</td>
+          </tr>
+          <tr>
+            <td>GADM 2</td>
+            <td>{occurence?.gadm.level2.name}</td>
+          </tr>
+        </tbody>
+      </Table>
     </Container>
   );
 };
