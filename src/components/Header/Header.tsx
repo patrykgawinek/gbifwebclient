@@ -1,9 +1,13 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
+import { Theme } from "components/App/App";
+import { useContext } from "react";
 
 const Header = () => {
+  const { darkMode, setDarkMode } = useContext(Theme);
+
   return (
     <header>
-      <Navbar bg="primary" variant="dark">
+      <Navbar className={darkMode ? "bg-dark navbar-dark" : "bg-primary navbar-dark"}>
         <Container>
           <Navbar.Brand href="/">GBIF Client</Navbar.Brand>
           <Nav className="me-auto">
