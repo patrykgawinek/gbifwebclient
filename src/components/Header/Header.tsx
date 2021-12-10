@@ -1,6 +1,4 @@
-import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
-import styles from "./Header.module.css";
+import { Container, Nav, Navbar } from "react-bootstrap";
 
 const Header = () => {
   return (

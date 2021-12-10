@@ -3,7 +3,6 @@ import HomePage from "pages/HomePage/HomePage";
 import MapPage from "pages/MapPage/MapPage";
 import SearchOccurencesPage from "pages/SearchOccurencesPage/SearchOccurencesPage";
 import SingleOccurencePage from "pages/SingleOccurencePage/SingleOccurencePage";
-import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "../Header/Header";
 import styles from "./App.module.css";

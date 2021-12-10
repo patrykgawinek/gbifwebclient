@@ -58,7 +58,7 @@ const SearchClassification = ({
     };
 
     fetchTaxon();
-  }, [selectedHigherClassification]);
+  }, [selectedHigherClassification, currentClassification]);
   let filteredTaxon: any[] = currentList.filter(
     (item: any) => item.rank === currentClassification.toUpperCase()
   );

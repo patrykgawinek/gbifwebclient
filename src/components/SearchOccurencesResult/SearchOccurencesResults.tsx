@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import styles from "./SearchOccurencesResult.module.css";
 import SingleOccurenceResult from "./SingleOccurenceResult";
 
@@ -22,12 +21,12 @@ const SearchOccurencesResults = ({
     axios
       .get(`${baseUrlApi}/occurrence/search`, {
         params: {
+          limit: 12,
           taxonKey: lastSelection,
           offset: offset,
         },
       })
       .then((response) => {
-        console.log(response.data);
         setFoundResults(response.data);
       })
       .catch((error) => {
@@ -52,8 +51,8 @@ const SearchOccurencesResults = ({
       </Row>
       <Row xs={2} md={3}>
         {foundResults !== undefined
-          ? foundResults.results.map((result: any) => (
-              <Col className={styles.colMargin}>
+          ? foundResults.results.map((result: any, index: number) => (
+              <Col className={styles.colMargin} key={index}>
                 <SingleOccurenceResult result={result} />
               </Col>
             ))
@@ -65,7 +64,7 @@ const SearchOccurencesResults = ({
             className={offset === 0 ? `disabled` : ``}
             onClick={() => {
               if (offset > 0) {
-                setOffset(offset - 20);
+                setOffset(offset - 12);
               }
             }}
           >
@@ -81,7 +80,7 @@ const SearchOccurencesResults = ({
             }
             onClick={() => {
               if (!foundResults.endOfRecords) {
-                setOffset(offset + 20);
+                setOffset(offset + 12);
               }
             }}
           >

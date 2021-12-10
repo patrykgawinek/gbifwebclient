@@ -1,8 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Icon } from "leaflet";
-import { MapContainer as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer as LeafletMap, TileLayer, Marker } from "react-leaflet";
 import "./leaflet.css";
 import styles from "./SingleOccurencePage.module.css";
 import { Col, Container, Row, Image, Carousel, Table } from "react-bootstrap";
@@ -30,7 +29,7 @@ const SingleOccurencePage = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [id]);
 
   return (
     <Container>
@@ -74,8 +73,8 @@ const SingleOccurencePage = () => {
         {occurence?.media.length > 1 ? (
           <Col>
             <Carousel fade activeIndex={carouselIndex} onSelect={handleSelect}>
-              {occurence.media.map((e: any) => (
-                <Carousel.Item>
+              {occurence.media.map((e: any, index: number) => (
+                <Carousel.Item key={index}>
                   <Image src={e.identifier} thumbnail />
                 </Carousel.Item>
               ))}

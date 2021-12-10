@@ -1,9 +1,8 @@
 import SearchClassification from "components/SearchOccurences/SearchClassification";
 import SearchKingdom from "components/SearchOccurences/SearchKingdom";
 import SearchOccurencesResult from "components/SearchOccurencesResult/SearchOccurencesResults";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import styles from "./SearchOccurencesPage.module.css";
 
 const SearchOccurencesPage = () => {
@@ -61,9 +60,8 @@ const SearchOccurencesPage = () => {
             {classificationArray.slice(1, 4).map((classification, index) => {
               return (
                 showItems[index + 1] && (
-                  <Col>
+                  <Col key={index + 1}>
                     <SearchClassification
-                      key={index + 1}
                       classificationLevel={index + 1}
                       showItems={showItems}
                       setShowItems={setShowItems}

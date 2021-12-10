@@ -1,7 +1,6 @@
 import axios from "axios";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import styles from "./SearchKingdom.module.css";
 
 interface SearchKingdomProps {
   selectedKingdom: number;
@@ -50,7 +49,7 @@ const SearchKingdom = ({
     <Container>
       <Row>
         {kingdomList.map((kingdom: any) => (
-          <Col className="mb-2" xs="auto">
+          <Col className="mb-2" xs="auto" key={kingdom.kingdomKey}>
             <Button
               variant="outline-primary"
               value={kingdom.kingdomKey}

@@ -1,5 +1,4 @@
-import { Icon } from "leaflet";
-import { MapContainer as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer as LeafletMap, TileLayer } from "react-leaflet";
 import { useParams } from "react-router";
 import "./leaflet.css";
 import styles from "./MapPage.module.css";
