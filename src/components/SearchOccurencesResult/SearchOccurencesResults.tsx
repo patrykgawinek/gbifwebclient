@@ -46,13 +46,10 @@ const SearchOccurencesResults = ({
           <h2 className={darkMode ? styles.lightText : undefined}>Found results</h2>
         </Col>
         <Col className="d-flex justify-content-end">
-          <Link
-            to={`/map/${lastSelection}`}
-            className={darkMode ? styles.darkModeRedirectButton : undefined}
-          >
+          <Link to={`/map/${lastSelection}`}>
             <Button
               className={`${lastSelection === -1 ? "disabled" : ""} ${
-                darkMode ? "bg-dark navbar-dark" : "bg-primary navbar-dark"
+                darkMode ? "btn-dark" : "btn-primary"
               }`}
             >
               Show occurences on heatmap
