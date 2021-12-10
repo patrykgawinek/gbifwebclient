@@ -7,7 +7,6 @@ import { Theme } from "components/App/App";
 import { useContext } from "react";
 import styles from "./SearchOccurrencesResults.module.css";
 import { Link } from "react-router-dom";
-import { count } from "console";
 
 interface SearchOccurrencesResultProps {
   lastSelection: number;
