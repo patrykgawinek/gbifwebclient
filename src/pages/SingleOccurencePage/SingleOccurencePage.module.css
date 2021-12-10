@@ -1,4 +1,18 @@
 .leaflet {
-  height: 500px;
-  width: 50%;
+  height: 180px;
+}
+@media screen and (min-width: 768px) {
+  .leaflet {
+    height: 250px;
+  }
+}
+@media screen and (min-width: 990px) {
+  .leaflet {
+    height: 350px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .leaflet {
+    height: 400px;
+  }
 }
