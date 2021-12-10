@@ -86,16 +86,18 @@ const SearchClassification = ({
     return (
       <div className={styles.noTaxonFoundContainer}>
         <p
-          className={styles.noTaxonFound}
+          className={`${styles.noTaxonFound} ${darkMode ? styles.lightText : undefined}`}
         >{`No ${currentClassification.toLowerCase()} found in this classification.`}</p>
       </div>
     );
   }
   return (
     <article className={styles.classification}>
-      <label htmlFor={currentClassification}>{currentClassification}</label>
+      <label className={styles.lightText} htmlFor={currentClassification}>
+        {currentClassification}
+      </label>
       <Form.Select
-        className={darkMode ? `${styles.formDark}` : ``}
+        className={darkMode ? styles.formDark : undefined}
         name={currentClassification}
         id={currentClassification}
         value={selectedCurrentClassification}

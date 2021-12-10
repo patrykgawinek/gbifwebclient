@@ -1,3 +1,7 @@
-.redirectButton > button {
+.lightText {
+  color: white !important;
+}
+
+.darkModeRedirectButton > button {
   border-color: #212529 !important;
 }

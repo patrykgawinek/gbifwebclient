@@ -43,10 +43,13 @@ const SearchOccurencesResults = ({
     <Container>
       <Row className="mb-2">
         <Col>
-          <h2>Found results</h2>
+          <h2 className={darkMode ? styles.lightText : undefined}>Found results</h2>
         </Col>
         <Col className="d-flex justify-content-end">
-          <Link to={`/map/${lastSelection}`} className={styles.redirectButton}>
+          <Link
+            to={`/map/${lastSelection}`}
+            className={darkMode ? styles.darkModeRedirectButton : undefined}
+          >
             <Button
               className={`${lastSelection === -1 ? "disabled" : ""} ${
                 darkMode ? "bg-dark navbar-dark" : "bg-primary navbar-dark"
@@ -69,7 +72,9 @@ const SearchOccurencesResults = ({
       <Row>
         <Col className="d-flex justify-content-end">
           <Button
-            className={`${offset === 0 ? `disabled` : ``} ${darkMode ? "btn-dark" : "btn-primary"}`}
+            className={`${offset === 0 ? `disabled` : undefined} ${
+              darkMode ? "btn-dark" : "btn-primary"
+            }`}
             onClick={() => {
               if (offset > 0) {
                 setOffset(offset - 12);
@@ -84,7 +89,7 @@ const SearchOccurencesResults = ({
             className={`${
               foundResults?.endOfRecords !== undefined && foundResults.endOfRecords
                 ? `disabled`
-                : ``
+                : undefined
             } ${darkMode ? "btn-dark" : "btn-primary"}`}
             onClick={() => {
               if (!foundResults.endOfRecords) {

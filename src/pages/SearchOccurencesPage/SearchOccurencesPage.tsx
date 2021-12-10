@@ -3,6 +3,8 @@ import SearchKingdom from "components/SearchOccurences/SearchKingdom";
 import SearchOccurencesResult from "components/SearchOccurencesResult/SearchOccurencesResults";
 import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { Theme } from "components/App/App";
+import { useContext } from "react";
 import styles from "./SearchOccurencesPage.module.css";
 
 const SearchOccurencesPage = () => {
@@ -41,11 +43,14 @@ const SearchOccurencesPage = () => {
   //Usestate to track offset on occurence results -- raised to page level so that it can be passed to search criteria to set the offset to 0
   const [offset, setOffset] = useState<number>(0);
 
+  //Usestate to change web app theme
+  const { darkMode } = useContext(Theme);
+
   return (
     <main>
       <Container>
-        <Row className={styles.row}>
-          <h1>Search Occurences</h1>
+        <Row className="mb-5">
+          <h1 className={darkMode ? styles.lightText : undefined}>Search Occurences</h1>
           {showItems[0] && (
             <SearchKingdom
               selectedKingdom={selectedKingdom}
@@ -56,8 +61,8 @@ const SearchOccurencesPage = () => {
               setOffset={setOffset}
             />
           )}
-          <Row>
-            {classificationArray.slice(1, 4).map((classification, index) => {
+          <Row xs={1} sm={1} md={3}>
+            {classificationArray.slice(1).map((classification, index) => {
               return (
                 showItems[index + 1] && (
                   <Col key={index + 1}>
@@ -67,28 +72,6 @@ const SearchOccurencesPage = () => {
                       setShowItems={setShowItems}
                       currentClassification={classification[0]}
                       selectedHigherClassification={classificationArray[index][1]}
-                      selectedCurrentClassification={classification[1]}
-                      setSelectedCurrentClassification={classification[2]}
-                      setLastSelection={setLastSelection}
-                      setOffset={setOffset}
-                    />
-                  </Col>
-                )
-              );
-            })}
-          </Row>
-          <Row>
-            {classificationArray.slice(4).map((classification, index) => {
-              return (
-                showItems[index + 4] && (
-                  <Col>
-                    <SearchClassification
-                      key={index + 4}
-                      classificationLevel={index + 4}
-                      showItems={showItems}
-                      setShowItems={setShowItems}
-                      currentClassification={classification[0]}
-                      selectedHigherClassification={classificationArray[index + 3][1]}
                       selectedCurrentClassification={classification[1]}
                       setSelectedCurrentClassification={classification[2]}
                       setLastSelection={setLastSelection}

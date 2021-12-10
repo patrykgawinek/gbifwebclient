@@ -20,30 +20,30 @@ const SingleOccurenceResult = ({ result }: SingleOccurenceResultProps) => {
         <Card.Body>
           <Card.Title>
             {result.species !== undefined
-              ? `${result.species}`
+              ? result.species
               : result.genus !== undefined
-              ? `${result.genus}`
+              ? result.genus
               : result.family !== undefined
-              ? `${result.family}`
+              ? result.family
               : result.order !== undefined
-              ? `${result.order}`
+              ? result.order
               : result.phylum !== undefined
-              ? `${result.phylum}`
+              ? result.phylum
               : result.kingdom !== undefined
-              ? `${result.kingdom}`
+              ? result.kingdom
               : `Unidentified`}
           </Card.Title>
           <Card.Text>
             {result.gadm.level0 !== undefined
-              ? `${result.gadm.level0.name}`
+              ? result.gadm.level0.name
               : `No level 0 GADM provided`}
             ,<br />
             {result.gadm.level1 !== undefined
-              ? `${result.gadm.level1.name}`
+              ? result.gadm.level1.name
               : `No level 1 GADM provided`}
             ,<br />
             {result.gadm.level2 !== undefined
-              ? `${result.gadm.level2.name}`
+              ? result.gadm.level2.name
               : `No level 2 GADM provided`}
           </Card.Text>
         </Card.Body>

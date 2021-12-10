@@ -20,7 +20,7 @@ const MapPage = () => {
   }
 
   return (
-    <div className={styles.container}>
+    <main className={styles.container}>
       <LeafletMap center={[51.2213, 4.4051]} zoom={3} scrollWheelZoom={true}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -31,7 +31,7 @@ const MapPage = () => {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
       </LeafletMap>
-    </div>
+    </main>
   );
 };
 
