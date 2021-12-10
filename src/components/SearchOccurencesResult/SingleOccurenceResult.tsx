@@ -42,10 +42,6 @@ const SingleOccurenceResult = ({ result }: SingleOccurenceResultProps) => {
             {result.gadm.level2 !== undefined
               ? `${result.gadm.level2.name}`
               : `No level 2 GADM provided`}
-            ,<br />
-            {result.gadm.level3 !== undefined
-              ? `${result.gadm.level3.name}`
-              : `No level 3 GADM provided`}
           </Card.Text>
         </Card.Body>
       </Card>
