@@ -41,7 +41,7 @@ const SearchOccurencesResults = ({
         <Col>
           <h2>Found results</h2>
         </Col>
-        <Col>
+        <Col className="d-flex justify-content-end">
           <Button
             className={lastSelection === -1 ? "disabled" : ""}
             onClick={() => (window.location.href = `/map/${lastSelection}`)}
