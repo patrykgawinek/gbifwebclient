@@ -11,13 +11,14 @@ interface SearchOccurencesResultProps {
 
 const SearchOccurencesResults = ({ lastSelection }: SearchOccurencesResultProps) => {
   const [foundResults, setFoundResults] = useState<any>();
-
+  const [offset, setOffset] = useState<number>(0);
   const baseUrlApi: string = "https://api.gbif.org/v1";
   useEffect(() => {
     axios
       .get(`${baseUrlApi}/occurrence/search`, {
         params: {
           taxonKey: lastSelection,
+          offset: offset,
         },
       })
       .then((response) => {
@@ -27,7 +28,7 @@ const SearchOccurencesResults = ({ lastSelection }: SearchOccurencesResultProps)
       .catch((error) => {
         console.log(error);
       });
-  }, [lastSelection]);
+  }, [lastSelection, offset]);
 
   return (
     <Container>
@@ -41,7 +42,7 @@ const SearchOccurencesResults = ({ lastSelection }: SearchOccurencesResultProps)
           </Button>
         </Col>
       </Row>
-      <Row>
+      <Row xs={2} md={3}>
         {foundResults !== undefined
           ? foundResults.results.map((result: any) => (
               <Col className={styles.colMargin}>
@@ -49,6 +50,14 @@ const SearchOccurencesResults = ({ lastSelection }: SearchOccurencesResultProps)
               </Col>
             ))
           : null}
+      </Row>
+      <Row>
+        <Col className="d-flex justify-content-end">
+          <Button>Previous</Button>
+        </Col>
+        <Col>
+          <Button>Next</Button>
+        </Col>
       </Row>
     </Container>
   );

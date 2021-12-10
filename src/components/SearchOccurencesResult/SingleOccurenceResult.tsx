@@ -30,7 +30,23 @@ const SingleOccurenceResult = ({ result }: SingleOccurenceResultProps) => {
               ? `${result.kingdom}`
               : `Unidentified`}
           </Card.Title>
-          <Card.Text></Card.Text>
+          <Card.Text>
+            {result.gadm.level0 !== undefined
+              ? `${result.gadm.level0.name}`
+              : `No level 0 GADM provided`}
+            ,<br />
+            {result.gadm.level1 !== undefined
+              ? `${result.gadm.level1.name}`
+              : `No level 1 GADM provided`}
+            ,<br />
+            {result.gadm.level2 !== undefined
+              ? `${result.gadm.level2.name}`
+              : `No level 2 GADM provided`}
+            ,<br />
+            {result.gadm.level3 !== undefined
+              ? `${result.gadm.level3.name}`
+              : `No level 3 GADM provided`}
+          </Card.Text>
         </Card.Body>
       </Card>
     </Link>
