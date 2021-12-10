@@ -1,6 +1,7 @@
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Theme } from "components/App/App";
 import { useContext } from "react";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   const { darkMode, setDarkMode } = useContext(Theme);
@@ -9,11 +10,19 @@ const Header = () => {
     <header>
       <Navbar className={darkMode ? "bg-dark navbar-dark" : "bg-primary navbar-dark"}>
         <Container>
-          <Navbar.Brand href="/">GBIF Client</Navbar.Brand>
+          <NavLink to="/">
+            <Navbar.Brand>GBIF Client</Navbar.Brand>
+          </NavLink>
           <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/occurences">Search</Nav.Link>
-            <Nav.Link href="/map">Map</Nav.Link>
+            <NavLink to="/" exact className="nav-link">
+              Home
+            </NavLink>
+            <NavLink to="/occurences" className="nav-link">
+              Search
+            </NavLink>
+            <NavLink to="/map" className="nav-link">
+              Map
+            </NavLink>
           </Nav>
           <Button
             className={darkMode ? "btn-dark" : "btn-primary"}
