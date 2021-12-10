@@ -50,7 +50,7 @@ const SearchKingdom = ({
     <Container>
       <Row>
         {kingdomList.map((kingdom: any) => (
-          <Col md="auto">
+          <Col className="mb-2" xs="auto">
             <Button
               variant="outline-primary"
               value={kingdom.kingdomKey}

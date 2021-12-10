@@ -102,7 +102,7 @@ const SearchOccurencesPage = () => {
             })}
           </Row>
         </Row>
-        <Row>
+        <Row className="mb-3">
           <SearchOccurencesResult
             lastSelection={lastSelection}
             offset={offset}

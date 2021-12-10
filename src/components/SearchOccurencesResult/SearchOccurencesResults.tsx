@@ -37,7 +37,7 @@ const SearchOccurencesResults = ({
 
   return (
     <Container>
-      <Row>
+      <Row className="mb-2">
         <Col>
           <h2>Found results</h2>
         </Col>

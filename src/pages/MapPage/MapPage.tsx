@@ -12,8 +12,8 @@ const MapPage = () => {
   let taxonKey = useParams<ParamTypes>();
 
   let url: string;
-  //let mapStyle = "glacier";
-  let mapStyle = "purpleHeat";
+  let mapStyle = "glacier";
+  //let mapStyle = "purpleHeat";
   if (taxonKey.id === undefined) {
     url = `https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?style=${mapStyle}.point`;
   } else {
