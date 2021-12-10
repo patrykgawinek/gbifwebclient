@@ -94,7 +94,7 @@ const SearchOccurrencesResults = ({
             darkMode ? styles.lightText : undefined
           }`}
         >
-          {offset + 1} - {offset + 12}
+          {offset + 1} - {foundResults?.endOfRecords ? foundResults?.count : offset + 12}
         </Col>
         <Col>
           <Button
