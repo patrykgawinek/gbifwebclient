@@ -15,7 +15,7 @@ const Header = () => {
           </NavLink>
           <Nav className="me-auto">
             <NavLink to="/" exact className="nav-link">
-              Home
+              How-to
             </NavLink>
             <NavLink to="/occurences" className="nav-link">
               Search

@@ -7,7 +7,9 @@ const HomePage = () => {
 
   return (
     <main>
-      <h1 className={darkMode ? styles.lightText : undefined}>How do I use this web client?</h1>
+      <h1 className={`mt-3 ${darkMode ? styles.lightText : undefined}`}>
+        How do I use this web client?
+      </h1>
     </main>
   );
 };

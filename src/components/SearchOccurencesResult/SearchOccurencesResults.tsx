@@ -2,10 +2,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import SingleOccurenceResult from "./SingleOccurenceResult";
+import SelectCountry from "./SelectCountry";
 import { Theme } from "components/App/App";
 import { useContext } from "react";
 import styles from "./SearchOccurencesResults.module.css";
 import { Link } from "react-router-dom";
+import { count } from "console";
 
 interface SearchOccurencesResultProps {
   lastSelection: number;
@@ -20,6 +22,7 @@ const SearchOccurencesResults = ({
 }: SearchOccurencesResultProps) => {
   const { darkMode } = useContext(Theme);
 
+  const [country, setCountry] = useState<string>("");
   const [foundResults, setFoundResults] = useState<any>();
   const baseUrlApi: string = "https://api.gbif.org/v1";
   useEffect(() => {
@@ -29,6 +32,7 @@ const SearchOccurencesResults = ({
           limit: 12,
           taxonKey: lastSelection,
           offset: offset,
+          country: country,
         },
       })
       .then((response) => {
@@ -37,7 +41,7 @@ const SearchOccurencesResults = ({
       .catch((error) => {
         console.log(error);
       });
-  }, [lastSelection, offset]);
+  }, [lastSelection, offset, country]);
 
   return (
     <Container>
@@ -57,6 +61,7 @@ const SearchOccurencesResults = ({
           </Link>
         </Col>
       </Row>
+      <SelectCountry setCountry={setCountry} />
       <Row xs={2} md={3}>
         {foundResults !== undefined
           ? foundResults.results.map((result: any, index: number) => (
@@ -78,7 +83,7 @@ const SearchOccurencesResults = ({
               }
             }}
           >
-            Previous
+            &lt; Previous
           </Button>
         </Col>
         <Col>
@@ -94,7 +99,7 @@ const SearchOccurencesResults = ({
               }
             }}
           >
-            Next
+            Next &gt;
           </Button>
         </Col>
       </Row>

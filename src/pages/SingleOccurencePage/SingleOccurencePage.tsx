@@ -36,7 +36,7 @@ const SingleOccurencePage = () => {
   return (
     <main className={darkMode ? styles.light : undefined}>
       <Container className={styles.tableBorderOverwrite}>
-        <h1>Occurence #{occurence?.key}</h1>
+        <h1 className="mt-3">Occurence #{occurence?.key}</h1>
         <Table className={`mt-3 ${darkMode ? "table-dark" : undefined}`} striped hover size="sm">
           <tbody>
             <tr>
