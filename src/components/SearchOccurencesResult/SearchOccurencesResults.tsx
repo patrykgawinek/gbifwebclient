@@ -7,11 +7,16 @@ import SingleOccurenceResult from "./SingleOccurenceResult";
 
 interface SearchOccurencesResultProps {
   lastSelection: number;
+  offset: number;
+  setOffset: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const SearchOccurencesResults = ({ lastSelection }: SearchOccurencesResultProps) => {
+const SearchOccurencesResults = ({
+  lastSelection,
+  offset,
+  setOffset,
+}: SearchOccurencesResultProps) => {
   const [foundResults, setFoundResults] = useState<any>();
-  const [offset, setOffset] = useState<number>(0);
   const baseUrlApi: string = "https://api.gbif.org/v1";
   useEffect(() => {
     axios

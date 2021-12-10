@@ -39,6 +39,9 @@ const SearchOccurencesPage = () => {
     false,
   ]);
 
+  //Usestate to track offset on occurence results -- raised to page level so that it can be passed to search criteria to set the offset to 0
+  const [offset, setOffset] = useState<number>(0);
+
   return (
     <main>
       <Container>
@@ -51,6 +54,7 @@ const SearchOccurencesPage = () => {
               showItems={showItems}
               setShowItems={setShowItems}
               setLastSelection={setLastSelection}
+              setOffset={setOffset}
             />
           )}
           <Row>
@@ -68,6 +72,7 @@ const SearchOccurencesPage = () => {
                       selectedCurrentClassification={classification[1]}
                       setSelectedCurrentClassification={classification[2]}
                       setLastSelection={setLastSelection}
+                      setOffset={setOffset}
                     />
                   </Col>
                 )
@@ -89,6 +94,7 @@ const SearchOccurencesPage = () => {
                       selectedCurrentClassification={classification[1]}
                       setSelectedCurrentClassification={classification[2]}
                       setLastSelection={setLastSelection}
+                      setOffset={setOffset}
                     />
                   </Col>
                 )
@@ -97,7 +103,11 @@ const SearchOccurencesPage = () => {
           </Row>
         </Row>
         <Row>
-          <SearchOccurencesResult lastSelection={lastSelection} />
+          <SearchOccurencesResult
+            lastSelection={lastSelection}
+            offset={offset}
+            setOffset={setOffset}
+          />
         </Row>
       </Container>
     </main>

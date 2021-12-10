@@ -12,6 +12,7 @@ interface SearchClassProps {
   selectedCurrentClassification: number;
   setSelectedCurrentClassification: React.Dispatch<React.SetStateAction<number>>;
   setLastSelection: React.Dispatch<React.SetStateAction<number>>;
+  setOffset: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const SearchClassification = ({
@@ -23,6 +24,7 @@ const SearchClassification = ({
   selectedCurrentClassification,
   setSelectedCurrentClassification,
   setLastSelection,
+  setOffset,
 }: SearchClassProps) => {
   const [currentList, setCurrentList] = useState<any>([]);
   const baseUrlApi: string = "https://api.gbif.org/v1";
@@ -64,6 +66,7 @@ const SearchClassification = ({
   const handleOnChange: React.ChangeEventHandler<HTMLSelectElement> | undefined = (event) => {
     setSelectedCurrentClassification(parseInt(event.target.value));
     setLastSelection(parseInt(event.target.value));
+    setOffset(0); //Sets offset for search occurence results back to 0
 
     let tempShowArray: boolean[] = [];
     for (let i = 0; i < classificationLevel + 2; i++) {

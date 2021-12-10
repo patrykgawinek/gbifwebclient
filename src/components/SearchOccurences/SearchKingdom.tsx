@@ -9,6 +9,7 @@ interface SearchKingdomProps {
   showItems: boolean[];
   setShowItems: Dispatch<SetStateAction<boolean[]>>;
   setLastSelection: Dispatch<SetStateAction<number>>;
+  setOffset: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const SearchKingdom = ({
@@ -17,6 +18,7 @@ const SearchKingdom = ({
   showItems,
   setShowItems,
   setLastSelection,
+  setOffset,
 }: SearchKingdomProps) => {
   const [kingdomList, setKingdomList] = useState<any>([]);
   const baseUrlApi: string = "https://api.gbif.org/v1";
@@ -37,6 +39,13 @@ const SearchKingdom = ({
       });
   }, [selectedKingdom]);
 
+  const handleOnClick = (kingdom: any) => {
+    setSelectedKingdom(kingdom.kingdomKey);
+    setLastSelection(kingdom.kingdomKey);
+    setShowItems([true, true, false, false, false, false, false]);
+    setOffset(0);
+  };
+
   return (
     <Container>
       <Row>
@@ -46,11 +55,7 @@ const SearchKingdom = ({
               variant="outline-primary"
               value={kingdom.kingdomKey}
               key={kingdom.kingdomKey}
-              onClick={() => {
-                setSelectedKingdom(kingdom.kingdomKey);
-                setLastSelection(kingdom.kingdomKey);
-                setShowItems([true, true, false, false, false, false, false]);
-              }}
+              onClick={() => handleOnClick(kingdom)}
             >
               {kingdom.scientificName}
             </Button>
