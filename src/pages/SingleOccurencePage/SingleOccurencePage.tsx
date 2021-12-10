@@ -61,7 +61,7 @@ const SingleOccurencePage = () => {
               <div className={styles.leaflet}>
                 <LeafletMap
                   center={[occurence.decimalLatitude, occurence.decimalLongitude]}
-                  zoom={2}
+                  zoom={4}
                   scrollWheelZoom={true}
                 >
                   <TileLayer
@@ -80,14 +80,14 @@ const SingleOccurencePage = () => {
               <Carousel fade activeIndex={carouselIndex} onSelect={handleSelect}>
                 {occurence.media.map((e: any, index: number) => (
                   <Carousel.Item key={index}>
-                    <Image src={e.identifier} thumbnail />
+                    <Image src={e.identifier} className={styles.resizeImage} rounded />
                   </Carousel.Item>
                 ))}
               </Carousel>
             </Col>
           ) : occurence?.media.length > 0 ? (
             <Col className="col-12 col-sm-12 col-md-6">
-              <Image src={occurence.media[0].identifier} thumbnail />
+              <Image src={occurence.media[0].identifier} className={styles.resizeImage} rounded />
             </Col>
           ) : null}
         </Row>
