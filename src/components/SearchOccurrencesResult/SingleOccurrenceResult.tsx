@@ -14,9 +14,17 @@ const SingleOccurrenceResult = ({ result }: SingleOccurrenceResultProps) => {
   return (
     <Link to={`/occurrences/${result.key}`} className={styles.cardLink}>
       <Card className={darkMode ? "bg-dark text-white" : undefined}>
-        {result.media[0]?.identifier !== undefined && (
-          <Card.Img className={styles.cardImage} variant="top" src={result.media[0]?.identifier} />
-        )}
+        <Card.Img
+          className={styles.cardImage}
+          variant="top"
+          src={
+            result.media[0]?.identifier !== undefined
+              ? result.media[0]?.identifier
+              : darkMode
+              ? `assets/images/noImageFoundDark.png`
+              : `assets/images/noImageFound.png`
+          }
+        />
         <Card.Body>
           <Card.Title>
             {result.species !== undefined

@@ -47,7 +47,9 @@ const SearchOccurrencesResults = ({
     <Container>
       <Row className="mb-2">
         <Col>
-          <h2 className={darkMode ? styles.lightText : undefined}>Found results</h2>
+          <h2 className={darkMode ? styles.lightText : undefined}>
+            Found results ({foundResults?.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")})
+          </h2>
         </Col>
         <Col className="d-flex justify-content-end">
           <Link to={`/map/${lastSelection}`}>
@@ -85,6 +87,14 @@ const SearchOccurrencesResults = ({
           >
             &lt; Previous
           </Button>
+        </Col>
+        <Col
+          md="auto"
+          className={`d-flex justify-content-center align-items-center ${styles.offsetText} ${
+            darkMode ? styles.lightText : undefined
+          }`}
+        >
+          {offset + 1} - {offset + 12}
         </Col>
         <Col>
           <Button
