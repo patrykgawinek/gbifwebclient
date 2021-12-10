@@ -8,10 +8,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "../Header/Header";
 import styles from "./App.module.css";
 
-export const Theme = createContext({ darkMode: false, setDarkMode: (mode: boolean) => {} });
+export const Theme = createContext({ darkMode: true, setDarkMode: (mode: boolean) => {} });
 
 function App() {
-  const [darkMode, setDarkMode] = useState<boolean>(false);
+  const [darkMode, setDarkMode] = useState<boolean>(true);
 
   return (
     <Theme.Provider value={{ darkMode: darkMode, setDarkMode: setDarkMode }}>
