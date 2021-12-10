@@ -1,6 +1,7 @@
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+import { Theme } from "components/App/App";
+import { useContext } from "react";
 import styles from "./SingleOccurenceResult.module.css";
 
 interface SingleOccurenceResultProps {
@@ -8,9 +9,11 @@ interface SingleOccurenceResultProps {
 }
 
 const SingleOccurenceResult = ({ result }: SingleOccurenceResultProps) => {
+  const { darkMode } = useContext(Theme);
+
   return (
     <Link to={`/occurences/${result.key}`} className={styles.cardLink}>
-      <Card>
+      <Card className={darkMode ? "bg-dark text-white" : undefined}>
         {result.media[0]?.identifier !== undefined && (
           <Card.Img className={styles.cardImage} variant="top" src={result.media[0]?.identifier} />
         )}

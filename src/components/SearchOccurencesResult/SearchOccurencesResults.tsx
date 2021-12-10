@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import styles from "./SearchOccurencesResult.module.css";
 import SingleOccurenceResult from "./SingleOccurenceResult";
+import { Theme } from "components/App/App";
+import { useContext } from "react";
+import styles from "./SearchOccurencesResult.module.css";
 
 interface SearchOccurencesResultProps {
   lastSelection: number;
@@ -15,6 +17,8 @@ const SearchOccurencesResults = ({
   offset,
   setOffset,
 }: SearchOccurencesResultProps) => {
+  const { darkMode } = useContext(Theme);
+
   const [foundResults, setFoundResults] = useState<any>();
   const baseUrlApi: string = "https://api.gbif.org/v1";
   useEffect(() => {
@@ -42,7 +46,9 @@ const SearchOccurencesResults = ({
         </Col>
         <Col className="d-flex justify-content-end">
           <Button
-            className={lastSelection === -1 ? "disabled" : ""}
+            className={`${lastSelection === -1 ? "disabled" : ""} ${
+              darkMode ? "btn-dark" : "btn-primary"
+            }`}
             onClick={() => (window.location.href = `/map/${lastSelection}`)}
           >
             Show occurences on heatmap
@@ -61,7 +67,7 @@ const SearchOccurencesResults = ({
       <Row>
         <Col className="d-flex justify-content-end">
           <Button
-            className={offset === 0 ? `disabled` : ``}
+            className={`${offset === 0 ? `disabled` : ``} ${darkMode ? "btn-dark" : "btn-primary"}`}
             onClick={() => {
               if (offset > 0) {
                 setOffset(offset - 12);
@@ -73,11 +79,11 @@ const SearchOccurencesResults = ({
         </Col>
         <Col>
           <Button
-            className={
+            className={`${
               foundResults?.endOfRecords !== undefined && foundResults.endOfRecords
                 ? `disabled`
                 : ``
-            }
+            } ${darkMode ? "btn-dark" : "btn-primary"}`}
             onClick={() => {
               if (!foundResults.endOfRecords) {
                 setOffset(offset + 12);

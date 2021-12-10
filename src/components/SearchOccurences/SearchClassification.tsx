@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
+import { Theme } from "components/App/App";
+import { useContext } from "react";
 import styles from "./SearchClassification.module.css";
 
 interface SearchClassProps {
@@ -26,6 +28,8 @@ const SearchClassification = ({
   setLastSelection,
   setOffset,
 }: SearchClassProps) => {
+  const { darkMode } = useContext(Theme);
+
   const [currentList, setCurrentList] = useState<any>([]);
   const baseUrlApi: string = "https://api.gbif.org/v1";
 
@@ -91,6 +95,7 @@ const SearchClassification = ({
     <article className={styles.classification}>
       <label htmlFor={currentClassification}>{currentClassification}</label>
       <Form.Select
+        className={darkMode ? `${styles.formDark}` : ``}
         name={currentClassification}
         id={currentClassification}
         value={selectedCurrentClassification}

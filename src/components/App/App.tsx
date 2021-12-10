@@ -11,7 +11,7 @@ import styles from "./App.module.css";
 export const Theme = createContext({ darkMode: false, setDarkMode: (mode: boolean) => {} });
 
 function App() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState<boolean>(false);
 
   return (
     <Theme.Provider value={{ darkMode: darkMode, setDarkMode: setDarkMode }}>

@@ -4,7 +4,7 @@ import { useContext } from "react";
 import styles from "./Footer.module.css";
 
 const Footer = () => {
-  const { darkMode, setDarkMode } = useContext(Theme);
+  const { darkMode } = useContext(Theme);
 
   return (
     <footer>

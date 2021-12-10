@@ -149,15 +149,15 @@ const SingleOccurencePage = () => {
         <tbody>
           <tr>
             <td>GADM 0</td>
-            <td>{occurence?.gadm.level0.name}</td>
+            <td>{occurence?.gadm.level0 !== undefined && occurence?.gadm.level0.name}</td>
           </tr>
           <tr>
             <td>GADM 1</td>
-            <td>{occurence?.gadm.level1.name}</td>
+            <td>{occurence?.gadm.level1 !== undefined && occurence?.gadm.level1.name}</td>
           </tr>
           <tr>
             <td>GADM 2</td>
-            <td>{occurence?.gadm.level2.name}</td>
+            <td>{occurence?.gadm.level2 !== undefined && occurence?.gadm.level2.name}</td>
           </tr>
         </tbody>
       </Table>

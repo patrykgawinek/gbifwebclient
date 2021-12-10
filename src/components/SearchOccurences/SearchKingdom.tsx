@@ -1,6 +1,8 @@
 import axios from "axios";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
+import { Theme } from "components/App/App";
+import { useContext } from "react";
 
 interface SearchKingdomProps {
   selectedKingdom: number;
@@ -19,6 +21,8 @@ const SearchKingdom = ({
   setLastSelection,
   setOffset,
 }: SearchKingdomProps) => {
+  const { darkMode } = useContext(Theme);
+
   const [kingdomList, setKingdomList] = useState<any>([]);
   const baseUrlApi: string = "https://api.gbif.org/v1";
 
@@ -51,7 +55,7 @@ const SearchKingdom = ({
         {kingdomList.map((kingdom: any) => (
           <Col className="mb-2" xs="auto" key={kingdom.kingdomKey}>
             <Button
-              variant="outline-primary"
+              variant={darkMode ? "dark" : "outline-primary"}
               value={kingdom.kingdomKey}
               key={kingdom.kingdomKey}
               onClick={() => handleOnClick(kingdom)}

@@ -1,4 +1,5 @@
-.cardLink {
+.cardLink,
+.cardLink:hover {
   text-decoration: none;
   color: black;
 }
