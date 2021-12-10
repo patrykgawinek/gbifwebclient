@@ -1,5 +1,5 @@
 .leaflet {
-  height: 180px;
+  height: 300px;
 }
 @media screen and (min-width: 768px) {
   .leaflet {
@@ -15,4 +15,14 @@
   .leaflet {
     height: 400px;
   }
+}
+
+.stripeColour > tbody > tr:nth-child(odd) > td,
+.stripeColour > tbody > tr:nth-child(odd) > th {
+  background-color: #0275d825;
+}
+
+.stripeColour tbody tr:hover td,
+.table-hover tbody tr:hover th {
+  background-color: #0275d850;
 }

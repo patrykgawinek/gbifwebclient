@@ -35,7 +35,7 @@ const SingleOccurencePage = () => {
   return (
     <Container>
       <h1>Occurence #{occurence?.key}</h1>
-      <Table className="mt-3" striped bordered size="sm">
+      <Table className={`mt-3 ${styles.stripeColour}`} striped bordered size="sm">
         <tbody>
           <tr>
             <td>Date of occurence</td>
@@ -53,7 +53,7 @@ const SingleOccurencePage = () => {
           </tr>
         </tbody>
       </Table>
-      <Row>
+      <Row xs="1" md="2">
         {occurence?.decimalLatitude !== undefined ? (
           <Col>
             <div className={styles.leaflet}>
@@ -88,7 +88,7 @@ const SingleOccurencePage = () => {
         ) : null}
       </Row>
 
-      <Table className="mt-3" striped bordered hover size="sm">
+      <Table className={`mt-3 ${styles.stripeColour}`} striped bordered hover size="sm">
         <thead>
           <tr>
             <th>Taxon</th>
@@ -122,7 +122,7 @@ const SingleOccurencePage = () => {
           </tr>
         </tbody>
       </Table>
-      <Table striped bordered hover size="sm">
+      <Table className={styles.stripeColour} striped bordered hover size="sm">
         <thead>
           <tr>
             <td>Naming</td>
@@ -140,7 +140,7 @@ const SingleOccurencePage = () => {
           </tr>
         </tbody>
       </Table>
-      <Table striped bordered hover size="sm">
+      <Table className={styles.stripeColour} striped bordered hover size="sm">
         <thead>
           <tr>
             <td>GADM Level</td>
@@ -162,7 +162,7 @@ const SingleOccurencePage = () => {
           </tr>
         </tbody>
       </Table>
-      <Table striped bordered size="sm">
+      <Table className={styles.stripeColour} striped bordered size="sm">
         <thead>
           <tr>
             <td>Latitide</td>
