@@ -52,9 +52,9 @@ const SingleOccurencePage = () => {
           </tr>
         </tbody>
       </Table>
-      <Row xs="1" md="2">
+      <Row>
         {occurence?.decimalLatitude !== undefined ? (
-          <Col>
+          <Col className={occurence?.media.length > 0 ? "col-12 col-sm-12 col-md-6" : "col-sm-12"}>
             <div className={styles.leaflet}>
               <LeafletMap
                 center={[occurence.decimalLatitude, occurence.decimalLongitude]}
@@ -71,7 +71,7 @@ const SingleOccurencePage = () => {
           </Col>
         ) : null}
         {occurence?.media.length > 1 ? (
-          <Col>
+          <Col className="col-12 col-sm-12 col-md-6">
             <Carousel fade activeIndex={carouselIndex} onSelect={handleSelect}>
               {occurence.media.map((e: any, index: number) => (
                 <Carousel.Item key={index}>
@@ -80,8 +80,8 @@ const SingleOccurencePage = () => {
               ))}
             </Carousel>
           </Col>
-        ) : occurence?.media.length === 1 ? (
-          <Col>
+        ) : occurence?.media.length > 0 ? (
+          <Col className="col-12 col-sm-12 col-md-6">
             <Image src={occurence.media[0].identifier} thumbnail />
           </Col>
         ) : null}
