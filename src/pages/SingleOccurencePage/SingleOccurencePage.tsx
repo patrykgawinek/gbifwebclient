@@ -35,7 +35,24 @@ const SingleOccurencePage = () => {
   return (
     <Container>
       <h1>Occurence #{occurence?.key}</h1>
-      <p>{new Date(occurence?.eventDate).toUTCString()}</p>
+      <Table className="mt-3" striped bordered size="sm">
+        <tbody>
+          <tr>
+            <td>Date of occurence</td>
+            <td>{new Date(occurence?.eventDate).toUTCString()}</td>
+          </tr>
+          <tr>
+            <td>Identified by</td>
+            <td>
+              {occurence?.identifiedBy !== undefined ? `${occurence?.identifiedBy}` : "Unknown"}
+            </td>
+          </tr>
+          <tr>
+            <td>Occurence remarks</td>
+            <td>{occurence?.occurrenceRemarks}</td>
+          </tr>
+        </tbody>
+      </Table>
       <Row>
         {occurence?.decimalLatitude !== undefined ? (
           <Col>
@@ -126,22 +143,6 @@ const SingleOccurencePage = () => {
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
-            <td>Latitide</td>
-            <td>Longitude</td>
-            <td>Elevation</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{occurence?.decimalLatitude}</td>
-            <td>{occurence?.decimalLongitude}</td>
-            <td>{occurence?.elevation}</td>
-          </tr>
-        </tbody>
-      </Table>
-      <Table>
-        <thead>
-          <tr>
             <td>GADM Level</td>
             <td>Location</td>
           </tr>
@@ -158,6 +159,22 @@ const SingleOccurencePage = () => {
           <tr>
             <td>GADM 2</td>
             <td>{occurence?.gadm.level2.name}</td>
+          </tr>
+        </tbody>
+      </Table>
+      <Table striped bordered size="sm">
+        <thead>
+          <tr>
+            <td>Latitide</td>
+            <td>Longitude</td>
+            <td>Elevation</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{occurence?.decimalLatitude}</td>
+            <td>{occurence?.decimalLongitude}</td>
+            <td>{occurence?.elevation}</td>
           </tr>
         </tbody>
       </Table>
