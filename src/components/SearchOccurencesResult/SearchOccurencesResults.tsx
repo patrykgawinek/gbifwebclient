@@ -4,7 +4,8 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import SingleOccurenceResult from "./SingleOccurenceResult";
 import { Theme } from "components/App/App";
 import { useContext } from "react";
-import styles from "./SearchOccurencesResult.module.css";
+import styles from "./SearchOccurencesResults.module.css";
+import { Link } from "react-router-dom";
 
 interface SearchOccurencesResultProps {
   lastSelection: number;
@@ -45,20 +46,21 @@ const SearchOccurencesResults = ({
           <h2>Found results</h2>
         </Col>
         <Col className="d-flex justify-content-end">
-          <Button
-            className={`${lastSelection === -1 ? "disabled" : ""} ${
-              darkMode ? "btn-dark" : "btn-primary"
-            }`}
-            onClick={() => (window.location.href = `/map/${lastSelection}`)}
-          >
-            Show occurences on heatmap
-          </Button>
+          <Link to={`/map/${lastSelection}`} className={styles.redirectButton}>
+            <Button
+              className={`${lastSelection === -1 ? "disabled" : ""} ${
+                darkMode ? "bg-dark navbar-dark" : "bg-primary navbar-dark"
+              }`}
+            >
+              Show occurences on heatmap
+            </Button>
+          </Link>
         </Col>
       </Row>
       <Row xs={2} md={3}>
         {foundResults !== undefined
           ? foundResults.results.map((result: any, index: number) => (
-              <Col className={styles.colMargin} key={index}>
+              <Col className="mb-3" key={index}>
                 <SingleOccurenceResult result={result} />
               </Col>
             ))
