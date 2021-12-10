@@ -1,6 +1,6 @@
 import SearchClassification from "components/SearchOccurences/SearchClassification";
 import SearchKingdom from "components/SearchOccurences/SearchKingdom";
-import SearchOccurencesResult from "components/SearchOccurencesResult/SearchOccurencesResult";
+import SearchOccurencesResult from "components/SearchOccurencesResult/SearchOccurencesResults";
 import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
