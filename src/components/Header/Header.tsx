@@ -1,4 +1,4 @@
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Theme } from "components/App/App";
 import { useContext } from "react";
 
@@ -15,6 +15,12 @@ const Header = () => {
             <Nav.Link href="/occurences">Search</Nav.Link>
             <Nav.Link href="/map">Map</Nav.Link>
           </Nav>
+          <Button
+            className={darkMode ? "btn-dark" : "btn-primary"}
+            onClick={() => setDarkMode(!darkMode)}
+          >
+            {darkMode ? "Dark mode" : "Light mode"}
+          </Button>
         </Container>
       </Navbar>
     </header>

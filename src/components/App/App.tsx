@@ -16,7 +16,11 @@ function App() {
   return (
     <Theme.Provider value={{ darkMode: darkMode, setDarkMode: setDarkMode }}>
       <Router>
-        <div className={styles.AppContainer}>
+        <div
+          className={
+            darkMode ? `${styles.AppContainer} ${styles.darkMode}` : `${styles.AppContainer}`
+          }
+        >
           <div>
             <Header />
             <Switch>
