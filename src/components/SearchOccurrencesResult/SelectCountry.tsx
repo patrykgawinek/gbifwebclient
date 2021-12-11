@@ -29,7 +29,7 @@ const SelectCountry = ({ setCountry }: SelectCountryProps) => {
       onChange={(event) => setCountry(event.target.value)}
     >
       <option key={"empty"} value={""}>
-        Show all results
+        Show results in all countries
       </option>
       {countries?.map((country: any) => (
         <option value={country.Code} key={country.Code}>
