@@ -11,19 +11,22 @@ interface ParamTypes {
 const MapPage = () => {
   let taxonKey = useParams<ParamTypes>();
   const { darkMode } = useContext(Theme);
+  const [baseMap, setBaseMap] = useState<string>("");
   const [mapStyle, setMapStyle] = useState<string>("");
-  let url: string;
 
+  let overlay: string;
   if (taxonKey.id === undefined) {
-    url = `https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?style=${mapStyle}`;
+    overlay = `https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?style=${mapStyle}`;
   } else {
-    url = `https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?style=${mapStyle}&taxonKey=${taxonKey.id}`;
+    overlay = `https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?style=${mapStyle}&taxonKey=${taxonKey.id}`;
   }
 
   useEffect(() => {
     if (darkMode) {
+      setBaseMap("https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png");
       setMapStyle("purpleYellow.point");
     } else {
+      setBaseMap("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");
       setMapStyle("glacier.point");
     }
     console.log("theme changed");
@@ -38,11 +41,11 @@ const MapPage = () => {
         scrollWheelZoom={true}
       >
         <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          url={baseMap}
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         <TileLayer
-          url={url}
+          url={overlay}
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
       </LeafletMap>
