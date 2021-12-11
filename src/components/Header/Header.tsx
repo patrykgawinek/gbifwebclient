@@ -1,4 +1,4 @@
-import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Theme } from "components/App/App";
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
