@@ -89,7 +89,7 @@ const SearchOccurrencesResults = ({
               }
             }}
           >
-            <img src="assets/icons/back.png" alt="<" className={styles.backNav} />
+            <img src="/assets/icons/back.png" alt="<" className={styles.backNav} />
           </Button>
         </Col>
         <Col
@@ -115,7 +115,7 @@ const SearchOccurrencesResults = ({
               }
             }}
           >
-            <img src="assets/icons/back.png" alt=">" className={styles.nextNav} />
+            <img src="/assets/icons/back.png" alt=">" className={styles.nextNav} />
           </Button>
         </Col>
       </Row>

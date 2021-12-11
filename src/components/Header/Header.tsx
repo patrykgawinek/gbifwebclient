@@ -33,7 +33,7 @@ const Header = () => {
             >
               <img
                 className={styles.modeButtonIcon}
-                src={darkMode ? "assets/icons/moon.png" : "assets/icons/sun.png"}
+                src={darkMode ? "/assets/icons/moon.png" : "/assets/icons/sun.png"}
                 alt={darkMode ? "Dark mode" : "Light mode"}
               />
             </Button>
