@@ -9,3 +9,18 @@
 .offsetText {
   font-size: 1.2rem;
 }
+
+.buttonHeight {
+  width: fit-content;
+  height: fit-content;
+}
+
+.backNav {
+  width: 10px;
+}
+
+.nextNav {
+  width: 10px;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}

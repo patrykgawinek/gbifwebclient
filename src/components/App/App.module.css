@@ -11,5 +11,6 @@
 
 .mainContent {
   margin: 0 auto auto auto;
+  width: 100%;
   max-width: 1140px;
 }

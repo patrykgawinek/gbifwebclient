@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { Theme } from "components/App/App";
 import { useContext } from "react";
+import styles from "./SearchKingdom.module.css";
 
 interface SearchKingdomProps {
   selectedKingdom: number;
@@ -50,11 +51,12 @@ const SearchKingdom = ({
   };
 
   return (
-    <Container>
-      <Row>
+    <Container fluid>
+      <Row className="justify-content-center" xs={3} sm={3} md={4} lg={4} xl="auto">
         {kingdomList.map((kingdom: any) => (
-          <Col className="mb-2" xs="auto" key={kingdom.kingdomKey}>
+          <Col className={styles.columnPadding} key={kingdom.kingdomKey}>
             <Button
+              className={styles.kingdomButton}
               variant={darkMode ? "dark" : "outline-primary"}
               value={kingdom.kingdomKey}
               key={kingdom.kingdomKey}

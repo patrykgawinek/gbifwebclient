@@ -49,7 +49,7 @@ const SearchOccurrencesResults = ({
   );
 
   return (
-    <Container>
+    <Container className="d-flex flex-column">
       <Row className="mb-2">
         <Col>
           <h2 className={darkMode ? styles.lightText : undefined}>
@@ -77,10 +77,10 @@ const SearchOccurrencesResults = ({
             ))
           : null}
       </Row>
-      <Row xs={3}>
-        <Col className="d-flex justify-content-end">
+      <Row xs={12} className="align-self-center">
+        <Col xs={3} className="d-flex justify-content-end">
           <Button
-            className={`${offset === 0 ? `disabled` : undefined} ${
+            className={`${styles.buttonHeight} ${offset === 0 ? `disabled` : undefined} ${
               darkMode ? "btn-dark" : "btn-primary"
             }`}
             onClick={() => {
@@ -89,10 +89,11 @@ const SearchOccurrencesResults = ({
               }
             }}
           >
-            &lt; Back
+            <img src="assets/icons/back.png" alt="<" className={styles.backNav} />
           </Button>
         </Col>
         <Col
+          xs={6}
           md="auto"
           className={`d-flex justify-content-center align-items-center ${styles.offsetText} ${
             darkMode ? styles.lightText : undefined
@@ -101,9 +102,9 @@ const SearchOccurrencesResults = ({
           {foundResults?.count > 0 ? offset + 1 : 0} -{" "}
           {foundResults?.endOfRecords ? foundResults?.count : offset + 12}
         </Col>
-        <Col>
+        <Col xs={3}>
           <Button
-            className={`${
+            className={`${styles.buttonHeight} ${
               foundResults?.endOfRecords !== undefined && foundResults.endOfRecords
                 ? `disabled`
                 : undefined
@@ -114,7 +115,7 @@ const SearchOccurrencesResults = ({
               }
             }}
           >
-            Next &gt;
+            <img src="assets/icons/back.png" alt=">" className={styles.nextNav} />
           </Button>
         </Col>
       </Row>
