@@ -2,7 +2,6 @@ import { MapContainer as LeafletMap, TileLayer } from "react-leaflet";
 import { useParams } from "react-router";
 import { Theme } from "components/App/App";
 import { useContext, useEffect, useState } from "react";
-import "./leaflet.css";
 import styles from "./MapPage.module.css";
 
 interface ParamTypes {
@@ -31,7 +30,12 @@ const MapPage = () => {
 
   return (
     <main className={styles.container}>
-      <LeafletMap center={[51.2213, 4.4051]} zoom={3} scrollWheelZoom={true}>
+      <LeafletMap
+        className={styles.leaflet}
+        center={[51.2213, 4.4051]}
+        zoom={3}
+        scrollWheelZoom={true}
+      >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

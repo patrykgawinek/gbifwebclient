@@ -1,3 +1,10 @@
 .container {
-  height: 90vh;
+  position: relative;
+  flex: 1;
+}
+.leaflet {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
 }

@@ -21,29 +21,27 @@ function App() {
             darkMode ? `${styles.AppContainer} ${styles.darkMode}` : `${styles.AppContainer}`
           }
         >
-          <div>
-            <Header />
-            <Switch>
-              <Route path="/" exact>
-                <div className={styles.mainContent}>
-                  <HomePage />
-                </div>
-              </Route>
-              <Route path="/occurrences/" exact>
-                <div className={styles.mainContent}>
-                  <SearchOccurrencesPage />
-                </div>
-              </Route>
-              <Route path="/occurrences/:id">
-                <div className={styles.mainContent}>
-                  <SingleOccurrencePage />
-                </div>
-              </Route>
-              <Route path="/map/:id?">
-                <MapPage />
-              </Route>
-            </Switch>
-          </div>
+          <Header />
+          <Switch>
+            <Route path="/" exact>
+              <div className={styles.mainContent}>
+                <HomePage />
+              </div>
+            </Route>
+            <Route path="/occurrences/" exact>
+              <div className={styles.mainContent}>
+                <SearchOccurrencesPage />
+              </div>
+            </Route>
+            <Route path="/occurrences/:id">
+              <div className={styles.mainContent}>
+                <SingleOccurrencePage />
+              </div>
+            </Route>
+            <Route path="/map/:id?">
+              <MapPage />
+            </Route>
+          </Switch>
           <Footer />
         </div>
       </Router>

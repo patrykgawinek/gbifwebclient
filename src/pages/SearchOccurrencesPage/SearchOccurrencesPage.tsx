@@ -50,7 +50,7 @@ const SearchOccurrencesPage = () => {
     <main>
       <Container>
         <Row className="mb-5">
-          <h1 className={darkMode ? styles.lightText : undefined}>Search Occurrences</h1>
+          <h1 className={`mt-3 ${darkMode ? styles.lightText : undefined}`}>Search Occurrences</h1>
           {showItems[0] && (
             <SearchKingdom
               selectedKingdom={selectedKingdom}
