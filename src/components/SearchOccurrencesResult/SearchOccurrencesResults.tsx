@@ -77,8 +77,8 @@ const SearchOccurrencesResults = ({
             ))
           : null}
       </Row>
-      <Row xs={12} className="align-self-center">
-        <Col xs={3} className="d-flex justify-content-end">
+      <Row xs={12} className="align-self-center justify-content-center">
+        <Col xs={2} className="d-flex justify-content-end">
           <Button
             className={`${styles.buttonHeight} ${offset === 0 ? `disabled` : undefined} ${
               darkMode ? "btn-dark" : "btn-primary"
@@ -93,7 +93,7 @@ const SearchOccurrencesResults = ({
           </Button>
         </Col>
         <Col
-          xs={6}
+          xs="auto"
           md="auto"
           className={`d-flex justify-content-center align-items-center ${styles.offsetText} ${
             darkMode ? styles.lightText : undefined
@@ -102,7 +102,7 @@ const SearchOccurrencesResults = ({
           {foundResults?.count > 0 ? offset + 1 : 0} -{" "}
           {foundResults?.endOfRecords ? foundResults?.count : offset + 12}
         </Col>
-        <Col xs={3}>
+        <Col xs={2}>
           <Button
             className={`${styles.buttonHeight} ${
               foundResults?.endOfRecords !== undefined && foundResults.endOfRecords
