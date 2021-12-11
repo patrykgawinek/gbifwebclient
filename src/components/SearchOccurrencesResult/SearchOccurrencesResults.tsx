@@ -77,7 +77,7 @@ const SearchOccurrencesResults = ({
             ))
           : null}
       </Row>
-      <Row>
+      <Row xs={3}>
         <Col className="d-flex justify-content-end">
           <Button
             className={`${offset === 0 ? `disabled` : undefined} ${
@@ -89,7 +89,7 @@ const SearchOccurrencesResults = ({
               }
             }}
           >
-            &lt; Previous
+            &lt; Back
           </Button>
         </Col>
         <Col
