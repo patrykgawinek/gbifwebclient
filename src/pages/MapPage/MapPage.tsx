@@ -26,7 +26,8 @@ const MapPage = () => {
     } else {
       setMapStyle("glacier.point");
     }
-  }, [mapStyle, darkMode]);
+    console.log("theme changed");
+  }, [darkMode]);
 
   return (
     <main className={styles.container}>
