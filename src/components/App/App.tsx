@@ -3,7 +3,7 @@ import HomePage from "pages/HomePage/HomePage";
 import MapPage from "pages/MapPage/MapPage";
 import SearchOccurrencesPage from "pages/SearchOccurrencesPage/SearchOccurrencesPage";
 import SingleOccurrencePage from "pages/SingleOccurrencePage/SingleOccurrencePage";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "../Header/Header";
 import styles from "./App.module.css";
@@ -12,6 +12,17 @@ export const Theme = createContext({ darkMode: true, setDarkMode: (mode: boolean
 
 function App() {
   const [darkMode, setDarkMode] = useState<boolean>(true);
+
+  useEffect(() => {
+    let data = localStorage.getItem("theme");
+    if (data === "false") {
+      setDarkMode(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("theme", JSON.stringify(darkMode));
+  }, [darkMode]);
 
   return (
     <Theme.Provider value={{ darkMode: darkMode, setDarkMode: setDarkMode }}>
