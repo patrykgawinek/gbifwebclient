@@ -2,3 +2,7 @@
   display: block !important;
   margin-left: auto !important;
 }
+
+.modeButtonIcon {
+  width: 25px;
+}
