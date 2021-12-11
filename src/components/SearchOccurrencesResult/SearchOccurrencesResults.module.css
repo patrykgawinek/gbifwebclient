@@ -2,6 +2,10 @@
   color: white !important;
 }
 
+.heatmapButton {
+  height: fit-content;
+}
+
 .offsetText {
   font-size: 1.2rem;
 }

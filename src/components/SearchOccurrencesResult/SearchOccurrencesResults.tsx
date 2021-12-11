@@ -1,12 +1,12 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import SingleOccurrenceResult from "./SingleOccurrenceResult";
 import SelectCountry from "./SelectCountry";
 import { Theme } from "components/App/App";
 import { useContext } from "react";
 import styles from "./SearchOccurrencesResults.module.css";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 interface SearchOccurrencesResultProps {
   lastSelection: number;
@@ -20,6 +20,7 @@ const SearchOccurrencesResults = ({
   setOffset,
 }: SearchOccurrencesResultProps) => {
   const { darkMode } = useContext(Theme);
+  const history = useHistory();
 
   const [country, setCountry] = useState<string>("");
   const [foundResults, setFoundResults] = useState<any>();
@@ -42,6 +43,11 @@ const SearchOccurrencesResults = ({
       });
   }, [lastSelection, offset, country]);
 
+  const handleOnClick = useCallback(
+    () => history.push(`/map/${lastSelection}`),
+    [history, lastSelection]
+  );
+
   return (
     <Container>
       <Row className="mb-2">
@@ -50,16 +56,15 @@ const SearchOccurrencesResults = ({
             Found {foundResults?.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} results
           </h2>
         </Col>
-        <Col className="d-flex justify-content-end">
-          <Link to={`/map/${lastSelection}`}>
-            <Button
-              className={`${lastSelection === -1 ? "disabled" : ""} ${
-                darkMode ? "btn-dark" : "btn-primary"
-              }`}
-            >
-              Show occurrences on heatmap
-            </Button>
-          </Link>
+        <Col className="d-flex justify-content-end align-items-center">
+          <Button
+            onClick={handleOnClick}
+            className={`${styles.heatmapButton} ${lastSelection === -1 ? "disabled" : ""} ${
+              darkMode ? "btn-dark" : "btn-primary"
+            }`}
+          >
+            Show occurrences on heatmap
+          </Button>
         </Col>
       </Row>
       <SelectCountry setCountry={setCountry} />
