@@ -31,12 +31,7 @@ const MapPage = () => {
   return (
     <main className={styles.container}>
       {darkMode && (
-        <LeafletMap
-          className={styles.leaflet}
-          center={[51.2213, 4.4051]}
-          zoom={3}
-          scrollWheelZoom={true}
-        >
+        <LeafletMap className={styles.leaflet} center={[30, 20]} zoom={3} scrollWheelZoom={true}>
           <TileLayer
             url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png"
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -48,12 +43,7 @@ const MapPage = () => {
         </LeafletMap>
       )}
       {!darkMode && (
-        <LeafletMap
-          className={styles.leaflet}
-          center={[51.2213, 4.4051]}
-          zoom={3}
-          scrollWheelZoom={true}
-        >
+        <LeafletMap className={styles.leaflet} center={[30, 20]} zoom={3} scrollWheelZoom={true}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
