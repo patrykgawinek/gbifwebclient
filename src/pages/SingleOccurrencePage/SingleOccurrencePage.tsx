@@ -61,26 +61,36 @@ const SingleOccurrencePage = () => {
               className={occurrence?.media.length > 0 ? "col-12 col-sm-12 col-md-6" : "col-sm-12"}
             >
               <div className={occurrence?.media.length > 0 ? styles.leaflet : styles.onlyLeaflet}>
-                <LeafletMap
-                  center={[occurrence.decimalLatitude, occurrence.decimalLongitude]}
-                  zoom={4}
-                  scrollWheelZoom={true}
-                >
-                  {darkMode ? (
+                {darkMode && (
+                  <LeafletMap
+                    center={[occurrence.decimalLatitude, occurrence.decimalLongitude]}
+                    zoom={4}
+                    scrollWheelZoom={true}
+                  >
                     <TileLayer
                       url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png"
                       attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     />
-                  ) : (
+                    <Marker
+                      position={[occurrence.decimalLatitude, occurrence.decimalLongitude]}
+                    ></Marker>
+                  </LeafletMap>
+                )}
+                {!darkMode && (
+                  <LeafletMap
+                    center={[occurrence.decimalLatitude, occurrence.decimalLongitude]}
+                    zoom={4}
+                    scrollWheelZoom={true}
+                  >
                     <TileLayer
                       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                       attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     />
-                  )}
-                  <Marker
-                    position={[occurrence.decimalLatitude, occurrence.decimalLongitude]}
-                  ></Marker>
-                </LeafletMap>
+                    <Marker
+                      position={[occurrence.decimalLatitude, occurrence.decimalLongitude]}
+                    ></Marker>
+                  </LeafletMap>
+                )}
               </div>
             </Col>
           ) : null}
