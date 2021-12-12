@@ -1,7 +1,7 @@
 import SearchClassification from "components/SearchOccurrences/SearchClassification";
 import SearchKingdom from "components/SearchOccurrences/SearchKingdom";
 import SearchOccurrencesResult from "components/SearchOccurrencesResult/SearchOccurrencesResults";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Theme } from "components/App/App";
 import { useContext } from "react";
@@ -45,6 +45,16 @@ const SearchOccurrencesPage = () => {
 
   //Usestate to change web app theme
   const { darkMode } = useContext(Theme);
+
+  useEffect(() => {
+    let data = sessionStorage.getItem("lastSelection");
+    if (data) {
+      setLastSelection(JSON.parse(data));
+    }
+  }, []);
+  useEffect(() => {
+    sessionStorage.setItem("lastSelection", JSON.stringify(lastSelection));
+  }, [lastSelection]);
 
   return (
     <main>
