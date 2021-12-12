@@ -3,9 +3,10 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MapContainer as LeafletMap, TileLayer, Marker } from "react-leaflet";
 import "./leaflet.css";
-import styles from "./SingleOccurrencePage.module.css";
 import { Col, Container, Row, Image, Carousel, Table } from "react-bootstrap";
+import ReactAudioPlayer from "react-audio-player";
 import { Theme } from "components/App/App";
+import styles from "./SingleOccurrencePage.module.css";
 
 interface ParamTypes {
   id: string;
@@ -99,7 +100,13 @@ const SingleOccurrencePage = () => {
               <Carousel fade activeIndex={carouselIndex} onSelect={handleSelect}>
                 {occurrence.media.map((e: any, index: number) => (
                   <Carousel.Item key={index}>
-                    <Image src={e.identifier} className={styles.resizeImage} rounded />
+                    {e.type === "Sound" ? (
+                      <div className={styles.audio}>
+                        <ReactAudioPlayer src={e.identifier} autoPlay controls />
+                      </div>
+                    ) : (
+                      <Image src={e.identifier} className={styles.resizeImage} rounded />
+                    )}
                   </Carousel.Item>
                 ))}
               </Carousel>

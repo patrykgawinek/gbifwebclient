@@ -10,6 +10,14 @@
   border-top: none !important;
 }
 
+.audio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  padding-top: 1rem;
+  background-color: #00000025;
+}
 .resizeImage {
   width: 100%;
   object-fit: cover;

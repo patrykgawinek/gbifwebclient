@@ -18,7 +18,7 @@ const SingleOccurrenceResult = ({ result }: SingleOccurrenceResultProps) => {
           className={styles.cardImage}
           variant="top"
           src={
-            result.media[0]?.identifier !== undefined
+            result.media[0]?.type !== "Sound" && result.media[0]?.identifier !== undefined
               ? result.media[0]?.identifier
               : darkMode
               ? `assets/images/noImageFoundDark.png`
