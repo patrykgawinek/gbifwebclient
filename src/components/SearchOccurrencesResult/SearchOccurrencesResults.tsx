@@ -67,7 +67,7 @@ const SearchOccurrencesResults = ({
           </Button>
         </Col>
       </Row>
-      <SelectCountry setCountry={setCountry} />
+      <SelectCountry setCountry={setCountry} setOffset={setOffset} />
       <Row xs={2} md={3}>
         {foundResults !== undefined
           ? foundResults.results.map((result: any, index: number) => (
