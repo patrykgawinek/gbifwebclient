@@ -6,6 +6,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { Theme } from "components/App/App";
 import { useContext } from "react";
 import styles from "./SearchOccurrencesPage.module.css";
+import { Classification } from "types";
 
 const SearchOccurrencesPage = () => {
   //Usestates to keep track of made choices by the user
@@ -16,14 +17,14 @@ const SearchOccurrencesPage = () => {
   const [selectedFamily, setSelectedFamily] = useState<number>(-1);
   const [selectedGenus, setSelectedGenus] = useState<number>(-1);
   const [selectedSpecies, setSelectedSpecies] = useState<number>(-1);
-  const classificationArray: [string, number, React.Dispatch<React.SetStateAction<number>>][] = [
-    ["Kingdom", selectedKingdom, setSelectedKingdom],
-    ["Phylum", selectedPhylum, setSelectedPhylum],
-    ["Class", selectedClass, setSelectedClass],
-    ["Order", selectedOrder, setSelectedOrder],
-    ["Family", selectedFamily, setSelectedFamily],
-    ["Genus", selectedGenus, setSelectedGenus],
-    ["Species", selectedSpecies, setSelectedSpecies],
+  const classificationArray: Classification[] = [
+    { name: "Kingdom", value: selectedKingdom, setValue: setSelectedKingdom },
+    { name: "Phylum", value: selectedPhylum, setValue: setSelectedPhylum },
+    { name: "Class", value: selectedClass, setValue: setSelectedClass },
+    { name: "Order", value: selectedOrder, setValue: setSelectedOrder },
+    { name: "Family", value: selectedFamily, setValue: setSelectedFamily },
+    { name: "Genus", value: selectedGenus, setValue: setSelectedGenus },
+    { name: "Species", value: selectedSpecies, setValue: setSelectedSpecies },
   ];
 
   //Usestate for search query on occurrences based on last classification level/choice
@@ -65,7 +66,6 @@ const SearchOccurrencesPage = () => {
             <SearchKingdom
               selectedKingdom={selectedKingdom}
               setSelectedKingdom={setSelectedKingdom}
-              showItems={showItems}
               setShowItems={setShowItems}
               setLastSelection={setLastSelection}
               setOffset={setOffset}
@@ -80,10 +80,7 @@ const SearchOccurrencesPage = () => {
                       classificationLevel={index + 1}
                       showItems={showItems}
                       setShowItems={setShowItems}
-                      currentClassification={classification[0]}
-                      selectedHigherClassification={classificationArray[index][1]}
-                      selectedCurrentClassification={classification[1]}
-                      setSelectedCurrentClassification={classification[2]}
+                      classificationArray={classificationArray}
                       setLastSelection={setLastSelection}
                       setOffset={setOffset}
                     />

@@ -8,7 +8,6 @@ import styles from "./SearchKingdom.module.css";
 interface SearchKingdomProps {
   selectedKingdom: number;
   setSelectedKingdom: Dispatch<SetStateAction<number>>;
-  showItems: boolean[];
   setShowItems: Dispatch<SetStateAction<boolean[]>>;
   setLastSelection: Dispatch<SetStateAction<number>>;
   setOffset: React.Dispatch<React.SetStateAction<number>>;
@@ -17,7 +16,6 @@ interface SearchKingdomProps {
 const SearchKingdom = ({
   selectedKingdom,
   setSelectedKingdom,
-  showItems,
   setShowItems,
   setLastSelection,
   setOffset,

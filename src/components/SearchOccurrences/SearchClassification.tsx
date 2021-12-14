@@ -4,15 +4,17 @@ import { Form } from "react-bootstrap";
 import { Theme } from "components/App/App";
 import { useContext } from "react";
 import styles from "./SearchClassification.module.css";
+import { Classification } from "types";
 
 interface SearchClassProps {
   showItems: boolean[];
   setShowItems: React.Dispatch<React.SetStateAction<boolean[]>>;
   classificationLevel: number;
-  currentClassification: string;
-  selectedHigherClassification: number;
-  selectedCurrentClassification: number;
-  setSelectedCurrentClassification: React.Dispatch<React.SetStateAction<number>>;
+  classificationArray: Classification[];
+  //currentClassification: string;
+  //selectedHigherClassification: number;
+  //selectedCurrentClassification: number;
+  //setSelectedCurrentClassification: React.Dispatch<React.SetStateAction<number>>;
   setLastSelection: React.Dispatch<React.SetStateAction<number>>;
   setOffset: React.Dispatch<React.SetStateAction<number>>;
 }
@@ -21,10 +23,7 @@ const SearchClassification = ({
   showItems,
   setShowItems,
   classificationLevel,
-  currentClassification,
-  selectedHigherClassification,
-  selectedCurrentClassification,
-  setSelectedCurrentClassification,
+  classificationArray,
   setLastSelection,
   setOffset,
 }: SearchClassProps) => {
@@ -38,17 +37,21 @@ const SearchClassification = ({
     let tempArray: any = [];
     const fetchTaxon = () => {
       axios
-        .get(`${baseUrlApi}/species/${selectedHigherClassification}/children`, {
-          params: {
-            limit: 20,
-            offset: offset,
-          },
-        })
+        .get(
+          `${baseUrlApi}/species/${classificationArray[classificationLevel - 1].value}/children`,
+          {
+            params: {
+              limit: 20,
+              offset: offset,
+            },
+          }
+        )
         .then((response) => {
           tempArray.push(...response.data.results);
           if (
             !response.data.endOfRecords &&
-            tempArray[tempArray.length - 1].rank === currentClassification.toUpperCase()
+            tempArray[tempArray.length - 1].rank ===
+              classificationArray[classificationLevel].name.toUpperCase()
           ) {
             offset += 20;
             fetchTaxon();
@@ -62,13 +65,13 @@ const SearchClassification = ({
     };
 
     fetchTaxon();
-  }, [selectedHigherClassification, currentClassification]);
+  }, [classificationArray, classificationLevel]);
   let filteredTaxon: any[] = currentList.filter(
-    (item: any) => item.rank === currentClassification.toUpperCase()
+    (item: any) => item.rank === classificationArray[classificationLevel].name.toUpperCase()
   );
 
   const handleOnChange: React.ChangeEventHandler<HTMLSelectElement> | undefined = (event) => {
-    setSelectedCurrentClassification(parseInt(event.target.value));
+    classificationArray[classificationLevel].setValue(parseInt(event.target.value));
     setLastSelection(parseInt(event.target.value));
     setOffset(0); //Sets offset for search occurence results back to 0
 
@@ -87,20 +90,22 @@ const SearchClassification = ({
       <div className={styles.noTaxonFoundContainer}>
         <p
           className={`${styles.noTaxonFound} ${darkMode ? styles.lightText : undefined}`}
-        >{`No ${currentClassification.toLowerCase()} found in this classification.`}</p>
+        >{`No ${classificationArray[
+          classificationLevel
+        ].name.toLowerCase()} found in this classification.`}</p>
       </div>
     );
   }
   return (
     <article className={styles.classification}>
-      <label className={styles.lightText} htmlFor={currentClassification}>
-        {currentClassification}
+      <label className={styles.lightText} htmlFor={classificationArray[classificationLevel].name}>
+        {classificationArray[classificationLevel].name}
       </label>
       <Form.Select
         className={darkMode ? styles.formDark : undefined}
-        name={currentClassification}
-        id={currentClassification}
-        value={selectedCurrentClassification}
+        name={classificationArray[classificationLevel].name}
+        id={classificationArray[classificationLevel].name}
+        value={classificationArray[classificationLevel].value}
         onChange={handleOnChange}
       >
         <option key={-1} value={-1} hidden>
