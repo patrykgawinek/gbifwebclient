@@ -11,10 +11,6 @@ interface SearchClassProps {
   setShowItems: React.Dispatch<React.SetStateAction<boolean[]>>;
   classificationLevel: number;
   classificationArray: Classification[];
-  //currentClassification: string;
-  //selectedHigherClassification: number;
-  //selectedCurrentClassification: number;
-  //setSelectedCurrentClassification: React.Dispatch<React.SetStateAction<number>>;
   setLastSelection: React.Dispatch<React.SetStateAction<number>>;
   setOffset: React.Dispatch<React.SetStateAction<number>>;
 }
