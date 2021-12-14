@@ -39,7 +39,7 @@ const SearchKingdom = ({
       .catch((error) => {
         console.log(error);
       });
-  }, [selectedKingdom]);
+  }, []);
 
   const handleOnClick = (kingdom: any) => {
     setSelectedKingdom(kingdom.kingdomKey);
