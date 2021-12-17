@@ -1,3 +1,16 @@
 .lightText {
   color: #fff;
 }
+
+.hyperLinkDark {
+  color: #fff;
+}
+.hyperLinkDark:hover {
+  color: rgb(200, 200, 200);
+}
+
+.buttonStyle {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
