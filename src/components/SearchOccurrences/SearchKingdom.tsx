@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
 import { Theme } from "components/App/App";
 import { useContext } from "react";
 import styles from "./SearchKingdom.module.css";
@@ -24,8 +24,9 @@ const SearchKingdom = ({
 
   const [kingdomList, setKingdomList] = useState<any>([]);
   const baseUrlApi: string = "https://api.gbif.org/v1";
-
+  const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
+    setLoading(true);
     axios
       .get(`${baseUrlApi}/species/suggest`, {
         params: {
@@ -35,6 +36,7 @@ const SearchKingdom = ({
       .then((response) => {
         let tempList = response.data;
         setKingdomList(tempList);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
@@ -50,21 +52,34 @@ const SearchKingdom = ({
 
   return (
     <Container fluid>
-      <Row className="justify-content-center" xs={3} sm={3} md={4} lg={4} xl="auto">
-        {kingdomList.map((kingdom: any) => (
-          <Col className={styles.columnPadding} key={kingdom.kingdomKey}>
-            <Button
-              className={styles.kingdomButton}
-              variant={darkMode ? "dark" : "outline-primary"}
-              value={kingdom.kingdomKey}
-              key={kingdom.kingdomKey}
-              onClick={() => handleOnClick(kingdom)}
-            >
-              {kingdom.scientificName}
-            </Button>
-          </Col>
-        ))}
-      </Row>
+      {loading ? (
+        <Row className="justify-content-center">
+          <Spinner
+            className=""
+            animation="border"
+            role="status"
+            variant={darkMode ? "light" : "primary"}
+          >
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        </Row>
+      ) : (
+        <Row className="justify-content-center" xs={3} sm={3} md={4} lg={4} xl="auto">
+          {kingdomList.map((kingdom: any) => (
+            <Col className={styles.columnPadding} key={kingdom.kingdomKey}>
+              <Button
+                className={styles.kingdomButton}
+                variant={darkMode ? "dark" : "outline-primary"}
+                value={kingdom.kingdomKey}
+                key={kingdom.kingdomKey}
+                onClick={() => handleOnClick(kingdom)}
+              >
+                {kingdom.scientificName}
+              </Button>
+            </Col>
+          ))}
+        </Row>
+      )}
     </Container>
   );
 };

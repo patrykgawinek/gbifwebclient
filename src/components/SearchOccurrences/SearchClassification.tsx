@@ -27,11 +27,12 @@ const SearchClassification = ({
 
   const [currentList, setCurrentList] = useState<any>([]);
   const baseUrlApi: string = "https://api.gbif.org/v1";
-
+  const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
     let offset = 0;
     let tempArray: any = [];
     const fetchTaxon = () => {
+      setLoading(true);
       axios
         .get(
           `${baseUrlApi}/species/${classificationArray[classificationLevel - 1].value}/children`,
@@ -53,6 +54,7 @@ const SearchClassification = ({
             fetchTaxon();
           } else {
             setCurrentList(tempArray);
+            setLoading(false);
           }
         })
         .catch((error) => {
@@ -81,6 +83,13 @@ const SearchClassification = ({
     setShowItems(tempShowArray);
   };
 
+  if (loading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center">
+        <p className={`text-align-center ${darkMode ? styles.lightText : undefined}`}>Loading...</p>
+      </div>
+    );
+  }
   if (filteredTaxon.length <= 0) {
     return (
       <div className={styles.noTaxonFoundContainer}>
