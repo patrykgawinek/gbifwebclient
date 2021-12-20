@@ -19,7 +19,7 @@ const SingleOccurrencePage = () => {
   const [occurrence, setOccurrence] = useState<Occurence>();
 
   const [carouselIndex, setCarouselIndex] = useState(0);
-  const handleSelect = (selectedIndex: number, e: any) => {
+  const handleSelect = (selectedIndex: number) => {
     setCarouselIndex(selectedIndex);
   };
 

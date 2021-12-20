@@ -7,7 +7,6 @@ import styles from "./SearchKingdom.module.css";
 import { Classification } from "types";
 
 interface SearchKingdomProps {
-  selectedKingdom: number;
   setSelectedKingdom: Dispatch<SetStateAction<number>>;
   setShowItems: Dispatch<SetStateAction<boolean[]>>;
   setLastSelection: Dispatch<SetStateAction<number>>;
@@ -15,7 +14,6 @@ interface SearchKingdomProps {
 }
 
 const SearchKingdom = ({
-  selectedKingdom,
   setSelectedKingdom,
   setShowItems,
   setLastSelection,

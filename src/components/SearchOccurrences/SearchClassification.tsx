@@ -29,7 +29,7 @@ const SearchClassification = ({
   const baseUrlApi: string = "https://api.gbif.org/v1";
   const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
-    let offset = 0;
+    let offset: number = 0;
     let tempArray: Classification[] = [];
     const fetchTaxon = () => {
       setLoading(true);

@@ -64,7 +64,6 @@ const SearchOccurrencesPage = () => {
           <h1 className={`mt-3 ${darkMode ? styles.lightText : undefined}`}>Search Occurrences</h1>
           {showItems[0] && (
             <SearchKingdom
-              selectedKingdom={selectedKingdom}
               setSelectedKingdom={setSelectedKingdom}
               setShowItems={setShowItems}
               setLastSelection={setLastSelection}
