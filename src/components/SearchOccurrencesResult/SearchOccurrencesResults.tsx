@@ -7,6 +7,7 @@ import { Theme } from "components/App/App";
 import { useContext } from "react";
 import styles from "./SearchOccurrencesResults.module.css";
 import { useHistory } from "react-router-dom";
+import { IOccurences, Occurence } from "types";
 
 interface SearchOccurrencesResultProps {
   lastSelection: number;
@@ -23,7 +24,14 @@ const SearchOccurrencesResults = ({
   const history = useHistory();
 
   const [country, setCountry] = useState<string>("");
-  const [foundResults, setFoundResults] = useState<any>();
+  const [foundResults, setFoundResults] = useState<IOccurences>({
+    offset: 0,
+    limit: 0,
+    endOfRecords: true,
+    count: 0,
+    results: [],
+    facets: [],
+  });
   const baseUrlApi: string = "https://api.gbif.org/v1";
   const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
@@ -86,7 +94,7 @@ const SearchOccurrencesResults = ({
           <SelectCountry setCountry={setCountry} setOffset={setOffset} />
           <Row xs={2} md={3}>
             {foundResults !== undefined
-              ? foundResults.results.map((result: any, index: number) => (
+              ? foundResults.results.map((result: Occurence, index: number) => (
                   <Col className="mb-3" key={index}>
                     <SingleOccurrenceResult result={result} />
                   </Col>

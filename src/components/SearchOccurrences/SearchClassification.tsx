@@ -4,13 +4,13 @@ import { Form } from "react-bootstrap";
 import { Theme } from "components/App/App";
 import { useContext } from "react";
 import styles from "./SearchClassification.module.css";
-import { Classification } from "types";
+import { Classification, ClassificationState } from "types";
 
 interface SearchClassProps {
   showItems: boolean[];
   setShowItems: React.Dispatch<React.SetStateAction<boolean[]>>;
   classificationLevel: number;
-  classificationArray: Classification[];
+  classificationArray: ClassificationState[];
   setLastSelection: React.Dispatch<React.SetStateAction<number>>;
   setOffset: React.Dispatch<React.SetStateAction<number>>;
 }
@@ -25,7 +25,7 @@ const SearchClassification = ({
 }: SearchClassProps) => {
   const { darkMode } = useContext(Theme);
 
-  const [currentList, setCurrentList] = useState<any>([]);
+  const [currentList, setCurrentList] = useState<Classification[]>([]);
   const baseUrlApi: string = "https://api.gbif.org/v1";
   const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
@@ -64,8 +64,9 @@ const SearchClassification = ({
 
     fetchTaxon();
   }, [classificationArray, classificationLevel]);
-  let filteredTaxon: any[] = currentList.filter(
-    (item: any) => item.rank === classificationArray[classificationLevel].name.toUpperCase()
+  let filteredTaxon: Classification[] = currentList.filter(
+    (item: Classification) =>
+      item.rank === classificationArray[classificationLevel].name.toUpperCase()
   );
 
   const handleOnChange: React.ChangeEventHandler<HTMLSelectElement> | undefined = (event) => {
@@ -116,7 +117,7 @@ const SearchClassification = ({
         <option key={-1} value={-1} hidden>
           -- Pick one of the options below --
         </option>
-        {filteredTaxon.map((record: any) => (
+        {filteredTaxon.map((record: Classification) => (
           <option key={record.key} value={record.key}>
             {record.scientificName}
           </option>

@@ -7,6 +7,7 @@ import { Col, Container, Row, Image, Carousel, Table, Spinner } from "react-boot
 import ReactAudioPlayer from "react-audio-player";
 import { Theme } from "components/App/App";
 import styles from "./SingleOccurrencePage.module.css";
+import { Occurence } from "types";
 
 interface ParamTypes {
   id: string;
@@ -15,7 +16,7 @@ interface ParamTypes {
 const SingleOccurrencePage = () => {
   let { id } = useParams<ParamTypes>();
   const { darkMode } = useContext(Theme);
-  const [occurrence, setOccurrence] = useState<any>();
+  const [occurrence, setOccurrence] = useState<Occurence>();
 
   const [carouselIndex, setCarouselIndex] = useState(0);
   const handleSelect = (selectedIndex: number, e: any) => {
@@ -63,7 +64,11 @@ const SingleOccurrencePage = () => {
               <tbody>
                 <tr>
                   <td className="col-6">Date of occurrence</td>
-                  <td className="col-6">{new Date(occurrence?.eventDate).toUTCString()}</td>
+                  <td className="col-6">
+                    {occurrence?.eventDate !== undefined
+                      ? new Date(occurrence.eventDate).toUTCString()
+                      : ""}
+                  </td>
                 </tr>
                 <tr>
                   <td>Identified by</td>
@@ -73,7 +78,7 @@ const SingleOccurrencePage = () => {
                 </tr>
                 <tr>
                   <td>Occurrence remarks</td>
-                  <td>{occurrence?.occurrrenceRemarks}</td>
+                  <td>{occurrence?.occurrenceRemarks}</td>
                 </tr>
               </tbody>
             </Table>
@@ -120,7 +125,7 @@ const SingleOccurrencePage = () => {
                   </div>
                 </Col>
               ) : null}
-              {occurrence?.media.length > 1 ? (
+              {occurrence?.media !== undefined && occurrence?.media.length > 1 ? (
                 <Col className="col-12 col-sm-12 col-md-6">
                   <Carousel fade activeIndex={carouselIndex} onSelect={handleSelect}>
                     {occurrence.media.map((e: any, index: number) => (
@@ -136,7 +141,7 @@ const SingleOccurrencePage = () => {
                     ))}
                   </Carousel>
                 </Col>
-              ) : occurrence?.media.length > 0 ? (
+              ) : occurrence?.media !== undefined && occurrence?.media.length > 0 ? (
                 <Col className="col-12 col-sm-12 col-md-6">
                   <Image
                     src={occurrence.media[0].identifier}

@@ -6,7 +6,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { Theme } from "components/App/App";
 import { useContext } from "react";
 import styles from "./SearchOccurrencesPage.module.css";
-import { Classification } from "types";
+import { ClassificationState } from "types";
 
 const SearchOccurrencesPage = () => {
   //Usestates to keep track of made choices by the user
@@ -17,7 +17,7 @@ const SearchOccurrencesPage = () => {
   const [selectedFamily, setSelectedFamily] = useState<number>(-1);
   const [selectedGenus, setSelectedGenus] = useState<number>(-1);
   const [selectedSpecies, setSelectedSpecies] = useState<number>(-1);
-  const classificationArray: Classification[] = [
+  const classificationArray: ClassificationState[] = [
     { name: "Kingdom", value: selectedKingdom, setValue: setSelectedKingdom },
     { name: "Phylum", value: selectedPhylum, setValue: setSelectedPhylum },
     { name: "Class", value: selectedClass, setValue: setSelectedClass },
