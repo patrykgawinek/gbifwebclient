@@ -30,7 +30,7 @@ const SearchClassification = ({
   const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
     let offset = 0;
-    let tempArray: any = [];
+    let tempArray: Classification[] = [];
     const fetchTaxon = () => {
       setLoading(true);
       axios

@@ -4,6 +4,7 @@ import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
 import { Theme } from "components/App/App";
 import { useContext } from "react";
 import styles from "./SearchKingdom.module.css";
+import { Classification } from "types";
 
 interface SearchKingdomProps {
   selectedKingdom: number;
@@ -22,7 +23,7 @@ const SearchKingdom = ({
 }: SearchKingdomProps) => {
   const { darkMode } = useContext(Theme);
 
-  const [kingdomList, setKingdomList] = useState<any>([]);
+  const [kingdomList, setKingdomList] = useState<Classification[]>([]);
   const baseUrlApi: string = "https://api.gbif.org/v1";
   const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
@@ -43,7 +44,7 @@ const SearchKingdom = ({
       });
   }, []);
 
-  const handleOnClick = (kingdom: any) => {
+  const handleOnClick = (kingdom: Classification) => {
     setSelectedKingdom(kingdom.kingdomKey);
     setLastSelection(kingdom.kingdomKey);
     setShowItems([true, true, false, false, false, false, false]);
@@ -65,7 +66,7 @@ const SearchKingdom = ({
         </Row>
       ) : (
         <Row className="justify-content-center" xs={3} sm={3} md={4} lg={4} xl="auto">
-          {kingdomList.map((kingdom: any) => (
+          {kingdomList.map((kingdom: Classification) => (
             <Col className={styles.columnPadding} key={kingdom.kingdomKey}>
               <Button
                 className={styles.kingdomButton}
