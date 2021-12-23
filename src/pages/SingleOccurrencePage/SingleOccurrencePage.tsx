@@ -143,11 +143,17 @@ const SingleOccurrencePage = () => {
                 </Col>
               ) : occurrence?.media !== undefined && occurrence?.media.length > 0 ? (
                 <Col className="col-12 col-sm-12 col-md-6">
-                  <Image
-                    src={occurrence.media[0].identifier}
-                    className={styles.resizeImage}
-                    rounded
-                  />
+                  {occurrence.media[0].type === "Sound" ? (
+                    <div className={styles.audio}>
+                      <ReactAudioPlayer src={occurrence.media[0].identifier} autoPlay controls />
+                    </div>
+                  ) : (
+                    <Image
+                      src={occurrence.media[0].identifier}
+                      className={styles.resizeImage}
+                      rounded
+                    />
+                  )}
                 </Col>
               ) : null}
             </Row>
