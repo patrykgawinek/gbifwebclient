@@ -132,7 +132,7 @@ const SingleOccurrencePage = () => {
                       <Carousel.Item key={index}>
                         {e.type === "Sound" ? (
                           <div className={styles.audio}>
-                            <ReactAudioPlayer src={e.identifier} autoPlay controls />
+                            <ReactAudioPlayer src={e.identifier} controls />
                           </div>
                         ) : (
                           <Image src={e.identifier} className={styles.resizeImage} rounded />
@@ -145,7 +145,7 @@ const SingleOccurrencePage = () => {
                 <Col className="col-12 col-sm-12 col-md-6">
                   {occurrence.media[0].type === "Sound" ? (
                     <div className={styles.audio}>
-                      <ReactAudioPlayer src={occurrence.media[0].identifier} autoPlay controls />
+                      <ReactAudioPlayer src={occurrence.media[0].identifier} controls />
                     </div>
                   ) : (
                     <Image
