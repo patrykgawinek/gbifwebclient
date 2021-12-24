@@ -13,7 +13,7 @@ const SingleOccurrenceResult = ({ result }: SingleOccurrenceResultProps) => {
 
   return (
     <Link to={`/occurrences/${result.key}`} className={styles.cardLink}>
-      <Card className={darkMode ? "bg-dark text-white" : undefined}>
+      <Card className={`${styles.cardAnimation} ${darkMode ? "bg-dark text-white" : undefined}`}>
         <Card.Img
           className={styles.cardImage}
           variant="top"
