@@ -2,7 +2,6 @@ import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
 import SingleOccurrenceResult from "./SingleOccurrenceResult";
-import SelectCountry from "./SelectCountry";
 import { Theme } from "components/App/App";
 import { useContext } from "react";
 import styles from "./SearchOccurrencesResults.module.css";
@@ -10,12 +9,14 @@ import { useHistory } from "react-router-dom";
 import { IOccurences, Occurence } from "types";
 
 interface SearchOccurrencesResultProps {
+  country: string;
   lastSelection: number;
   offset: number;
   setOffset: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const SearchOccurrencesResults = ({
+  country,
   lastSelection,
   offset,
   setOffset,
@@ -23,7 +24,6 @@ const SearchOccurrencesResults = ({
   const { darkMode } = useContext(Theme);
   const history = useHistory();
 
-  const [country, setCountry] = useState<string>("");
   const [foundResults, setFoundResults] = useState<IOccurences>({
     offset: 0,
     limit: 0,
@@ -91,7 +91,6 @@ const SearchOccurrencesResults = ({
               </Button>
             </Col>
           </Row>
-          <SelectCountry setCountry={setCountry} setOffset={setOffset} />
           <Row xs={2} md={3}>
             {foundResults !== undefined
               ? foundResults.results.map((result: Occurence, index: number) => (

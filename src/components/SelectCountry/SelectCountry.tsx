@@ -5,11 +5,12 @@ import styles from "./SelectCountry.module.css";
 import axios from "axios";
 
 interface SelectCountryProps {
+  country: string;
   setCountry: React.Dispatch<React.SetStateAction<string>>;
   setOffset: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const SelectCountry = ({ setCountry, setOffset }: SelectCountryProps) => {
+const SelectCountry = ({ country, setCountry, setOffset }: SelectCountryProps) => {
   const { darkMode } = useContext(Theme);
   const [countries, setCountries] = useState<any>();
 
@@ -33,6 +34,7 @@ const SelectCountry = ({ setCountry, setOffset }: SelectCountryProps) => {
     <Form.Select
       className={`mb-3 ${darkMode ? styles.formDark : undefined}`}
       onChange={handleOnChange}
+      value={country}
     >
       <option key={"empty"} value={""}>
         Show results in all countries

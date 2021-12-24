@@ -7,6 +7,7 @@ import { Theme } from "components/App/App";
 import { useContext } from "react";
 import styles from "./SearchOccurrencesPage.module.css";
 import { ClassificationState } from "types";
+import SelectCountry from "components/SelectCountry/SelectCountry";
 
 const SearchOccurrencesPage = () => {
   //Usestates to keep track of made choices by the user
@@ -46,6 +47,9 @@ const SearchOccurrencesPage = () => {
 
   //Usestate to change web app theme
   const { darkMode } = useContext(Theme);
+
+  //Usestate to track selected country
+  const [country, setCountry] = useState<string>("");
 
   useEffect(() => {
     let data = sessionStorage.getItem("lastSelection");
@@ -89,8 +93,10 @@ const SearchOccurrencesPage = () => {
             })}
           </Row>
         </Row>
+        <SelectCountry country={country} setCountry={setCountry} setOffset={setOffset} />
         <Row className="mb-3">
           <SearchOccurrencesResult
+            country={country}
             lastSelection={lastSelection}
             offset={offset}
             setOffset={setOffset}
