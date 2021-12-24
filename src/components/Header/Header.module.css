@@ -1,3 +1,7 @@
+.brand {
+  text-decoration: none;
+}
+
 .themeToggle {
   display: block !important;
   margin-left: auto !important;

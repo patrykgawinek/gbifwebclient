@@ -11,7 +11,7 @@ const Header = () => {
     <header>
       <Navbar expand="sm" className={darkMode ? "bg-dark navbar-dark" : "bg-primary navbar-dark"}>
         <Container>
-          <NavLink to="/">
+          <NavLink to="/" className={styles.brand}>
             <Navbar.Brand>GBIF Client</Navbar.Brand>
           </NavLink>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
