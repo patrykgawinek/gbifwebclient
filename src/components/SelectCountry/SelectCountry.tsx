@@ -3,6 +3,7 @@ import { Theme } from "components/App/App";
 import { useContext, useEffect, useState } from "react";
 import styles from "./SelectCountry.module.css";
 import axios from "axios";
+import { Country } from "types";
 
 interface SelectCountryProps {
   country: string;
@@ -12,7 +13,7 @@ interface SelectCountryProps {
 
 const SelectCountry = ({ country, setCountry, setOffset }: SelectCountryProps) => {
   const { darkMode } = useContext(Theme);
-  const [countries, setCountries] = useState<any>();
+  const [countries, setCountries] = useState<Country[]>();
 
   useEffect(() => {
     axios
@@ -39,7 +40,7 @@ const SelectCountry = ({ country, setCountry, setOffset }: SelectCountryProps) =
       <option key={"empty"} value={""}>
         Show results in all countries
       </option>
-      {countries?.map((country: any) => (
+      {countries?.map((country: Country) => (
         <option value={country.Code} key={country.Code}>
           {country.Name}
         </option>

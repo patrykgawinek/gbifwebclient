@@ -4,6 +4,12 @@ export interface ClassificationState {
   setValue: React.Dispatch<React.SetStateAction<number>>;
 }
 
+/* Countries interface */
+export interface Country {
+  Code: string;
+  Name: string;
+}
+
 /* Species interfaces */
 export interface Classification {
   key: number;
