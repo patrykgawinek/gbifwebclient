@@ -54,17 +54,17 @@ export interface ISpecies {
 
 /* Occurence results interfaces */
 export interface HttpRsGbifOrgTerms10Multimedia {
-  "http://purl.org/dc/terms/title": string;
-  "http://purl.org/dc/terms/format": string;
-  "http://purl.org/dc/terms/license": string;
-  "http://purl.org/dc/terms/references": string;
-  "http://purl.org/dc/terms/creator": string;
-  "http://purl.org/dc/terms/rightsHolder": string;
-  "http://purl.org/dc/terms/identifier": string;
+  'http://purl.org/dc/terms/title': string;
+  'http://purl.org/dc/terms/format': string;
+  'http://purl.org/dc/terms/license': string;
+  'http://purl.org/dc/terms/references': string;
+  'http://purl.org/dc/terms/creator': string;
+  'http://purl.org/dc/terms/rightsHolder': string;
+  'http://purl.org/dc/terms/identifier': string;
 }
 
 export interface Extensions {
-  "http://rs.gbif.org/terms/1.0/Multimedia"?: HttpRsGbifOrgTerms10Multimedia[];
+  'http://rs.gbif.org/terms/1.0/Multimedia'?: HttpRsGbifOrgTerms10Multimedia[];
 }
 
 export interface Medium {
@@ -169,20 +169,20 @@ export interface Occurence {
   country: string;
   identifier: string;
   eventID: string;
-  "http://unknown.org/taxonRankID": string;
+  'http://unknown.org/taxonRankID': string;
   dynamicProperties: string;
   collectionCode: string;
   verbatimLocality: string;
   gbifID: string;
   occurrenceID: string;
-  "http://unknown.org/subspecies": string;
+  'http://unknown.org/subspecies': string;
   catalogNumber: string;
   recordedBy: string;
   vernacularName: string;
   otherCatalogNumbers: string;
   institutionCode: string;
   taxonConceptID: string;
-  "http://unknown.org/species": string;
+  'http://unknown.org/species': string;
   identifiedBy: string;
   individualCount?: number;
   associatedReferences: string;
@@ -225,16 +225,16 @@ export interface Occurence {
   eventTime: string;
   behavior: string;
   identificationQualifier: string;
-  "http://unknown.org/rightsHolder": string;
-  "http://unknown.org/license": string;
+  'http://unknown.org/rightsHolder': string;
+  'http://unknown.org/license': string;
   taxonID: string;
   datasetID: string;
   references: string;
   organismQuantity?: number;
   organismQuantityType: string;
-  "http://rs.tdwg.org/dwc/terms/organismQuantity": string;
+  'http://rs.tdwg.org/dwc/terms/organismQuantity': string;
   organismName: string;
-  "http://rs.tdwg.org/dwc/terms/organismQuantityType": string;
+  'http://rs.tdwg.org/dwc/terms/organismQuantityType': string;
 }
 
 export interface IOccurences {
