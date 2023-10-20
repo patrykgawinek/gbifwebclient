@@ -1,8 +1,8 @@
-import { Card } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { Theme } from "components/App/App";
-import { useContext } from "react";
-import styles from "./SingleOccurrenceResult.module.css";
+import { Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Theme } from 'components/App/App';
+import { useContext } from 'react';
+import styles from './SingleOccurrenceResult.module.css';
 
 interface SingleOccurrenceResultProps {
   result: any;
@@ -13,12 +13,12 @@ const SingleOccurrenceResult = ({ result }: SingleOccurrenceResultProps) => {
 
   return (
     <Link to={`/occurrences/${result.key}`} className={styles.cardLink}>
-      <Card className={`${styles.cardAnimation} ${darkMode ? "bg-dark text-white" : undefined}`}>
+      <Card className={`${styles.cardAnimation} ${darkMode ? 'bg-dark text-white' : undefined}`}>
         <Card.Img
           className={styles.cardImage}
           variant="top"
           src={
-            result.media[0]?.type !== "Sound" && result.media[0]?.identifier !== undefined
+            result.media[0]?.type !== 'Sound' && result.media[0]?.identifier !== undefined
               ? result.media[0]?.identifier
               : darkMode
               ? `assets/images/noImageFoundDark.png`
@@ -42,17 +42,11 @@ const SingleOccurrenceResult = ({ result }: SingleOccurrenceResultProps) => {
               : `Unidentified`}
           </Card.Title>
           <Card.Text>
-            {result.gadm.level0 !== undefined
-              ? result.gadm.level0.name
-              : `No level 0 GADM provided`}
+            {result.gadm.level0 !== undefined ? result.gadm.level0.name : `No level 0 GADM provided`}
             ,<br />
-            {result.gadm.level1 !== undefined
-              ? result.gadm.level1.name
-              : `No level 1 GADM provided`}
+            {result.gadm.level1 !== undefined ? result.gadm.level1.name : `No level 1 GADM provided`}
             ,<br />
-            {result.gadm.level2 !== undefined
-              ? result.gadm.level2.name
-              : `No level 2 GADM provided`}
+            {result.gadm.level2 !== undefined ? result.gadm.level2.name : `No level 2 GADM provided`}
           </Card.Text>
         </Card.Body>
       </Card>

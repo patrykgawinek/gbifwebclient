@@ -1,13 +1,13 @@
-import SearchClassification from "components/SearchOccurrences/SearchClassification";
-import SearchKingdom from "components/SearchOccurrences/SearchKingdom";
-import SearchOccurrencesResult from "components/SearchOccurrencesResult/SearchOccurrencesResults";
-import { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import { Theme } from "components/App/App";
-import { useContext } from "react";
-import styles from "./SearchOccurrencesPage.module.css";
-import { ClassificationState } from "types";
-import SelectCountry from "components/SelectCountry/SelectCountry";
+import SearchClassification from 'components/SearchOccurrences/SearchClassification';
+import SearchKingdom from 'components/SearchOccurrences/SearchKingdom';
+import SearchOccurrencesResult from 'components/SearchOccurrencesResult/SearchOccurrencesResults';
+import { useEffect, useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import { Theme } from 'components/App/App';
+import { useContext } from 'react';
+import styles from './SearchOccurrencesPage.module.css';
+import { ClassificationState } from 'types';
+import SelectCountry from 'components/SelectCountry/SelectCountry';
 
 const SearchOccurrencesPage = () => {
   //Usestates to keep track of made choices by the user
@@ -19,28 +19,20 @@ const SearchOccurrencesPage = () => {
   const [selectedGenus, setSelectedGenus] = useState<number>(-1);
   const [selectedSpecies, setSelectedSpecies] = useState<number>(-1);
   const classificationArray: ClassificationState[] = [
-    { name: "Kingdom", value: selectedKingdom, setValue: setSelectedKingdom },
-    { name: "Phylum", value: selectedPhylum, setValue: setSelectedPhylum },
-    { name: "Class", value: selectedClass, setValue: setSelectedClass },
-    { name: "Order", value: selectedOrder, setValue: setSelectedOrder },
-    { name: "Family", value: selectedFamily, setValue: setSelectedFamily },
-    { name: "Genus", value: selectedGenus, setValue: setSelectedGenus },
-    { name: "Species", value: selectedSpecies, setValue: setSelectedSpecies },
+    { name: 'Kingdom', value: selectedKingdom, setValue: setSelectedKingdom },
+    { name: 'Phylum', value: selectedPhylum, setValue: setSelectedPhylum },
+    { name: 'Class', value: selectedClass, setValue: setSelectedClass },
+    { name: 'Order', value: selectedOrder, setValue: setSelectedOrder },
+    { name: 'Family', value: selectedFamily, setValue: setSelectedFamily },
+    { name: 'Genus', value: selectedGenus, setValue: setSelectedGenus },
+    { name: 'Species', value: selectedSpecies, setValue: setSelectedSpecies },
   ];
 
   //Usestate for search query on occurrences based on last classification level/choice
   const [lastSelection, setLastSelection] = useState<number>(-1);
 
   //Usestates for short circuit evaluation to hide elements on page depending on classification level the user picked
-  const [showItems, setShowItems] = useState<boolean[]>([
-    true,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ]);
+  const [showItems, setShowItems] = useState<boolean[]>([true, false, false, false, false, false, false]);
 
   //Usestate to track offset on occurrence results -- raised to page level so that it can be passed to search criteria to set the offset to 0
   const [offset, setOffset] = useState<number>(0);
@@ -49,16 +41,16 @@ const SearchOccurrencesPage = () => {
   const { darkMode } = useContext(Theme);
 
   //Usestate to track selected country
-  const [country, setCountry] = useState<string>("");
+  const [country, setCountry] = useState<string>('');
 
   useEffect(() => {
-    let data = sessionStorage.getItem("lastSelection");
+    let data = sessionStorage.getItem('lastSelection');
     if (data) {
       setLastSelection(JSON.parse(data));
     }
   }, []);
   useEffect(() => {
-    sessionStorage.setItem("lastSelection", JSON.stringify(lastSelection));
+    sessionStorage.setItem('lastSelection', JSON.stringify(lastSelection));
   }, [lastSelection]);
 
   return (
