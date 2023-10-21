@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import { Theme } from 'components/App/App';
 import { useContext } from 'react';
 import styles from './SingleOccurrenceResult.module.css';
+import { Occurence } from 'types';
 
 type SingleOccurrenceResultProps = {
-  result: any;
+  result: Occurence;
 };
 
 const SingleOccurrenceResult: React.FC<SingleOccurrenceResultProps> = ({ result }) => {

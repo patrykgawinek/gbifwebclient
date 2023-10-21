@@ -99,10 +99,10 @@ export type Level3 = {
 };
 
 export type Gadm = {
-  level0: Level0;
-  level1: Level1;
-  level2: Level2;
-  level3: Level3;
+  level0?: Level0;
+  level1?: Level1;
+  level2?: Level2;
+  level3?: Level3;
 };
 
 export type Occurence = {
@@ -132,12 +132,12 @@ export type Occurence = {
   acceptedTaxonKey: number;
   scientificName: string;
   acceptedScientificName: string;
-  kingdom: string;
-  phylum: string;
-  order: string;
-  family: string;
-  genus: string;
-  species: string;
+  kingdom?: string;
+  phylum?: string;
+  order?: string;
+  family?: string;
+  genus?: string;
+  species?: string;
   genericName: string;
   specificEpithet: string;
   taxonRank: string;
