@@ -4,7 +4,7 @@ import { Container, Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './HomePage.module.css';
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
   const { darkMode } = useContext(Theme);
 
   const navigate = useNavigate();

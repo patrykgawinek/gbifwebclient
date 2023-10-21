@@ -10,10 +10,10 @@ import styles from './App.module.css';
 
 export const Theme = createContext({
   darkMode: true,
-  setDarkMode: (mode: boolean) => {},
+  setDarkMode: (_mode: boolean) => {},
 });
 
-function App() {
+const App: React.FC = () => {
   const [darkMode, setDarkMode] = useState<boolean>(true);
 
   useEffect(() => {
@@ -70,6 +70,6 @@ function App() {
       </Router>
     </Theme.Provider>
   );
-}
+};
 
 export default App;

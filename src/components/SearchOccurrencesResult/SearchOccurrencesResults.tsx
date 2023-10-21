@@ -5,21 +5,26 @@ import SingleOccurrenceResult from './SingleOccurrenceResult';
 import { Theme } from 'components/App/App';
 import { useContext } from 'react';
 import styles from './SearchOccurrencesResults.module.css';
-import { IOccurences, Occurence } from 'types';
+import { Occurences, Occurence } from 'types';
 import { useNavigate } from 'react-router-dom';
 
-interface SearchOccurrencesResultProps {
+type SearchOccurrencesResultProps = {
   country: string;
   lastSelection: number;
   offset: number;
   setOffset: React.Dispatch<React.SetStateAction<number>>;
-}
+};
 
-const SearchOccurrencesResults = ({ country, lastSelection, offset, setOffset }: SearchOccurrencesResultProps) => {
+const SearchOccurrencesResults: React.FC<SearchOccurrencesResultProps> = ({
+  country,
+  lastSelection,
+  offset,
+  setOffset,
+}) => {
   const { darkMode } = useContext(Theme);
   const navigate = useNavigate();
 
-  const [foundResults, setFoundResults] = useState<IOccurences>({
+  const [foundResults, setFoundResults] = useState<Occurences>({
     offset: 0,
     limit: 0,
     endOfRecords: true,
@@ -79,13 +84,12 @@ const SearchOccurrencesResults = ({ country, lastSelection, offset, setOffset }:
             </Col>
           </Row>
           <Row xs={2} md={3}>
-            {foundResults !== undefined
-              ? foundResults.results.map((result: Occurence, index: number) => (
-                  <Col className="mb-3" key={index}>
-                    <SingleOccurrenceResult result={result} />
-                  </Col>
-                ))
-              : null}
+            {foundResults &&
+              foundResults.results.map((result: Occurence, index: number) => (
+                <Col className="mb-3" key={index}>
+                  <SingleOccurrenceResult result={result} />
+                </Col>
+              ))}
           </Row>
           <Row xs={12} className="align-self-center justify-content-center">
             <Col xs={2} className="d-flex justify-content-end">
@@ -114,9 +118,9 @@ const SearchOccurrencesResults = ({ country, lastSelection, offset, setOffset }:
             </Col>
             <Col xs={2}>
               <Button
-                className={`${styles.buttonHeight} ${
-                  foundResults?.endOfRecords !== undefined && foundResults.endOfRecords ? `disabled` : undefined
-                } ${darkMode ? 'btn-dark' : 'btn-primary'}`}
+                className={`${styles.buttonHeight} ${foundResults?.endOfRecords ? `disabled` : undefined} ${
+                  darkMode ? 'btn-dark' : 'btn-primary'
+                }`}
                 onClick={() => {
                   if (!foundResults.endOfRecords) {
                     setOffset(offset + 12);

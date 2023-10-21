@@ -3,7 +3,7 @@ import { Theme } from 'components/App/App';
 import { useContext } from 'react';
 import styles from './Footer.module.css';
 
-const Footer = () => {
+const Footer: React.FC = () => {
   const { darkMode } = useContext(Theme);
 
   return (

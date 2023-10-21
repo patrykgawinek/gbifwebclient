@@ -9,7 +9,7 @@ import styles from './SearchOccurrencesPage.module.css';
 import { ClassificationState } from 'types';
 import SelectCountry from 'components/SelectCountry/SelectCountry';
 
-const SearchOccurrencesPage = () => {
+const SearchOccurrencesPage: React.FC = () => {
   //Usestates to keep track of made choices by the user
   const [selectedKingdom, setSelectedKingdom] = useState<number>(-1);
   const [selectedPhylum, setSelectedPhylum] = useState<number>(-1);

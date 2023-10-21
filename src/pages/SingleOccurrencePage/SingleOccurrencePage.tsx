@@ -7,9 +7,9 @@ import { Col, Container, Row, Image, Carousel, Table, Spinner } from 'react-boot
 import ReactAudioPlayer from 'react-audio-player';
 import { Theme } from 'components/App/App';
 import styles from './SingleOccurrencePage.module.css';
-import { Occurence } from 'types';
+import { Medium, Occurence } from 'types';
 
-const SingleOccurrencePage = () => {
+const SingleOccurrencePage: React.FC = () => {
   let { id } = useParams();
   const { darkMode } = useContext(Theme);
   const [occurrence, setOccurrence] = useState<Occurence>();
@@ -50,13 +50,11 @@ const SingleOccurrencePage = () => {
               <tbody>
                 <tr>
                   <td className="col-6">Date of occurrence</td>
-                  <td className="col-6">
-                    {occurrence?.eventDate !== undefined ? new Date(occurrence.eventDate).toUTCString() : ''}
-                  </td>
+                  <td className="col-6">{occurrence?.eventDate ? new Date(occurrence.eventDate).toUTCString() : ''}</td>
                 </tr>
                 <tr>
                   <td>Identified by</td>
-                  <td>{occurrence?.identifiedBy !== undefined ? occurrence?.identifiedBy : 'Unknown'}</td>
+                  <td>{occurrence?.identifiedBy ?? 'Unknown'}</td>
                 </tr>
                 <tr>
                   <td>Occurrence remarks</td>
@@ -65,7 +63,7 @@ const SingleOccurrencePage = () => {
               </tbody>
             </Table>
             <Row>
-              {occurrence?.decimalLatitude !== undefined ? (
+              {occurrence?.decimalLatitude && (
                 <Col className={occurrence?.media.length > 0 ? 'col-12 col-sm-12 col-md-6' : 'col-sm-12'}>
                   <div className={occurrence?.media.length > 0 ? styles.leaflet : styles.onlyLeaflet}>
                     {darkMode && (
@@ -96,11 +94,11 @@ const SingleOccurrencePage = () => {
                     )}
                   </div>
                 </Col>
-              ) : null}
-              {occurrence?.media !== undefined && occurrence?.media.length > 1 ? (
+              )}
+              {occurrence?.media && occurrence?.media.length > 1 && (
                 <Col className="col-12 col-sm-12 col-md-6">
                   <Carousel fade activeIndex={carouselIndex} onSelect={handleSelect}>
-                    {occurrence.media.map((e: any, index: number) => (
+                    {occurrence.media.map((e: Medium, index: number) => (
                       <Carousel.Item key={index}>
                         {e.type === 'Sound' ? (
                           <div className={styles.audio}>
@@ -113,7 +111,8 @@ const SingleOccurrencePage = () => {
                     ))}
                   </Carousel>
                 </Col>
-              ) : occurrence?.media !== undefined && occurrence?.media.length > 0 ? (
+              )}
+              {occurrence?.media && occurrence?.media.length === 1 && (
                 <Col className="col-12 col-sm-12 col-md-6">
                   {occurrence.media[0].type === 'Sound' ? (
                     <div className={styles.audio}>
@@ -123,7 +122,7 @@ const SingleOccurrencePage = () => {
                     <Image src={occurrence.media[0].identifier} className={styles.resizeImage} rounded />
                   )}
                 </Col>
-              ) : null}
+              )}
             </Row>
             <Table className={`mt-3 ${darkMode ? 'table-dark' : undefined}`} striped hover size="sm">
               <thead>
@@ -187,15 +186,15 @@ const SingleOccurrencePage = () => {
               <tbody>
                 <tr>
                   <td>GADM 0</td>
-                  <td>{occurrence?.gadm.level0 !== undefined && occurrence?.gadm.level0.name}</td>
+                  <td>{occurrence?.gadm.level0?.name}</td>
                 </tr>
                 <tr>
                   <td>GADM 1</td>
-                  <td>{occurrence?.gadm.level1 !== undefined && occurrence?.gadm.level1.name}</td>
+                  <td>{occurrence?.gadm.level1?.name}</td>
                 </tr>
                 <tr>
                   <td>GADM 2</td>
-                  <td>{occurrence?.gadm.level2 !== undefined && occurrence?.gadm.level2.name}</td>
+                  <td>{occurrence?.gadm.level2?.name}</td>
                 </tr>
               </tbody>
             </Table>

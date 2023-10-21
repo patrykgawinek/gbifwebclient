@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.css';
 
-const Header = () => {
+const Header: React.FC = () => {
   const { darkMode, setDarkMode } = useContext(Theme);
 
   return (

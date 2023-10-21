@@ -4,7 +4,7 @@ import { Theme } from 'components/App/App';
 import { useContext, useEffect, useState } from 'react';
 import styles from './MapPage.module.css';
 
-const MapPage = () => {
+const MapPage: React.FC = () => {
   let taxonKey = useParams();
   const { darkMode } = useContext(Theme);
   const [mapStyle, setMapStyle] = useState<string>('');
@@ -18,7 +18,7 @@ const MapPage = () => {
   }, [darkMode, mapStyle]);
 
   let overlay: string;
-  if (taxonKey.id === undefined) {
+  if (!taxonKey.id) {
     overlay = `https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?style=${mapStyle}`;
   } else {
     overlay = `https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?style=${mapStyle}&taxonKey=${taxonKey.id}`;

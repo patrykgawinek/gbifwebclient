@@ -5,13 +5,13 @@ import styles from './SelectCountry.module.css';
 import axios from 'axios';
 import { Country } from 'types';
 
-interface SelectCountryProps {
+type SelectCountryProps = {
   country: string;
   setCountry: React.Dispatch<React.SetStateAction<string>>;
   setOffset: React.Dispatch<React.SetStateAction<number>>;
-}
+};
 
-const SelectCountry = ({ country, setCountry, setOffset }: SelectCountryProps) => {
+const SelectCountry: React.FC<SelectCountryProps> = ({ country, setCountry, setOffset }) => {
   const { darkMode } = useContext(Theme);
   const [countries, setCountries] = useState<Country[]>();
 
@@ -26,7 +26,7 @@ const SelectCountry = ({ country, setCountry, setOffset }: SelectCountryProps) =
       });
   }, []);
 
-  const handleOnChange: React.ChangeEventHandler<HTMLSelectElement> | undefined = (event) => {
+  const handleOnChange: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
     setCountry(event.target.value);
     setOffset(0);
   };

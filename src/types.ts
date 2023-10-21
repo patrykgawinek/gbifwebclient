@@ -1,17 +1,17 @@
-export interface ClassificationState {
+export type ClassificationState = {
   name: string;
   value: number;
   setValue: React.Dispatch<React.SetStateAction<number>>;
-}
+};
 
-/* Countries interface */
-export interface Country {
+/* Countries type */
+export type Country = {
   Code: string;
   Name: string;
-}
+};
 
-/* Species interfaces */
-export interface Classification {
+/* Species type */
+export type Classification = {
   key: number;
   nubKey: number;
   nameKey: number;
@@ -43,17 +43,17 @@ export interface Classification {
   publishedIn: string;
   family: string;
   familyKey?: number;
-}
+};
 
-export interface ISpecies {
+export type Species = {
   offset: number;
   limit: number;
   endOfRecords: boolean;
   results: Classification[];
-}
+};
 
-/* Occurence results interfaces */
-export interface HttpRsGbifOrgTerms10Multimedia {
+/* Occurence results type */
+export type HttpRsGbifOrgTerms10Multimedia = {
   'http://purl.org/dc/terms/title': string;
   'http://purl.org/dc/terms/format': string;
   'http://purl.org/dc/terms/license': string;
@@ -61,13 +61,13 @@ export interface HttpRsGbifOrgTerms10Multimedia {
   'http://purl.org/dc/terms/creator': string;
   'http://purl.org/dc/terms/rightsHolder': string;
   'http://purl.org/dc/terms/identifier': string;
-}
+};
 
-export interface Extensions {
+export type Extensions = {
   'http://rs.gbif.org/terms/1.0/Multimedia'?: HttpRsGbifOrgTerms10Multimedia[];
-}
+};
 
-export interface Medium {
+export type Medium = {
   type: string;
   format: string;
   identifier: string;
@@ -76,36 +76,36 @@ export interface Medium {
   creator: string;
   license: string;
   rightsHolder: string;
-}
+};
 
-export interface Level0 {
+export type Level0 = {
   gid: string;
   name: string;
-}
+};
 
-export interface Level1 {
+export type Level1 = {
   gid: string;
   name: string;
-}
+};
 
-export interface Level2 {
+export type Level2 = {
   gid: string;
   name: string;
-}
+};
 
-export interface Level3 {
+export type Level3 = {
   gid: string;
   name: string;
-}
+};
 
-export interface Gadm {
+export type Gadm = {
   level0: Level0;
   level1: Level1;
   level2: Level2;
   level3: Level3;
-}
+};
 
-export interface Occurence {
+export type Occurence = {
   key: number;
   datasetKey: string;
   publishingOrgKey: string;
@@ -235,13 +235,13 @@ export interface Occurence {
   'http://rs.tdwg.org/dwc/terms/organismQuantity': string;
   organismName: string;
   'http://rs.tdwg.org/dwc/terms/organismQuantityType': string;
-}
+};
 
-export interface IOccurences {
+export type Occurences = {
   offset: number;
   limit: number;
   endOfRecords: boolean;
   count: number;
   results: Occurence[];
   facets: any[];
-}
+};

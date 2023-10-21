@@ -6,23 +6,23 @@ import { useContext } from 'react';
 import styles from './SearchClassification.module.css';
 import { Classification, ClassificationState } from 'types';
 
-interface SearchClassProps {
+type SearchClassProps = {
   showItems: boolean[];
   setShowItems: React.Dispatch<React.SetStateAction<boolean[]>>;
   classificationLevel: number;
   classificationArray: ClassificationState[];
   setLastSelection: React.Dispatch<React.SetStateAction<number>>;
   setOffset: React.Dispatch<React.SetStateAction<number>>;
-}
+};
 
-const SearchClassification = ({
+const SearchClassification: React.FC<SearchClassProps> = ({
   showItems,
   setShowItems,
   classificationLevel,
   classificationArray,
   setLastSelection,
   setOffset,
-}: SearchClassProps) => {
+}) => {
   const { darkMode } = useContext(Theme);
 
   const [currentList, setCurrentList] = useState<Classification[]>([]);

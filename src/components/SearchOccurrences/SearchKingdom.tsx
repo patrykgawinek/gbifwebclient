@@ -6,14 +6,19 @@ import { useContext } from 'react';
 import styles from './SearchKingdom.module.css';
 import { Classification } from 'types';
 
-interface SearchKingdomProps {
+type SearchKingdomProps = {
   setSelectedKingdom: Dispatch<SetStateAction<number>>;
   setShowItems: Dispatch<SetStateAction<boolean[]>>;
   setLastSelection: Dispatch<SetStateAction<number>>;
   setOffset: React.Dispatch<React.SetStateAction<number>>;
-}
+};
 
-const SearchKingdom = ({ setSelectedKingdom, setShowItems, setLastSelection, setOffset }: SearchKingdomProps) => {
+const SearchKingdom: React.FC<SearchKingdomProps> = ({
+  setSelectedKingdom,
+  setShowItems,
+  setLastSelection,
+  setOffset,
+}) => {
   const { darkMode } = useContext(Theme);
 
   const [kingdomList, setKingdomList] = useState<Classification[]>([]);
