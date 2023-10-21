@@ -102,40 +102,40 @@ const SearchOccurrencesResults: React.FC<SearchOccurrencesResultProps> = ({
                 </Col>
               ))}
           </Row>
-          <Row xs={12} className="align-self-center justify-content-center">
-            <Col xs={2} className="d-flex justify-content-end">
-              <Button
-                className={`${styles.buttonHeight} ${offset === 0 ? `disabled` : undefined} ${
-                  darkMode ? 'btn-dark' : 'btn-primary'
-                }`}
-                onClick={handleChangePage(false)}
-              >
-                <img src="/assets/icons/back.png" alt="<" className={styles.backNav} />
-              </Button>
-            </Col>
-            <Col
-              xs="auto"
-              md="auto"
-              className={`d-flex justify-content-center align-items-center ${styles.offsetText} ${
-                darkMode ? styles.lightText : undefined
-              }`}
-            >
-              {foundResults?.count > 0 ? offset + 1 : 0} -{' '}
-              {foundResults?.endOfRecords ? foundResults?.count : offset + 12}
-            </Col>
-            <Col xs={2}>
-              <Button
-                className={`${styles.buttonHeight} ${foundResults?.endOfRecords ? `disabled` : undefined} ${
-                  darkMode ? 'btn-dark' : 'btn-primary'
-                }`}
-                onClick={handleChangePage()}
-              >
-                <img src="/assets/icons/back.png" alt=">" className={styles.nextNav} />
-              </Button>
-            </Col>
-          </Row>
         </>
       )}
+
+      <Row xs={12} className="align-self-center justify-content-center">
+        <Col xs={2} className="d-flex justify-content-end">
+          <Button
+            className={`${styles.buttonHeight} ${offset === 0 ? `disabled` : undefined} ${
+              darkMode ? 'btn-dark' : 'btn-primary'
+            }`}
+            onClick={handleChangePage(false)}
+          >
+            <img src="/assets/icons/back.png" alt="<" className={styles.backNav} />
+          </Button>
+        </Col>
+        <Col
+          xs="auto"
+          md="auto"
+          className={`d-flex justify-content-center align-items-center ${styles.offsetText} ${
+            darkMode ? styles.lightText : undefined
+          }`}
+        >
+          {foundResults?.count > 0 ? offset + 1 : 0} - {foundResults?.endOfRecords ? foundResults?.count : offset + 12}
+        </Col>
+        <Col xs={2}>
+          <Button
+            className={`${styles.buttonHeight} ${foundResults?.endOfRecords ? `disabled` : undefined} ${
+              darkMode ? 'btn-dark' : 'btn-primary'
+            }`}
+            onClick={handleChangePage()}
+          >
+            <img src="/assets/icons/back.png" alt=">" className={styles.nextNav} />
+          </Button>
+        </Col>
+      </Row>
     </Container>
   );
 };
