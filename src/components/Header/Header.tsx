@@ -6,6 +6,7 @@ import styles from './Header.module.css';
 
 const Header: React.FC = () => {
   const { darkMode, setDarkMode } = useContext(Theme);
+  const handleDarkMode = () => () => setDarkMode(!darkMode);
 
   return (
     <header>
@@ -29,7 +30,7 @@ const Header: React.FC = () => {
             </Nav>
             <Button
               className={`${styles.themeToggle} ${darkMode ? 'btn-dark' : 'btn-primary'}`}
-              onClick={() => setDarkMode(!darkMode)}
+              onClick={handleDarkMode()}
             >
               <img
                 className={styles.modeButtonIcon}

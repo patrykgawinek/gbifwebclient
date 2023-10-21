@@ -42,9 +42,9 @@ const SearchKingdom: React.FC<SearchKingdomProps> = ({
       });
   }, []);
 
-  const handleOnClick = (kingdom: Classification) => {
-    setSelectedKingdom(kingdom.kingdomKey);
-    setLastSelection(kingdom.kingdomKey);
+  const handleOnClick = (kingdom: Classification) => () => {
+    setSelectedKingdom(kingdom.key);
+    setLastSelection(kingdom.key);
     setShowItems([true, true, false, false, false, false, false]);
     setOffset(0);
   };
@@ -60,13 +60,13 @@ const SearchKingdom: React.FC<SearchKingdomProps> = ({
       ) : (
         <Row className="justify-content-center" xs={3} sm={3} md={4} lg={4} xl="auto">
           {kingdomList.map((kingdom: Classification) => (
-            <Col className={styles.columnPadding} key={kingdom.kingdomKey}>
+            <Col className={styles.columnPadding} key={kingdom.key}>
               <Button
                 className={styles.kingdomButton}
                 variant={darkMode ? 'dark' : 'outline-primary'}
-                value={kingdom.kingdomKey}
-                key={kingdom.kingdomKey}
-                onClick={() => handleOnClick(kingdom)}
+                value={kingdom.key}
+                key={kingdom.key}
+                onClick={handleOnClick(kingdom)}
               >
                 {kingdom.scientificName}
               </Button>

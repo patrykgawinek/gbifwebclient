@@ -64,7 +64,7 @@ const SearchClassification: React.FC<SearchClassProps> = ({
     (item: Classification) => item.rank === classificationArray[classificationLevel].name.toUpperCase(),
   );
 
-  const handleOnChange: React.ChangeEventHandler<HTMLSelectElement> | undefined = (event) => {
+  const handleOnChange: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
     classificationArray[classificationLevel].setValue(parseInt(event.target.value));
     setLastSelection(parseInt(event.target.value));
     setOffset(0); //Sets offset for search occurence results back to 0

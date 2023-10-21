@@ -55,6 +55,17 @@ const SearchOccurrencesResults: React.FC<SearchOccurrencesResultProps> = ({
   }, [lastSelection, offset, country]);
 
   const handleOnClick = () => navigate(`/map/${lastSelection}`);
+  const handleChangePage =
+    (next: boolean = true) =>
+    () => {
+      if (next && !foundResults.endOfRecords) {
+        setOffset(offset + 12);
+        return;
+      }
+      if (offset > 0) {
+        setOffset(offset - 12);
+      }
+    };
 
   return (
     <Container className="d-flex flex-column">
@@ -97,11 +108,7 @@ const SearchOccurrencesResults: React.FC<SearchOccurrencesResultProps> = ({
                 className={`${styles.buttonHeight} ${offset === 0 ? `disabled` : undefined} ${
                   darkMode ? 'btn-dark' : 'btn-primary'
                 }`}
-                onClick={() => {
-                  if (offset > 0) {
-                    setOffset(offset - 12);
-                  }
-                }}
+                onClick={handleChangePage(false)}
               >
                 <img src="/assets/icons/back.png" alt="<" className={styles.backNav} />
               </Button>
@@ -121,11 +128,7 @@ const SearchOccurrencesResults: React.FC<SearchOccurrencesResultProps> = ({
                 className={`${styles.buttonHeight} ${foundResults?.endOfRecords ? `disabled` : undefined} ${
                   darkMode ? 'btn-dark' : 'btn-primary'
                 }`}
-                onClick={() => {
-                  if (!foundResults.endOfRecords) {
-                    setOffset(offset + 12);
-                  }
-                }}
+                onClick={handleChangePage()}
               >
                 <img src="/assets/icons/back.png" alt=">" className={styles.nextNav} />
               </Button>
