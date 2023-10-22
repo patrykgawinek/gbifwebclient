@@ -60,9 +60,7 @@ const App: React.FC = () => {
                   }
                 />
               </Route>
-              <Route path="map">
-                <Route path=":id?" element={<MapPage />} />
-              </Route>
+              <Route path="map" element={<MapPage />} />
             </Route>
           </Routes>
           <Footer />

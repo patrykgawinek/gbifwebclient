@@ -1,11 +1,11 @@
 import { MapContainer as LeafletMap, TileLayer } from 'react-leaflet';
-import { useParams } from 'react-router';
 import { Theme } from 'components/App/App';
 import { useContext, useEffect, useState } from 'react';
 import styles from './MapPage.module.css';
+import { useSearchParams } from 'react-router-dom';
 
 const MapPage: React.FC = () => {
-  let taxonKey = useParams();
+  const [searchParams] = useSearchParams();
   const { darkMode } = useContext(Theme);
   const [mapStyle, setMapStyle] = useState<string>('');
 
@@ -17,12 +17,16 @@ const MapPage: React.FC = () => {
     }
   }, [darkMode, mapStyle]);
 
-  let overlay: string;
-  if (!taxonKey.id) {
-    overlay = `https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?style=${mapStyle}`;
-  } else {
-    overlay = `https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?style=${mapStyle}&taxonKey=${taxonKey.id}`;
-  }
+  const params = [
+    { name: 'style', value: mapStyle },
+    { name: 'taxonKey', value: searchParams.get('taxonKey') },
+    { name: 'country', value: searchParams.get('country') },
+  ]
+    .filter((param) => Boolean(param.value))
+    .map((param) => `${param.name}=${param.value}`)
+    .join('&');
+  console.log(params);
+  const overlay = `https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?${params}`;
 
   return (
     <main className={styles.container}>

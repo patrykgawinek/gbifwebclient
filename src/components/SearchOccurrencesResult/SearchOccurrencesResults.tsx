@@ -54,7 +54,14 @@ const SearchOccurrencesResults: React.FC<SearchOccurrencesResultProps> = ({
       });
   }, [lastSelection, offset, country]);
 
-  const handleOnClick = () => navigate(`/map/${lastSelection}`);
+  const mapParams = [
+    { name: 'taxonKey', value: lastSelection },
+    { name: 'country', value: country },
+  ]
+    .filter((param) => Boolean(param.value))
+    .map((param) => `${param.name}=${param.value}`)
+    .join('&');
+  const handleOnClick = () => navigate(`/map?${mapParams}`);
   const handleChangePage =
     (next: boolean = true) =>
     () => {

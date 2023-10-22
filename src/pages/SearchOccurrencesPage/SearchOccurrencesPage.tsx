@@ -70,7 +70,7 @@ const SearchOccurrencesPage: React.FC = () => {
             {classificationArray.slice(1).map((classification, index) => {
               return (
                 showItems[index + 1] && (
-                  <Col key={index + 1}>
+                  <Col key={classification.name}>
                     <SearchClassification
                       classificationLevel={index + 1}
                       showItems={showItems}
