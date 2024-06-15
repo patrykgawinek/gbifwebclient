@@ -1,0 +1,402 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`App root > renders home page 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="_AppContainer_d6da67 _darkMode_d6da67"
+      >
+        <header>
+          <nav
+            class="bg-dark navbar-dark navbar navbar-expand-sm navbar-light"
+          >
+            <div
+              class="container"
+            >
+              <a
+                aria-current="page"
+                class="_brand_63c2ea active"
+                href="/"
+              >
+                <span
+                  class="navbar-brand"
+                >
+                  GBIF Client
+                </span>
+              </a>
+              <button
+                aria-controls="basic-navbar-nav"
+                aria-label="Toggle navigation"
+                class="navbar-toggler collapsed"
+                type="button"
+              >
+                <span
+                  class="navbar-toggler-icon"
+                />
+              </button>
+              <div
+                class="navbar-collapse collapse"
+                id="basic-navbar-nav"
+              >
+                <div
+                  class="me-auto navbar-nav"
+                >
+                  <a
+                    aria-current="page"
+                    class="nav-link active"
+                    href="/"
+                  >
+                    How-to
+                  </a>
+                  <a
+                    class="nav-link"
+                    href="/occurrences"
+                  >
+                    Search
+                  </a>
+                  <a
+                    class="nav-link"
+                    href="/map"
+                  >
+                    Map
+                  </a>
+                </div>
+                <button
+                  class="_themeToggle_63c2ea btn-dark btn btn-primary"
+                  type="button"
+                >
+                  <img
+                    alt="Dark mode"
+                    class="_modeButtonIcon_63c2ea"
+                    src="/assets/icons/moon.png"
+                  />
+                </button>
+              </div>
+            </div>
+          </nav>
+        </header>
+        <div
+          class="_mainContent_d6da67"
+        >
+          <main>
+            <div
+              class="container"
+            >
+              <h1
+                class="mt-3 _lightText_ea6e48"
+              >
+                What is the GBIF Client web app?
+              </h1>
+              <p
+                class="_lightText_ea6e48"
+              >
+                The GBIF Client web app is a front-end web app that gives you a more user friendly experience when accessing
+                 
+                <a
+                  class="_hyperLinkDark_ea6e48"
+                  href="https://www.gbif.org/occurrence/search"
+                >
+                  GBIF's
+                </a>
+                 
+                dataset. GBIF is an international network and data infrastructure funded by the world's governments and aimed at providing anyone, anywhere, open access to data about all types of life on Earth. This means that you can find data on a plethora of species and recorded occurrences of said species.
+              </p>
+              <h2
+                class="_lightText_ea6e48"
+              >
+                How do I use this web app?
+              </h2>
+              <p
+                class="_lightText_ea6e48"
+              >
+                To use this web app, you can simply navigate to the
+                 
+                <a
+                  class="_hyperLinkDark_ea6e48"
+                  href="/occurrences"
+                >
+                  search page
+                </a>
+                 
+                and start browsing through different kingdoms, phyla ... Below the search section found occurrences will appear. You can select an occurrence to see more details, or you can click the button to show all occurrences on a heatmap.
+              </p>
+              <h2
+                class="_lightText_ea6e48"
+              >
+                What is the difference between the map button on the search page and the map in the top navigation?
+              </h2>
+              <p
+                class="_lightText_ea6e48"
+              >
+                The button on the search page shows a heatmap for the taxonomy you selected. The
+                 
+                <a
+                  class="_hyperLinkDark_ea6e48"
+                  href="/map"
+                >
+                  map in the navigation
+                </a>
+                , however, shows a heatmap of all occurrences in the dataset of GBIF.
+              </p>
+              <h2
+                class="_lightText_ea6e48"
+              >
+                Does this web app save any of my data?
+              </h2>
+              <p
+                class="_lightText_ea6e48"
+              >
+                We save your choice of theme locally on your computer. You can always remove said item by clearing your browser's cache. Alongside of that we save your last selected taxonomy. This gets cleared every time you close the tab this web app was opened with.
+              </p>
+              <button
+                class="mb-3 _buttonStyle_ea6e48 btn btn-dark"
+                type="button"
+              >
+                Start browsing!
+              </button>
+            </div>
+          </main>
+        </div>
+        <footer>
+          <nav
+            class="bg-dark navbar-dark navbar navbar-expand navbar-light"
+          >
+            <p
+              class="_footerText_eb428f"
+            >
+              GBIF Client | ©
+              2024
+               | Project for AP Hogeschool - Patryk Gawinek
+               
+            </p>
+          </nav>
+        </footer>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="_AppContainer_d6da67 _darkMode_d6da67"
+    >
+      <header>
+        <nav
+          class="bg-dark navbar-dark navbar navbar-expand-sm navbar-light"
+        >
+          <div
+            class="container"
+          >
+            <a
+              aria-current="page"
+              class="_brand_63c2ea active"
+              href="/"
+            >
+              <span
+                class="navbar-brand"
+              >
+                GBIF Client
+              </span>
+            </a>
+            <button
+              aria-controls="basic-navbar-nav"
+              aria-label="Toggle navigation"
+              class="navbar-toggler collapsed"
+              type="button"
+            >
+              <span
+                class="navbar-toggler-icon"
+              />
+            </button>
+            <div
+              class="navbar-collapse collapse"
+              id="basic-navbar-nav"
+            >
+              <div
+                class="me-auto navbar-nav"
+              >
+                <a
+                  aria-current="page"
+                  class="nav-link active"
+                  href="/"
+                >
+                  How-to
+                </a>
+                <a
+                  class="nav-link"
+                  href="/occurrences"
+                >
+                  Search
+                </a>
+                <a
+                  class="nav-link"
+                  href="/map"
+                >
+                  Map
+                </a>
+              </div>
+              <button
+                class="_themeToggle_63c2ea btn-dark btn btn-primary"
+                type="button"
+              >
+                <img
+                  alt="Dark mode"
+                  class="_modeButtonIcon_63c2ea"
+                  src="/assets/icons/moon.png"
+                />
+              </button>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div
+        class="_mainContent_d6da67"
+      >
+        <main>
+          <div
+            class="container"
+          >
+            <h1
+              class="mt-3 _lightText_ea6e48"
+            >
+              What is the GBIF Client web app?
+            </h1>
+            <p
+              class="_lightText_ea6e48"
+            >
+              The GBIF Client web app is a front-end web app that gives you a more user friendly experience when accessing
+               
+              <a
+                class="_hyperLinkDark_ea6e48"
+                href="https://www.gbif.org/occurrence/search"
+              >
+                GBIF's
+              </a>
+               
+              dataset. GBIF is an international network and data infrastructure funded by the world's governments and aimed at providing anyone, anywhere, open access to data about all types of life on Earth. This means that you can find data on a plethora of species and recorded occurrences of said species.
+            </p>
+            <h2
+              class="_lightText_ea6e48"
+            >
+              How do I use this web app?
+            </h2>
+            <p
+              class="_lightText_ea6e48"
+            >
+              To use this web app, you can simply navigate to the
+               
+              <a
+                class="_hyperLinkDark_ea6e48"
+                href="/occurrences"
+              >
+                search page
+              </a>
+               
+              and start browsing through different kingdoms, phyla ... Below the search section found occurrences will appear. You can select an occurrence to see more details, or you can click the button to show all occurrences on a heatmap.
+            </p>
+            <h2
+              class="_lightText_ea6e48"
+            >
+              What is the difference between the map button on the search page and the map in the top navigation?
+            </h2>
+            <p
+              class="_lightText_ea6e48"
+            >
+              The button on the search page shows a heatmap for the taxonomy you selected. The
+               
+              <a
+                class="_hyperLinkDark_ea6e48"
+                href="/map"
+              >
+                map in the navigation
+              </a>
+              , however, shows a heatmap of all occurrences in the dataset of GBIF.
+            </p>
+            <h2
+              class="_lightText_ea6e48"
+            >
+              Does this web app save any of my data?
+            </h2>
+            <p
+              class="_lightText_ea6e48"
+            >
+              We save your choice of theme locally on your computer. You can always remove said item by clearing your browser's cache. Alongside of that we save your last selected taxonomy. This gets cleared every time you close the tab this web app was opened with.
+            </p>
+            <button
+              class="mb-3 _buttonStyle_ea6e48 btn btn-dark"
+              type="button"
+            >
+              Start browsing!
+            </button>
+          </div>
+        </main>
+      </div>
+      <footer>
+        <nav
+          class="bg-dark navbar-dark navbar navbar-expand navbar-light"
+        >
+          <p
+            class="_footerText_eb428f"
+          >
+            GBIF Client | ©
+            2024
+             | Project for AP Hogeschool - Patryk Gawinek
+             
+          </p>
+        </nav>
+      </footer>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
