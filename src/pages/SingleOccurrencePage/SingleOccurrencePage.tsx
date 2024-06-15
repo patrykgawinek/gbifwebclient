@@ -1,15 +1,15 @@
-import axios from 'axios';
-import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { MapContainer as LeafletMap, TileLayer, Marker } from 'react-leaflet';
-import './leaflet.css';
-import { Col, Container, Row, Image, Carousel, Table, Spinner } from 'react-bootstrap';
-import ReactAudioPlayer from 'react-audio-player';
-import { Theme } from 'components/App/App';
-import styles from './SingleOccurrencePage.module.css';
-import { Medium, Occurence } from 'types';
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { MapContainer as LeafletMap, TileLayer, Marker } from "react-leaflet";
+import "./leaflet.css";
+import { Col, Container, Row, Image, Carousel, Table, Spinner } from "react-bootstrap";
+import ReactAudioPlayer from "react-audio-player";
+import { Theme } from "../../App/App";
+import styles from "./SingleOccurrencePage.module.css";
+import { Medium, Occurence } from "../../types";
 
-const SingleOccurrencePage: React.FC = () => {
+export const SingleOccurrencePage: React.FC = () => {
   let { id } = useParams();
   const { darkMode } = useContext(Theme);
   const [occurrence, setOccurrence] = useState<Occurence>();
@@ -19,7 +19,7 @@ const SingleOccurrencePage: React.FC = () => {
     setCarouselIndex(selectedIndex);
   };
 
-  const baseUrlApi: string = 'https://api.gbif.org/v1';
+  const baseUrlApi: string = "https://api.gbif.org/v1";
   const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
     setLoading(true);
@@ -39,22 +39,22 @@ const SingleOccurrencePage: React.FC = () => {
       <Container className={styles.tableBorderOverwrite}>
         {loading ? (
           <Row className="justify-content-center">
-            <Spinner className="" animation="border" role="status" variant={darkMode ? 'light' : 'primary'}>
+            <Spinner className="" animation="border" role="status" variant={darkMode ? "light" : "primary"}>
               <span className="visually-hidden">Loading...</span>
             </Spinner>
           </Row>
         ) : (
           <>
             <h1 className="mt-3">Occurrence #{occurrence?.key}</h1>
-            <Table className={`mt-3 ${darkMode ? 'table-dark' : undefined}`} striped hover size="sm">
+            <Table className={`mt-3 ${darkMode ? "table-dark" : undefined}`} striped hover size="sm">
               <tbody>
                 <tr>
                   <td className="col-6">Date of occurrence</td>
-                  <td className="col-6">{occurrence?.eventDate ? new Date(occurrence.eventDate).toUTCString() : ''}</td>
+                  <td className="col-6">{occurrence?.eventDate ? new Date(occurrence.eventDate).toUTCString() : ""}</td>
                 </tr>
                 <tr>
                   <td>Identified by</td>
-                  <td>{occurrence?.identifiedBy ?? 'Unknown'}</td>
+                  <td>{occurrence?.identifiedBy ?? "Unknown"}</td>
                 </tr>
                 <tr>
                   <td>Occurrence remarks</td>
@@ -64,7 +64,7 @@ const SingleOccurrencePage: React.FC = () => {
             </Table>
             <Row>
               {occurrence?.decimalLatitude && (
-                <Col className={occurrence?.media.length > 0 ? 'col-12 col-sm-12 col-md-6' : 'col-sm-12'}>
+                <Col className={occurrence?.media.length > 0 ? "col-12 col-sm-12 col-md-6" : "col-sm-12"}>
                   <div className={occurrence?.media.length > 0 ? styles.leaflet : styles.onlyLeaflet}>
                     {darkMode && (
                       <LeafletMap
@@ -100,7 +100,7 @@ const SingleOccurrencePage: React.FC = () => {
                   <Carousel fade activeIndex={carouselIndex} onSelect={handleSelect}>
                     {occurrence.media.map((e: Medium, index: number) => (
                       <Carousel.Item key={index}>
-                        {e.type === 'Sound' ? (
+                        {e.type === "Sound" ? (
                           <div className={styles.audio}>
                             <ReactAudioPlayer src={e.identifier} controls />
                           </div>
@@ -114,7 +114,7 @@ const SingleOccurrencePage: React.FC = () => {
               )}
               {occurrence?.media && occurrence?.media.length === 1 && (
                 <Col className="col-12 col-sm-12 col-md-6">
-                  {occurrence.media[0].type === 'Sound' ? (
+                  {occurrence.media[0].type === "Sound" ? (
                     <div className={styles.audio}>
                       <ReactAudioPlayer src={occurrence.media[0].identifier} controls />
                     </div>
@@ -124,7 +124,7 @@ const SingleOccurrencePage: React.FC = () => {
                 </Col>
               )}
             </Row>
-            <Table className={`mt-3 ${darkMode ? 'table-dark' : undefined}`} striped hover size="sm">
+            <Table className={`mt-3 ${darkMode ? "table-dark" : undefined}`} striped hover size="sm">
               <thead>
                 <tr>
                   <th className="col-6">Taxon</th>
@@ -158,7 +158,7 @@ const SingleOccurrencePage: React.FC = () => {
                 </tr>
               </tbody>
             </Table>
-            <Table className={`${darkMode ? 'table-dark' : undefined}`} striped hover size="sm">
+            <Table className={`${darkMode ? "table-dark" : undefined}`} striped hover size="sm">
               <thead>
                 <tr>
                   <td className="col-6">Naming</td>
@@ -176,7 +176,7 @@ const SingleOccurrencePage: React.FC = () => {
                 </tr>
               </tbody>
             </Table>
-            <Table className={`${darkMode ? 'table-dark' : undefined}`} striped hover size="sm">
+            <Table className={`${darkMode ? "table-dark" : undefined}`} striped hover size="sm">
               <thead>
                 <tr>
                   <td className="col-6">GADM Level</td>
@@ -198,7 +198,7 @@ const SingleOccurrencePage: React.FC = () => {
                 </tr>
               </tbody>
             </Table>
-            <Table className={`${darkMode ? 'table-dark' : undefined}`} striped size="sm">
+            <Table className={`${darkMode ? "table-dark" : undefined}`} striped size="sm">
               <thead>
                 <tr>
                   <td className="col-4">Latitide</td>
@@ -220,5 +220,3 @@ const SingleOccurrencePage: React.FC = () => {
     </main>
   );
 };
-
-export default SingleOccurrencePage;
