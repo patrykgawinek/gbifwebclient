@@ -11,6 +11,7 @@ coverage
 # production
 build
 dist
+.firebase
 
 # misc
 .DS_Store
