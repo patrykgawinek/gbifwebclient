@@ -1,9 +1,9 @@
-import { Form } from 'react-bootstrap';
-import { Theme } from '../../App/App';
-import { useContext, useEffect, useState } from 'react';
-import styles from './SelectCountry.module.css';
-import axios from 'axios';
-import { Country } from '../../types';
+import { Form } from "react-bootstrap";
+import { Theme } from "../../App/App";
+import { useContext, useEffect, useState } from "react";
+import styles from "./SelectCountry.module.css";
+import axios from "axios";
+import { Country } from "../../types";
 
 type SelectCountryProps = {
   country: string;
@@ -33,7 +33,7 @@ export const SelectCountry: React.FC<SelectCountryProps> = ({ country, setCountr
 
   return (
     <Form.Select className={`mb-3 ${darkMode ? styles.formDark : undefined}`} onChange={handleOnChange} value={country}>
-      <option key={'empty'} value={''}>
+      <option key={"empty"} value={""}>
         Show results in all countries
       </option>
       {countries?.map((country: Country) => (

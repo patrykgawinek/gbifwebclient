@@ -1,8 +1,8 @@
-import { Button, Container, Nav, Navbar } from 'react-bootstrap';
-import { Theme } from '../../App/App';
-import { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
-import styles from './Header.module.css';
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
+import { Theme } from "../../App/App";
+import { useContext } from "react";
+import { NavLink } from "react-router-dom";
+import styles from "./Header.module.css";
 
 export const Header: React.FC = () => {
   const { darkMode, setDarkMode } = useContext(Theme);
@@ -10,7 +10,7 @@ export const Header: React.FC = () => {
 
   return (
     <header>
-      <Navbar expand="sm" className={darkMode ? 'bg-dark navbar-dark' : 'bg-primary navbar-dark'}>
+      <Navbar expand="sm" className={darkMode ? "bg-dark navbar-dark" : "bg-primary navbar-dark"}>
         <Container>
           <NavLink to="/" className={styles.brand}>
             <Navbar.Brand>GBIF Client</Navbar.Brand>
@@ -29,13 +29,13 @@ export const Header: React.FC = () => {
               </NavLink>
             </Nav>
             <Button
-              className={`${styles.themeToggle} ${darkMode ? 'btn-dark' : 'btn-primary'}`}
+              className={`${styles.themeToggle} ${darkMode ? "btn-dark" : "btn-primary"}`}
               onClick={handleDarkMode()}
             >
               <img
                 className={styles.modeButtonIcon}
-                src={darkMode ? '/assets/icons/moon.png' : '/assets/icons/sun.png'}
-                alt={darkMode ? 'Dark mode' : 'Light mode'}
+                src={darkMode ? "/assets/icons/moon.png" : "/assets/icons/sun.png"}
+                alt={darkMode ? "Dark mode" : "Light mode"}
               />
             </Button>
           </Navbar.Collapse>

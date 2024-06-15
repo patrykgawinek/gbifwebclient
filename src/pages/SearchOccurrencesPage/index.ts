@@ -1,1 +1,1 @@
-export { SearchOccurrencesPage } from './SearchOccurrencesPage';
+export { SearchOccurrencesPage } from "./SearchOccurrencesPage";

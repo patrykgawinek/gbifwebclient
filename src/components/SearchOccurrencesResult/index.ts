@@ -1,2 +1,2 @@
-export { SearchOccurrencesResults } from './SearchOccurrencesResults';
-export { SingleOccurrenceResult } from './SingleOccurrenceResult';
+export { SearchOccurrencesResults } from "./SearchOccurrencesResults";
+export { SingleOccurrenceResult } from "./SingleOccurrenceResult";

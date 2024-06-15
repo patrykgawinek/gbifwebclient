@@ -1,1 +1,1 @@
-export { SingleOccurrencePage } from './SingleOccurrencePage';
+export { SingleOccurrencePage } from "./SingleOccurrencePage";

@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { Button, Col, Container, Row, Spinner } from 'react-bootstrap';
-import { SingleOccurrenceResult } from './SingleOccurrenceResult';
-import { Theme } from '../../App/App';
-import { useContext } from 'react';
-import styles from './SearchOccurrencesResults.module.css';
-import { Occurences, Occurence } from '../../types';
-import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
+import { SingleOccurrenceResult } from "./SingleOccurrenceResult";
+import { Theme } from "../../App/App";
+import { useContext } from "react";
+import styles from "./SearchOccurrencesResults.module.css";
+import { Occurences, Occurence } from "../../types";
+import { useNavigate } from "react-router-dom";
 
 type SearchOccurrencesResultProps = {
   country: string;
@@ -32,7 +32,7 @@ export const SearchOccurrencesResults: React.FC<SearchOccurrencesResultProps> = 
     results: [],
     facets: [],
   });
-  const baseUrlApi: string = 'https://api.gbif.org/v1';
+  const baseUrlApi: string = "https://api.gbif.org/v1";
   const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
     setLoading(true);
@@ -55,12 +55,12 @@ export const SearchOccurrencesResults: React.FC<SearchOccurrencesResultProps> = 
   }, [lastSelection, offset, country]);
 
   const mapParams = [
-    { name: 'taxonKey', value: lastSelection },
-    { name: 'country', value: country },
+    { name: "taxonKey", value: lastSelection },
+    { name: "country", value: country },
   ]
     .filter((param) => Boolean(param.value))
     .map((param) => `${param.name}=${param.value}`)
-    .join('&');
+    .join("&");
   const handleOnClick = () => navigate(`/map?${mapParams}`);
   const handleChangePage =
     (next: boolean = true) =>
@@ -78,7 +78,7 @@ export const SearchOccurrencesResults: React.FC<SearchOccurrencesResultProps> = 
     <Container className="d-flex flex-column">
       {loading ? (
         <Row className="justify-content-center">
-          <Spinner className="" animation="border" role="status" variant={darkMode ? 'light' : 'primary'}>
+          <Spinner className="" animation="border" role="status" variant={darkMode ? "light" : "primary"}>
             <span className="visually-hidden">Loading...</span>
           </Spinner>
         </Row>
@@ -87,14 +87,14 @@ export const SearchOccurrencesResults: React.FC<SearchOccurrencesResultProps> = 
           <Row className="mb-2">
             <Col>
               <h2 className={darkMode ? styles.lightText : undefined}>
-                Found {foundResults?.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} results
+                Found {foundResults?.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} results
               </h2>
             </Col>
             <Col className="d-flex justify-content-end align-items-center">
               <Button
                 onClick={handleOnClick}
-                className={`${styles.heatmapButton} ${lastSelection === -1 ? 'disabled' : ''} ${
-                  darkMode ? 'btn-dark' : 'btn-primary'
+                className={`${styles.heatmapButton} ${lastSelection === -1 ? "disabled" : ""} ${
+                  darkMode ? "btn-dark" : "btn-primary"
                 }`}
               >
                 Show occurrences on heatmap
@@ -116,7 +116,7 @@ export const SearchOccurrencesResults: React.FC<SearchOccurrencesResultProps> = 
         <Col xs={2} className="d-flex justify-content-end">
           <Button
             className={`${styles.buttonHeight} ${offset === 0 ? `disabled` : undefined} ${
-              darkMode ? 'btn-dark' : 'btn-primary'
+              darkMode ? "btn-dark" : "btn-primary"
             }`}
             onClick={handleChangePage(false)}
           >
@@ -135,7 +135,7 @@ export const SearchOccurrencesResults: React.FC<SearchOccurrencesResultProps> = 
         <Col xs={2}>
           <Button
             className={`${styles.buttonHeight} ${foundResults?.endOfRecords ? `disabled` : undefined} ${
-              darkMode ? 'btn-dark' : 'btn-primary'
+              darkMode ? "btn-dark" : "btn-primary"
             }`}
             onClick={handleChangePage()}
           >

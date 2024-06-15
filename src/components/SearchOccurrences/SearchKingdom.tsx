@@ -1,10 +1,10 @@
-import axios from 'axios';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { Button, Col, Container, Row, Spinner } from 'react-bootstrap';
-import { Theme } from '../../App/App';
-import { useContext } from 'react';
-import styles from './SearchKingdom.module.css';
-import { Classification } from '../../types';
+import axios from "axios";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
+import { Theme } from "../../App/App";
+import { useContext } from "react";
+import styles from "./SearchKingdom.module.css";
+import { Classification } from "../../types";
 
 type SearchKingdomProps = {
   setSelectedKingdom: Dispatch<SetStateAction<number>>;
@@ -22,14 +22,14 @@ export const SearchKingdom: React.FC<SearchKingdomProps> = ({
   const { darkMode } = useContext(Theme);
 
   const [kingdomList, setKingdomList] = useState<Classification[]>([]);
-  const baseUrlApi: string = 'https://api.gbif.org/v1';
+  const baseUrlApi: string = "https://api.gbif.org/v1";
   const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
     setLoading(true);
     axios
       .get(`${baseUrlApi}/species/suggest`, {
         params: {
-          rank: 'kingdom',
+          rank: "kingdom",
         },
       })
       .then((response) => {
@@ -53,7 +53,7 @@ export const SearchKingdom: React.FC<SearchKingdomProps> = ({
     <Container fluid>
       {loading ? (
         <Row className="justify-content-center">
-          <Spinner className="" animation="border" role="status" variant={darkMode ? 'light' : 'primary'}>
+          <Spinner className="" animation="border" role="status" variant={darkMode ? "light" : "primary"}>
             <span className="visually-hidden">Loading...</span>
           </Spinner>
         </Row>
@@ -63,7 +63,7 @@ export const SearchKingdom: React.FC<SearchKingdomProps> = ({
             <Col className={styles.columnPadding} key={kingdom.key}>
               <Button
                 className={styles.kingdomButton}
-                variant={darkMode ? 'dark' : 'outline-primary'}
+                variant={darkMode ? "dark" : "outline-primary"}
                 value={kingdom.key}
                 key={kingdom.key}
                 onClick={handleOnClick(kingdom)}

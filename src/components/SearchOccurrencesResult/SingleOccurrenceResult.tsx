@@ -1,9 +1,9 @@
-import { Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { Theme } from '../../App/App';
-import { useContext } from 'react';
-import styles from './SingleOccurrenceResult.module.css';
-import { Occurence } from '../../types';
+import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Theme } from "../../App/App";
+import { useContext } from "react";
+import styles from "./SingleOccurrenceResult.module.css";
+import { Occurence } from "../../types";
 
 type SingleOccurrenceResultProps = {
   result: Occurence;
@@ -14,12 +14,12 @@ export const SingleOccurrenceResult: React.FC<SingleOccurrenceResultProps> = ({ 
 
   return (
     <Link to={`/occurrences/${result.key}`} className={styles.cardLink}>
-      <Card className={`${styles.cardAnimation} ${darkMode ? 'bg-dark text-white' : undefined}`}>
+      <Card className={`${styles.cardAnimation} ${darkMode ? "bg-dark text-white" : undefined}`}>
         <Card.Img
           className={styles.cardImage}
           variant="top"
           src={
-            result.media[0]?.type !== 'Sound' && result.media[0]?.identifier
+            result.media[0]?.type !== "Sound" && result.media[0]?.identifier
               ? result.media[0]?.identifier
               : darkMode
                 ? `assets/images/noImageFoundDark.png`
@@ -34,7 +34,7 @@ export const SingleOccurrenceResult: React.FC<SingleOccurrenceResultProps> = ({ 
               result.order ??
               result.phylum ??
               result.kingdom ??
-              'Unidentified'}
+              "Unidentified"}
           </Card.Title>
           <Card.Text>
             {result.gadm.level0?.name ?? `No level 0 GADM provided`}

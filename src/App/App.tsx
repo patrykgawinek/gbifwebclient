@@ -1,15 +1,15 @@
-import { createContext, useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { createContext, useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import styles from './App.module.css';
+import styles from "./App.module.css";
 
-import { HomePage } from '../pages/HomePage';
-import { MapPage } from '../pages/MapPage';
-import { SearchOccurrencesPage } from '../pages/SearchOccurrencesPage';
-import { SingleOccurrencePage } from '../pages/SingleOccurrencePage';
+import { HomePage } from "../pages/HomePage";
+import { MapPage } from "../pages/MapPage";
+import { SearchOccurrencesPage } from "../pages/SearchOccurrencesPage";
+import { SingleOccurrencePage } from "../pages/SingleOccurrencePage";
 
-import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
+import { Footer } from "../components/Footer";
+import { Header } from "../components/Header";
 
 export const Theme = createContext({
   darkMode: true,
@@ -20,14 +20,14 @@ export const App: React.FC = () => {
   const [darkMode, setDarkMode] = useState<boolean>(true);
 
   useEffect(() => {
-    let data = localStorage.getItem('theme');
-    if (data === 'false') {
+    let data = localStorage.getItem("theme");
+    if (data === "false") {
       setDarkMode(false);
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('theme', JSON.stringify(darkMode));
+    localStorage.setItem("theme", JSON.stringify(darkMode));
   }, [darkMode]);
 
   return (

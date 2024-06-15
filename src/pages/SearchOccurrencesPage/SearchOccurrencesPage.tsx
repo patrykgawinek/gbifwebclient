@@ -1,10 +1,10 @@
-import { SearchClassification, SearchKingdom, SearchOccurrencesResults, SelectCountry } from '../../components';
-import { useEffect, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-import { Theme } from '../../App/App';
-import { useContext } from 'react';
-import styles from './SearchOccurrencesPage.module.css';
-import { ClassificationState } from '../../types';
+import { SearchClassification, SearchKingdom, SearchOccurrencesResults, SelectCountry } from "../../components";
+import { useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import { Theme } from "../../App/App";
+import { useContext } from "react";
+import styles from "./SearchOccurrencesPage.module.css";
+import { ClassificationState } from "../../types";
 
 export const SearchOccurrencesPage: React.FC = () => {
   //Usestates to keep track of made choices by the user
@@ -16,13 +16,13 @@ export const SearchOccurrencesPage: React.FC = () => {
   const [selectedGenus, setSelectedGenus] = useState<number>(-1);
   const [selectedSpecies, setSelectedSpecies] = useState<number>(-1);
   const classificationArray: ClassificationState[] = [
-    { name: 'Kingdom', value: selectedKingdom, setValue: setSelectedKingdom },
-    { name: 'Phylum', value: selectedPhylum, setValue: setSelectedPhylum },
-    { name: 'Class', value: selectedClass, setValue: setSelectedClass },
-    { name: 'Order', value: selectedOrder, setValue: setSelectedOrder },
-    { name: 'Family', value: selectedFamily, setValue: setSelectedFamily },
-    { name: 'Genus', value: selectedGenus, setValue: setSelectedGenus },
-    { name: 'Species', value: selectedSpecies, setValue: setSelectedSpecies },
+    { name: "Kingdom", value: selectedKingdom, setValue: setSelectedKingdom },
+    { name: "Phylum", value: selectedPhylum, setValue: setSelectedPhylum },
+    { name: "Class", value: selectedClass, setValue: setSelectedClass },
+    { name: "Order", value: selectedOrder, setValue: setSelectedOrder },
+    { name: "Family", value: selectedFamily, setValue: setSelectedFamily },
+    { name: "Genus", value: selectedGenus, setValue: setSelectedGenus },
+    { name: "Species", value: selectedSpecies, setValue: setSelectedSpecies },
   ];
 
   //Usestate for search query on occurrences based on last classification level/choice
@@ -38,16 +38,16 @@ export const SearchOccurrencesPage: React.FC = () => {
   const { darkMode } = useContext(Theme);
 
   //Usestate to track selected country
-  const [country, setCountry] = useState<string>('');
+  const [country, setCountry] = useState<string>("");
 
   useEffect(() => {
-    let data = sessionStorage.getItem('lastSelection');
+    let data = sessionStorage.getItem("lastSelection");
     if (data) {
       setLastSelection(JSON.parse(data));
     }
   }, []);
   useEffect(() => {
-    sessionStorage.setItem('lastSelection', JSON.stringify(lastSelection));
+    sessionStorage.setItem("lastSelection", JSON.stringify(lastSelection));
   }, [lastSelection]);
 
   return (

@@ -1,10 +1,10 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { Form } from 'react-bootstrap';
-import { Theme } from '../../App/App';
-import { useContext } from 'react';
-import styles from './SearchClassification.module.css';
-import { Classification, ClassificationState } from '../../types';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Form } from "react-bootstrap";
+import { Theme } from "../../App/App";
+import { useContext } from "react";
+import styles from "./SearchClassification.module.css";
+import { Classification, ClassificationState } from "../../types";
 
 type SearchClassProps = {
   showItems: boolean[];
@@ -26,7 +26,7 @@ export const SearchClassification: React.FC<SearchClassProps> = ({
   const { darkMode } = useContext(Theme);
 
   const [currentList, setCurrentList] = useState<Classification[]>([]);
-  const baseUrlApi: string = 'https://api.gbif.org/v1';
+  const baseUrlApi: string = "https://api.gbif.org/v1";
   const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
     let offset: number = 0;
