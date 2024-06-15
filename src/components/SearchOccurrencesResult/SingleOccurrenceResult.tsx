@@ -1,15 +1,15 @@
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { Theme } from 'components/App/App';
+import { Theme } from '../../App/App';
 import { useContext } from 'react';
 import styles from './SingleOccurrenceResult.module.css';
-import { Occurence } from 'types';
+import { Occurence } from '../../types';
 
 type SingleOccurrenceResultProps = {
   result: Occurence;
 };
 
-const SingleOccurrenceResult: React.FC<SingleOccurrenceResultProps> = ({ result }) => {
+export const SingleOccurrenceResult: React.FC<SingleOccurrenceResultProps> = ({ result }) => {
   const { darkMode } = useContext(Theme);
 
   return (
@@ -22,8 +22,8 @@ const SingleOccurrenceResult: React.FC<SingleOccurrenceResultProps> = ({ result 
             result.media[0]?.type !== 'Sound' && result.media[0]?.identifier
               ? result.media[0]?.identifier
               : darkMode
-              ? `assets/images/noImageFoundDark.png`
-              : `assets/images/noImageFound.png`
+                ? `assets/images/noImageFoundDark.png`
+                : `assets/images/noImageFound.png`
           }
         />
         <Card.Body>
@@ -48,5 +48,3 @@ const SingleOccurrenceResult: React.FC<SingleOccurrenceResultProps> = ({ result 
     </Link>
   );
 };
-
-export default SingleOccurrenceResult;

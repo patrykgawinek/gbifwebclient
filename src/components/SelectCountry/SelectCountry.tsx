@@ -1,9 +1,9 @@
 import { Form } from 'react-bootstrap';
-import { Theme } from 'components/App/App';
+import { Theme } from '../../App/App';
 import { useContext, useEffect, useState } from 'react';
 import styles from './SelectCountry.module.css';
 import axios from 'axios';
-import { Country } from 'types';
+import { Country } from '../../types';
 
 type SelectCountryProps = {
   country: string;
@@ -11,7 +11,7 @@ type SelectCountryProps = {
   setOffset: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const SelectCountry: React.FC<SelectCountryProps> = ({ country, setCountry, setOffset }) => {
+export const SelectCountry: React.FC<SelectCountryProps> = ({ country, setCountry, setOffset }) => {
   const { darkMode } = useContext(Theme);
   const [countries, setCountries] = useState<Country[]>();
 
@@ -44,5 +44,3 @@ const SelectCountry: React.FC<SelectCountryProps> = ({ country, setCountry, setO
     </Form.Select>
   );
 };
-
-export default SelectCountry;

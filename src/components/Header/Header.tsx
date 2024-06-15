@@ -1,10 +1,10 @@
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
-import { Theme } from 'components/App/App';
+import { Theme } from '../../App/App';
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.css';
 
-const Header: React.FC = () => {
+export const Header: React.FC = () => {
   const { darkMode, setDarkMode } = useContext(Theme);
   const handleDarkMode = () => () => setDarkMode(!darkMode);
 
@@ -44,5 +44,3 @@ const Header: React.FC = () => {
     </header>
   );
 };
-
-export default Header;

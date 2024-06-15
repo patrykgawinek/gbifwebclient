@@ -1,9 +1,9 @@
 import { Navbar } from 'react-bootstrap';
-import { Theme } from 'components/App/App';
+import { Theme } from '../../App/App';
 import { useContext } from 'react';
 import styles from './Footer.module.css';
 
-const Footer: React.FC = () => {
+export const Footer: React.FC = () => {
   const { darkMode } = useContext(Theme);
 
   return (
@@ -16,5 +16,3 @@ const Footer: React.FC = () => {
     </footer>
   );
 };
-
-export default Footer;

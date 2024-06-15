@@ -1,19 +1,22 @@
-import Footer from 'components/Footer/Footer';
-import HomePage from 'pages/HomePage/HomePage';
-import MapPage from 'pages/MapPage/MapPage';
-import SearchOccurrencesPage from 'pages/SearchOccurrencesPage/SearchOccurrencesPage';
-import SingleOccurrencePage from 'pages/SingleOccurrencePage/SingleOccurrencePage';
 import { createContext, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from '../Header/Header';
+
 import styles from './App.module.css';
+
+import { HomePage } from '../pages/HomePage';
+import { MapPage } from '../pages/MapPage';
+import { SearchOccurrencesPage } from '../pages/SearchOccurrencesPage';
+import { SingleOccurrencePage } from '../pages/SingleOccurrencePage';
+
+import { Footer } from '../components/Footer';
+import { Header } from '../components/Header';
 
 export const Theme = createContext({
   darkMode: true,
   setDarkMode: (_mode: boolean) => {},
 });
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
   const [darkMode, setDarkMode] = useState<boolean>(true);
 
   useEffect(() => {
@@ -69,5 +72,3 @@ const App: React.FC = () => {
     </Theme.Provider>
   );
 };
-
-export default App;

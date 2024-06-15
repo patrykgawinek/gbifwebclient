@@ -1,10 +1,10 @@
-import { Theme } from 'components/App/App';
+import { Theme } from '../../App/App';
 import { useContext } from 'react';
 import { Container, Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './HomePage.module.css';
 
-const HomePage: React.FC = () => {
+export const HomePage: React.FC = () => {
   const { darkMode } = useContext(Theme);
 
   const navigate = useNavigate();
@@ -60,5 +60,3 @@ const HomePage: React.FC = () => {
     </main>
   );
 };
-
-export default HomePage;

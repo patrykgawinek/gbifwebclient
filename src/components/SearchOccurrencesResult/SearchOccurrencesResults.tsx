@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Button, Col, Container, Row, Spinner } from 'react-bootstrap';
-import SingleOccurrenceResult from './SingleOccurrenceResult';
-import { Theme } from 'components/App/App';
+import { SingleOccurrenceResult } from './SingleOccurrenceResult';
+import { Theme } from '../../App/App';
 import { useContext } from 'react';
 import styles from './SearchOccurrencesResults.module.css';
-import { Occurences, Occurence } from 'types';
+import { Occurences, Occurence } from '../../types';
 import { useNavigate } from 'react-router-dom';
 
 type SearchOccurrencesResultProps = {
@@ -15,7 +15,7 @@ type SearchOccurrencesResultProps = {
   setOffset: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const SearchOccurrencesResults: React.FC<SearchOccurrencesResultProps> = ({
+export const SearchOccurrencesResults: React.FC<SearchOccurrencesResultProps> = ({
   country,
   lastSelection,
   offset,
@@ -146,5 +146,3 @@ const SearchOccurrencesResults: React.FC<SearchOccurrencesResultProps> = ({
     </Container>
   );
 };
-
-export default SearchOccurrencesResults;

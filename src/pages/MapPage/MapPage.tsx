@@ -1,10 +1,10 @@
 import { MapContainer as LeafletMap, TileLayer } from 'react-leaflet';
-import { Theme } from 'components/App/App';
+import { Theme } from '../../App/App';
 import { useContext, useEffect, useState } from 'react';
 import styles from './MapPage.module.css';
 import { useSearchParams } from 'react-router-dom';
 
-const MapPage: React.FC = () => {
+export const MapPage: React.FC = () => {
   const [searchParams] = useSearchParams();
   const { darkMode } = useContext(Theme);
   const [mapStyle, setMapStyle] = useState<string>('');
@@ -25,7 +25,7 @@ const MapPage: React.FC = () => {
     .filter((param) => Boolean(param.value))
     .map((param) => `${param.name}=${param.value}`)
     .join('&');
-  console.log(params);
+
   const overlay = `https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?${params}`;
 
   return (
@@ -57,5 +57,3 @@ const MapPage: React.FC = () => {
     </main>
   );
 };
-
-export default MapPage;

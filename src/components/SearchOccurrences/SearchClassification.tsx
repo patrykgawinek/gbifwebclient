@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
-import { Theme } from 'components/App/App';
+import { Theme } from '../../App/App';
 import { useContext } from 'react';
 import styles from './SearchClassification.module.css';
-import { Classification, ClassificationState } from 'types';
+import { Classification, ClassificationState } from '../../types';
 
 type SearchClassProps = {
   showItems: boolean[];
@@ -15,7 +15,7 @@ type SearchClassProps = {
   setOffset: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const SearchClassification: React.FC<SearchClassProps> = ({
+export const SearchClassification: React.FC<SearchClassProps> = ({
   showItems,
   setShowItems,
   classificationLevel,
@@ -119,5 +119,3 @@ const SearchClassification: React.FC<SearchClassProps> = ({
     </article>
   );
 };
-
-export default SearchClassification;

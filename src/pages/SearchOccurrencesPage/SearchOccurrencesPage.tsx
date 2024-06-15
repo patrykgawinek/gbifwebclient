@@ -1,15 +1,12 @@
-import SearchClassification from 'components/SearchOccurrences/SearchClassification';
-import SearchKingdom from 'components/SearchOccurrences/SearchKingdom';
-import SearchOccurrencesResult from 'components/SearchOccurrencesResult/SearchOccurrencesResults';
+import { SearchClassification, SearchKingdom, SearchOccurrencesResults, SelectCountry } from '../../components';
 import { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { Theme } from 'components/App/App';
+import { Theme } from '../../App/App';
 import { useContext } from 'react';
 import styles from './SearchOccurrencesPage.module.css';
-import { ClassificationState } from 'types';
-import SelectCountry from 'components/SelectCountry/SelectCountry';
+import { ClassificationState } from '../../types';
 
-const SearchOccurrencesPage: React.FC = () => {
+export const SearchOccurrencesPage: React.FC = () => {
   //Usestates to keep track of made choices by the user
   const [selectedKingdom, setSelectedKingdom] = useState<number>(-1);
   const [selectedPhylum, setSelectedPhylum] = useState<number>(-1);
@@ -87,7 +84,7 @@ const SearchOccurrencesPage: React.FC = () => {
         </Row>
         <SelectCountry country={country} setCountry={setCountry} setOffset={setOffset} />
         <Row className="mb-3">
-          <SearchOccurrencesResult
+          <SearchOccurrencesResults
             country={country}
             lastSelection={lastSelection}
             offset={offset}
@@ -98,5 +95,3 @@ const SearchOccurrencesPage: React.FC = () => {
     </main>
   );
 };
-
-export default SearchOccurrencesPage;

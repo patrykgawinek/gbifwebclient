@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { Button, Col, Container, Row, Spinner } from 'react-bootstrap';
-import { Theme } from 'components/App/App';
+import { Theme } from '../../App/App';
 import { useContext } from 'react';
 import styles from './SearchKingdom.module.css';
-import { Classification } from 'types';
+import { Classification } from '../../types';
 
 type SearchKingdomProps = {
   setSelectedKingdom: Dispatch<SetStateAction<number>>;
@@ -13,7 +13,7 @@ type SearchKingdomProps = {
   setOffset: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const SearchKingdom: React.FC<SearchKingdomProps> = ({
+export const SearchKingdom: React.FC<SearchKingdomProps> = ({
   setSelectedKingdom,
   setShowItems,
   setLastSelection,
@@ -77,5 +77,3 @@ const SearchKingdom: React.FC<SearchKingdomProps> = ({
     </Container>
   );
 };
-
-export default SearchKingdom;

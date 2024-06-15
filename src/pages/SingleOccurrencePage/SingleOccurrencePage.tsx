@@ -5,11 +5,11 @@ import { MapContainer as LeafletMap, TileLayer, Marker } from 'react-leaflet';
 import './leaflet.css';
 import { Col, Container, Row, Image, Carousel, Table, Spinner } from 'react-bootstrap';
 import ReactAudioPlayer from 'react-audio-player';
-import { Theme } from 'components/App/App';
+import { Theme } from '../../App/App';
 import styles from './SingleOccurrencePage.module.css';
-import { Medium, Occurence } from 'types';
+import { Medium, Occurence } from '../../types';
 
-const SingleOccurrencePage: React.FC = () => {
+export const SingleOccurrencePage: React.FC = () => {
   let { id } = useParams();
   const { darkMode } = useContext(Theme);
   const [occurrence, setOccurrence] = useState<Occurence>();
@@ -220,5 +220,3 @@ const SingleOccurrencePage: React.FC = () => {
     </main>
   );
 };
-
-export default SingleOccurrencePage;
