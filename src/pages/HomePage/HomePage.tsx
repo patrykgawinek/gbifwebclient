@@ -1,5 +1,5 @@
-import { Theme } from "../../App/App";
-import { useContext } from "react";
+import { Theme } from "src/App";
+import React, { useContext } from "react";
 import { Container, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./HomePage.module.css";
@@ -17,11 +17,11 @@ export const HomePage: React.FC = () => {
         <p className={darkMode ? styles.lightText : undefined}>
           The GBIF Client web app is a front-end web app that gives you a more user friendly experience when accessing{" "}
           <a href="https://www.gbif.org/occurrence/search" className={darkMode ? styles.hyperLinkDark : undefined}>
-            GBIF's
+            GBIF&apos;s
           </a>{" "}
-          dataset. GBIF is an international network and data infrastructure funded by the world's governments and aimed
-          at providing anyone, anywhere, open access to data about all types of life on Earth. This means that you can
-          find data on a plethora of species and recorded occurrences of said species.
+          dataset. GBIF is an international network and data infrastructure funded by the world&apos;s governments and
+          aimed at providing anyone, anywhere, open access to data about all types of life on Earth. This means that you
+          can find data on a plethora of species and recorded occurrences of said species.
         </p>
         <h2 className={darkMode ? styles.lightText : undefined}>How do I use this web app?</h2>
         <p className={darkMode ? styles.lightText : undefined}>
@@ -46,8 +46,8 @@ export const HomePage: React.FC = () => {
         <h2 className={darkMode ? styles.lightText : undefined}>Does this web app save any of my data?</h2>
         <p className={darkMode ? styles.lightText : undefined}>
           We save your choice of theme locally on your computer. You can always remove said item by clearing your
-          browser's cache. Alongside of that we save your last selected taxonomy. This gets cleared every time you close
-          the tab this web app was opened with.
+          browser&apos;s cache. Alongside of that we save your last selected taxonomy. This gets cleared every time you
+          close the tab this web app was opened with.
         </p>
         <Button
           className={`mb-3 ${styles.buttonStyle}`}
