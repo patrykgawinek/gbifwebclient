@@ -1,6 +1,6 @@
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
-import { Theme } from "../../App/App";
-import { useContext } from "react";
+import { Theme } from "src/App";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
 

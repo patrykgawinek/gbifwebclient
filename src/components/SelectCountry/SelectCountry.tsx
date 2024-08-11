@@ -1,9 +1,9 @@
 import { Form } from "react-bootstrap";
-import { Theme } from "../../App/App";
-import { useContext, useEffect, useState } from "react";
+import { Theme } from "src/App";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./SelectCountry.module.css";
 import axios from "axios";
-import { Country } from "../../types";
+import { Country } from "src/types";
 
 type SelectCountryProps = {
   country: string;

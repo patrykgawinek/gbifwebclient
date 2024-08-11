@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
-import { Theme } from "../../App/App";
-import { useContext } from "react";
+import { Theme } from "src/App";
+import React, { useContext } from "react";
 import styles from "./SearchClassification.module.css";
-import { Classification, ClassificationState } from "../../types";
+import { Classification, ClassificationState } from "src/types";
 
 type SearchClassProps = {
   showItems: boolean[];
@@ -26,11 +26,11 @@ export const SearchClassification: React.FC<SearchClassProps> = ({
   const { darkMode } = useContext(Theme);
 
   const [currentList, setCurrentList] = useState<Classification[]>([]);
-  const baseUrlApi: string = "https://api.gbif.org/v1";
+  const baseUrlApi = "https://api.gbif.org/v1";
   const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
-    let offset: number = 0;
-    let tempArray: Classification[] = [];
+    let offset = 0;
+    const tempArray: Classification[] = [];
     const fetchTaxon = () => {
       setLoading(true);
       axios
@@ -60,7 +60,7 @@ export const SearchClassification: React.FC<SearchClassProps> = ({
 
     fetchTaxon();
   }, [classificationArray, classificationLevel]);
-  let filteredTaxon: Classification[] = currentList.filter(
+  const filteredTaxon: Classification[] = currentList.filter(
     (item: Classification) => item.rank === classificationArray[classificationLevel].name.toUpperCase(),
   );
 
@@ -69,7 +69,7 @@ export const SearchClassification: React.FC<SearchClassProps> = ({
     setLastSelection(parseInt(event.target.value));
     setOffset(0); //Sets offset for search occurence results back to 0
 
-    let tempShowArray: boolean[] = [];
+    const tempShowArray: boolean[] = [];
     for (let i = 0; i < classificationLevel + 2; i++) {
       tempShowArray.push(true);
     }

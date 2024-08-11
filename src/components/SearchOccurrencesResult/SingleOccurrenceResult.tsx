@@ -1,9 +1,9 @@
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Theme } from "../../App/App";
-import { useContext } from "react";
+import { Theme } from "src/App";
+import React, { useContext } from "react";
 import styles from "./SingleOccurrenceResult.module.css";
-import { Occurence } from "../../types";
+import { Occurence } from "src/types";
 
 type SingleOccurrenceResultProps = {
   result: Occurence;

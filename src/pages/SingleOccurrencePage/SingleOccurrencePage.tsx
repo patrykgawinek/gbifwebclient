@@ -1,16 +1,16 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MapContainer as LeafletMap, TileLayer, Marker } from "react-leaflet";
 import "./leaflet.css";
 import { Col, Container, Row, Image, Carousel, Table, Spinner } from "react-bootstrap";
 import ReactAudioPlayer from "react-audio-player";
-import { Theme } from "../../App/App";
+import { Theme } from "src/App";
 import styles from "./SingleOccurrencePage.module.css";
-import { Medium, Occurence } from "../../types";
+import { Medium, Occurence } from "src/types";
 
 export const SingleOccurrencePage: React.FC = () => {
-  let { id } = useParams();
+  const { id } = useParams();
   const { darkMode } = useContext(Theme);
   const [occurrence, setOccurrence] = useState<Occurence>();
 
@@ -19,7 +19,7 @@ export const SingleOccurrencePage: React.FC = () => {
     setCarouselIndex(selectedIndex);
   };
 
-  const baseUrlApi: string = "https://api.gbif.org/v1";
+  const baseUrlApi = "https://api.gbif.org/v1";
   const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
     setLoading(true);

@@ -1,10 +1,10 @@
-import { SearchClassification, SearchKingdom, SearchOccurrencesResults, SelectCountry } from "../../components";
-import { useEffect, useState } from "react";
+import { SearchClassification, SearchKingdom, SearchOccurrencesResults, SelectCountry } from "src/components";
+import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { Theme } from "../../App/App";
+import { Theme } from "src/App";
 import { useContext } from "react";
 import styles from "./SearchOccurrencesPage.module.css";
-import { ClassificationState } from "../../types";
+import { ClassificationState } from "src/types";
 
 export const SearchOccurrencesPage: React.FC = () => {
   //Usestates to keep track of made choices by the user
@@ -41,7 +41,7 @@ export const SearchOccurrencesPage: React.FC = () => {
   const [country, setCountry] = useState<string>("");
 
   useEffect(() => {
-    let data = sessionStorage.getItem("lastSelection");
+    const data = sessionStorage.getItem("lastSelection");
     if (data) {
       setLastSelection(JSON.parse(data));
     }

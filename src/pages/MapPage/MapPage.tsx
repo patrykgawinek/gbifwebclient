@@ -1,6 +1,6 @@
 import { MapContainer as LeafletMap, TileLayer } from "react-leaflet";
-import { Theme } from "../../App/App";
-import { useContext, useEffect, useState } from "react";
+import { Theme } from "src/App";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./MapPage.module.css";
 import { useSearchParams } from "react-router-dom";
 
