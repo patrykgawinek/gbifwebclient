@@ -2,10 +2,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
 import { SingleOccurrenceResult } from "./SingleOccurrenceResult";
-import { Theme } from "../../App/App";
-import { useContext } from "react";
+import { Theme } from "src/App";
+import React, { useContext } from "react";
 import styles from "./SearchOccurrencesResults.module.css";
-import { Occurences, Occurence } from "../../types";
+import { Occurences, Occurence } from "src/types";
 import { useNavigate } from "react-router-dom";
 
 type SearchOccurrencesResultProps = {
@@ -30,9 +30,8 @@ export const SearchOccurrencesResults: React.FC<SearchOccurrencesResultProps> = 
     endOfRecords: true,
     count: 0,
     results: [],
-    facets: [],
   });
-  const baseUrlApi: string = "https://api.gbif.org/v1";
+  const baseUrlApi = "https://api.gbif.org/v1";
   const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
     setLoading(true);
@@ -63,7 +62,7 @@ export const SearchOccurrencesResults: React.FC<SearchOccurrencesResultProps> = 
     .join("&");
   const handleOnClick = () => navigate(`/map?${mapParams}`);
   const handleChangePage =
-    (next: boolean = true) =>
+    (next = true) =>
     () => {
       if (next && !foundResults.endOfRecords) {
         setOffset(offset + 12);

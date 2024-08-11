@@ -1,6 +1,6 @@
 import { Navbar } from "react-bootstrap";
-import { Theme } from "../../App/App";
-import { useContext } from "react";
+import { Theme } from "src/App";
+import React, { useContext } from "react";
 import styles from "./Footer.module.css";
 
 export const Footer: React.FC = () => {

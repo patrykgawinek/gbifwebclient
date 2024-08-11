@@ -1,10 +1,10 @@
 import axios from "axios";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
-import { Theme } from "../../App/App";
-import { useContext } from "react";
+import { Theme } from "src/App";
+import React, { useContext } from "react";
 import styles from "./SearchKingdom.module.css";
-import { Classification } from "../../types";
+import { Classification } from "src/types";
 
 type SearchKingdomProps = {
   setSelectedKingdom: Dispatch<SetStateAction<number>>;
@@ -22,7 +22,7 @@ export const SearchKingdom: React.FC<SearchKingdomProps> = ({
   const { darkMode } = useContext(Theme);
 
   const [kingdomList, setKingdomList] = useState<Classification[]>([]);
-  const baseUrlApi: string = "https://api.gbif.org/v1";
+  const baseUrlApi = "https://api.gbif.org/v1";
   const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
     setLoading(true);
@@ -33,7 +33,7 @@ export const SearchKingdom: React.FC<SearchKingdomProps> = ({
         },
       })
       .then((response) => {
-        let tempList = response.data;
+        const tempList = response.data;
         setKingdomList(tempList);
         setLoading(false);
       })

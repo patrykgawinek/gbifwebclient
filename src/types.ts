@@ -33,7 +33,7 @@ export type Classification = {
   rank: string;
   origin: string;
   taxonomicStatus: string;
-  nomenclaturalStatus: any[];
+  // nomenclaturalStatus: any[];
   remarks: string;
   numDescendants: number;
   lastCrawled: Date;
@@ -154,18 +154,18 @@ export type Occurence = {
   issues: string[];
   lastInterpreted: Date;
   license: string;
-  identifiers: any[];
+  // identifiers: any[];
   media: Medium[];
-  facts: any[];
-  relations: any[];
+  // facts: any[];
+  // relations: any[];
   gadm: Gadm;
   institutionKey: string;
   isInCluster: boolean;
   geodeticDatum: string;
   class: string;
   countryCode: string;
-  recordedByIDs: any[];
-  identifiedByIDs: any[];
+  // recordedByIDs: any[];
+  // identifiedByIDs: any[];
   country: string;
   identifier: string;
   eventID: string;
@@ -243,5 +243,4 @@ export type Occurences = {
   endOfRecords: boolean;
   count: number;
   results: Occurence[];
-  facets: any[];
 };
