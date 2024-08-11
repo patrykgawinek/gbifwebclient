@@ -10,7 +10,7 @@ exports[`App root > renders home page 1`] = `
       >
         <header>
           <nav
-            class="bg-dark navbar-dark navbar navbar-expand-sm navbar-light"
+            class="navbar-dark navbar navbar-expand-sm navbar-light"
           >
             <div
               class="container"
