@@ -38,6 +38,7 @@ export const SearchKingdom: React.FC<SearchKingdomProps> = ({
         setLoading(false);
       })
       .catch((error) => {
+        // eslint-disable-next-line no-console
         console.log(error);
       });
   }, []);

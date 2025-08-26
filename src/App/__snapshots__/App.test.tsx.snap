@@ -6,7 +6,7 @@ exports[`App root > renders home page 1`] = `
   "baseElement": <body>
     <div>
       <div
-        class="_AppContainer_d6da67 _darkMode_d6da67"
+        class="_AppContainer_8c7554 _darkMode_8c7554"
       >
         <header>
           <nav
@@ -17,7 +17,8 @@ exports[`App root > renders home page 1`] = `
             >
               <a
                 aria-current="page"
-                class="_brand_63c2ea active"
+                class="_brand_a5b977 active"
+                data-discover="true"
                 href="/"
               >
                 <span
@@ -46,30 +47,33 @@ exports[`App root > renders home page 1`] = `
                   <a
                     aria-current="page"
                     class="nav-link active"
+                    data-discover="true"
                     href="/"
                   >
                     How-to
                   </a>
                   <a
                     class="nav-link"
+                    data-discover="true"
                     href="/occurrences"
                   >
                     Search
                   </a>
                   <a
                     class="nav-link"
+                    data-discover="true"
                     href="/map"
                   >
                     Map
                   </a>
                 </div>
                 <button
-                  class="_themeToggle_63c2ea btn-dark btn btn-primary"
+                  class="_themeToggle_a5b977 btn-dark btn btn-primary"
                   type="button"
                 >
                   <img
                     alt="Dark mode"
-                    class="_modeButtonIcon_63c2ea"
+                    class="_modeButtonIcon_a5b977"
                     src="/assets/icons/moon.png"
                   />
                 </button>
@@ -78,24 +82,24 @@ exports[`App root > renders home page 1`] = `
           </nav>
         </header>
         <div
-          class="_mainContent_d6da67"
+          class="_mainContent_8c7554"
         >
           <main>
             <div
               class="container"
             >
               <h1
-                class="mt-3 _lightText_ea6e48"
+                class="mt-3 _lightText_7e21aa"
               >
                 What is the GBIF Client web app?
               </h1>
               <p
-                class="_lightText_ea6e48"
+                class="_lightText_7e21aa"
               >
                 The GBIF Client web app is a front-end web app that gives you a more user friendly experience when accessing
                  
                 <a
-                  class="_hyperLinkDark_ea6e48"
+                  class="_hyperLinkDark_7e21aa"
                   href="https://www.gbif.org/occurrence/search"
                 >
                   GBIF's
@@ -104,17 +108,18 @@ exports[`App root > renders home page 1`] = `
                 dataset. GBIF is an international network and data infrastructure funded by the world's governments and aimed at providing anyone, anywhere, open access to data about all types of life on Earth. This means that you can find data on a plethora of species and recorded occurrences of said species.
               </p>
               <h2
-                class="_lightText_ea6e48"
+                class="_lightText_7e21aa"
               >
                 How do I use this web app?
               </h2>
               <p
-                class="_lightText_ea6e48"
+                class="_lightText_7e21aa"
               >
                 To use this web app, you can simply navigate to the
                  
                 <a
-                  class="_hyperLinkDark_ea6e48"
+                  class="_hyperLinkDark_7e21aa"
+                  data-discover="true"
                   href="/occurrences"
                 >
                   search page
@@ -123,17 +128,18 @@ exports[`App root > renders home page 1`] = `
                 and start browsing through different kingdoms, phyla ... Below the search section found occurrences will appear. You can select an occurrence to see more details, or you can click the button to show all occurrences on a heatmap.
               </p>
               <h2
-                class="_lightText_ea6e48"
+                class="_lightText_7e21aa"
               >
                 What is the difference between the map button on the search page and the map in the top navigation?
               </h2>
               <p
-                class="_lightText_ea6e48"
+                class="_lightText_7e21aa"
               >
                 The button on the search page shows a heatmap for the taxonomy you selected. The
                  
                 <a
-                  class="_hyperLinkDark_ea6e48"
+                  class="_hyperLinkDark_7e21aa"
+                  data-discover="true"
                   href="/map"
                 >
                   map in the navigation
@@ -141,17 +147,17 @@ exports[`App root > renders home page 1`] = `
                 , however, shows a heatmap of all occurrences in the dataset of GBIF.
               </p>
               <h2
-                class="_lightText_ea6e48"
+                class="_lightText_7e21aa"
               >
                 Does this web app save any of my data?
               </h2>
               <p
-                class="_lightText_ea6e48"
+                class="_lightText_7e21aa"
               >
                 We save your choice of theme locally on your computer. You can always remove said item by clearing your browser's cache. Alongside of that we save your last selected taxonomy. This gets cleared every time you close the tab this web app was opened with.
               </p>
               <button
-                class="mb-3 _buttonStyle_ea6e48 btn btn-dark"
+                class="mb-3 _buttonStyle_7e21aa btn btn-dark"
                 type="button"
               >
                 Start browsing!
@@ -164,10 +170,10 @@ exports[`App root > renders home page 1`] = `
             class="bg-dark navbar-dark navbar navbar-expand navbar-light"
           >
             <p
-              class="_footerText_eb428f"
+              class="_footerText_acfd2c"
             >
               GBIF Client | ©
-              2024
+              2025
                | Project for AP Hogeschool - Patryk Gawinek
                
             </p>
@@ -178,7 +184,7 @@ exports[`App root > renders home page 1`] = `
   </body>,
   "container": <div>
     <div
-      class="_AppContainer_d6da67 _darkMode_d6da67"
+      class="_AppContainer_8c7554 _darkMode_8c7554"
     >
       <header>
         <nav
@@ -189,7 +195,8 @@ exports[`App root > renders home page 1`] = `
           >
             <a
               aria-current="page"
-              class="_brand_63c2ea active"
+              class="_brand_a5b977 active"
+              data-discover="true"
               href="/"
             >
               <span
@@ -218,30 +225,33 @@ exports[`App root > renders home page 1`] = `
                 <a
                   aria-current="page"
                   class="nav-link active"
+                  data-discover="true"
                   href="/"
                 >
                   How-to
                 </a>
                 <a
                   class="nav-link"
+                  data-discover="true"
                   href="/occurrences"
                 >
                   Search
                 </a>
                 <a
                   class="nav-link"
+                  data-discover="true"
                   href="/map"
                 >
                   Map
                 </a>
               </div>
               <button
-                class="_themeToggle_63c2ea btn-dark btn btn-primary"
+                class="_themeToggle_a5b977 btn-dark btn btn-primary"
                 type="button"
               >
                 <img
                   alt="Dark mode"
-                  class="_modeButtonIcon_63c2ea"
+                  class="_modeButtonIcon_a5b977"
                   src="/assets/icons/moon.png"
                 />
               </button>
@@ -250,24 +260,24 @@ exports[`App root > renders home page 1`] = `
         </nav>
       </header>
       <div
-        class="_mainContent_d6da67"
+        class="_mainContent_8c7554"
       >
         <main>
           <div
             class="container"
           >
             <h1
-              class="mt-3 _lightText_ea6e48"
+              class="mt-3 _lightText_7e21aa"
             >
               What is the GBIF Client web app?
             </h1>
             <p
-              class="_lightText_ea6e48"
+              class="_lightText_7e21aa"
             >
               The GBIF Client web app is a front-end web app that gives you a more user friendly experience when accessing
                
               <a
-                class="_hyperLinkDark_ea6e48"
+                class="_hyperLinkDark_7e21aa"
                 href="https://www.gbif.org/occurrence/search"
               >
                 GBIF's
@@ -276,17 +286,18 @@ exports[`App root > renders home page 1`] = `
               dataset. GBIF is an international network and data infrastructure funded by the world's governments and aimed at providing anyone, anywhere, open access to data about all types of life on Earth. This means that you can find data on a plethora of species and recorded occurrences of said species.
             </p>
             <h2
-              class="_lightText_ea6e48"
+              class="_lightText_7e21aa"
             >
               How do I use this web app?
             </h2>
             <p
-              class="_lightText_ea6e48"
+              class="_lightText_7e21aa"
             >
               To use this web app, you can simply navigate to the
                
               <a
-                class="_hyperLinkDark_ea6e48"
+                class="_hyperLinkDark_7e21aa"
+                data-discover="true"
                 href="/occurrences"
               >
                 search page
@@ -295,17 +306,18 @@ exports[`App root > renders home page 1`] = `
               and start browsing through different kingdoms, phyla ... Below the search section found occurrences will appear. You can select an occurrence to see more details, or you can click the button to show all occurrences on a heatmap.
             </p>
             <h2
-              class="_lightText_ea6e48"
+              class="_lightText_7e21aa"
             >
               What is the difference between the map button on the search page and the map in the top navigation?
             </h2>
             <p
-              class="_lightText_ea6e48"
+              class="_lightText_7e21aa"
             >
               The button on the search page shows a heatmap for the taxonomy you selected. The
                
               <a
-                class="_hyperLinkDark_ea6e48"
+                class="_hyperLinkDark_7e21aa"
+                data-discover="true"
                 href="/map"
               >
                 map in the navigation
@@ -313,17 +325,17 @@ exports[`App root > renders home page 1`] = `
               , however, shows a heatmap of all occurrences in the dataset of GBIF.
             </p>
             <h2
-              class="_lightText_ea6e48"
+              class="_lightText_7e21aa"
             >
               Does this web app save any of my data?
             </h2>
             <p
-              class="_lightText_ea6e48"
+              class="_lightText_7e21aa"
             >
               We save your choice of theme locally on your computer. You can always remove said item by clearing your browser's cache. Alongside of that we save your last selected taxonomy. This gets cleared every time you close the tab this web app was opened with.
             </p>
             <button
-              class="mb-3 _buttonStyle_ea6e48 btn btn-dark"
+              class="mb-3 _buttonStyle_7e21aa btn btn-dark"
               type="button"
             >
               Start browsing!
@@ -336,10 +348,10 @@ exports[`App root > renders home page 1`] = `
           class="bg-dark navbar-dark navbar navbar-expand navbar-light"
         >
           <p
-            class="_footerText_eb428f"
+            class="_footerText_acfd2c"
           >
             GBIF Client | ©
-            2024
+            2025
              | Project for AP Hogeschool - Patryk Gawinek
              
           </p>

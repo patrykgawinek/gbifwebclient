@@ -30,6 +30,7 @@ export const SingleOccurrencePage: React.FC = () => {
         setLoading(false);
       })
       .catch((error) => {
+        // eslint-disable-next-line no-console
         console.log(error);
       });
   }, [id]);

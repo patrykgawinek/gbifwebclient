@@ -49,6 +49,7 @@ export const SearchOccurrencesResults: React.FC<SearchOccurrencesResultProps> = 
         setLoading(false);
       })
       .catch((error) => {
+        // eslint-disable-next-line no-console
         console.log(error);
       });
   }, [lastSelection, offset, country]);
