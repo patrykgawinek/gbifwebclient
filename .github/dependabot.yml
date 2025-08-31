@@ -14,5 +14,6 @@ updates:
     groups:
       minor-and-patch:
         applies-to: "version-updates"
-        patterns: ["*"]
         update-types: ["minor", "patch"]
+      lock-file-maintenance:
+        applies-to: "security-updates"
