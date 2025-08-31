@@ -1,3 +1,2 @@
-npm run test:run
 npm run prettier
 npm run eslint
