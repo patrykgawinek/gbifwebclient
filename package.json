@@ -19,7 +19,7 @@
   "dependencies": {
     "axios": "1.12.1",
     "bootstrap": "5.3.8",
-    "jsdom": "26.1.0",
+    "jsdom": "27.0.0",
     "leaflet": "1.9.4",
     "react": "19.1.1",
     "react-audio-player": "0.17.0",
