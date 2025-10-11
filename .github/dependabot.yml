@@ -6,16 +6,17 @@
 version: 2
 updates:
   - package-ecosystem: "npm"
-    directory: "/" # Location of package manifests
+    directory: "/"
     schedule:
       interval: "weekly"
       day: "saturday"
+      time: "10:00"
+
+    allow:
+      - dependency-type: "all"
 
     groups:
       minor-and-patch:
         applies-to: "version-updates"
         update-types: ["minor", "patch"]
-        patterns: ["*"]
-      lock-file-maintenance:
-        applies-to: "security-updates"
         patterns: ["*"]
